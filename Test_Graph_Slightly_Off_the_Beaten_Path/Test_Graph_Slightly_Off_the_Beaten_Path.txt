@@ -1,0 +1,11 @@
+Test Graph Slightly Off the Beaten Path
+
+- Budget 10,000
+- Duration 20 time steps
+- Worker 1 cost = 100, Worker 2 cost = 200, Worker 3 cost = 500
+- All other parameters are contained in the graph object
+- Filename graph_t20_verts30_sandbox.json
+- 30 vertices, 45 edges
+- 3 type-1 sites:  reward = 1000, acquire time = 1
+- 2 type-2 sites:  reward = 2000, acquire time = 2
+- 5 type-3 sites:  reward = 5000, acquire time = 3
