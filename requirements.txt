@@ -1,0 +1,12 @@
+contourpy==1.2.0
+cycler==0.12.1
+fonttools==4.49.0
+kiwisolver==1.4.5
+lyra_graphtool_test @ file:///Users/russelltankaimin/Documents/Russell%20Tan/NUS/NUS_Work/project-optimisation/lyra_graphtool_test-0.1.0-py3-none-any.whl#sha256=1892a977b267a2f56c9fa3a86403bf000a4bf5c43898b06984360030f17d625a
+matplotlib==3.8.3
+numpy==1.26.4
+packaging==24.0
+pillow==10.2.0
+pyparsing==3.1.2
+python-dateutil==2.9.0.post0
+six==1.16.0
