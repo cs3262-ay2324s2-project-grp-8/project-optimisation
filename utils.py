@@ -14,6 +14,7 @@ class Node:
         self.active_period = node_info["mult_time_active"]
         self.acquire_time = node_info["time_to_acquire"]
         self.coordinate = coordinate
+        self.accessed = False
     
     def __repr__(self) -> str:
         return f'({self.get_x_coordinate(), self.get_y_coordinate()} TYPE : {self.type})'
@@ -32,6 +33,12 @@ class Node:
     def get_acquire_time(self):
         return self.acquire_time
     
+    def access(self):
+        self.accessed = True
+
+    def is_accessed_before(self):
+        return self.accessed
+
     def get_coordinate(self):
         return self.coordinate
     
@@ -52,7 +59,7 @@ class Graph:
         self.vertices = dict() # key (x1, y1) -> value : Node
         self.edges = dict() # key (x1, y1) -> value : list of int tuples
         self.workers_cost_rate: list[float] = [100.0, 200.0, 500.0]
-        self.site_type_rewards: list[float] = [0, 0, 0, 0]
+        self.site_type_rewards: list[float] = [0, 0, 0, 0, 0]
         self.sites_info = dict() # key : site type -> value: list of Node objects
         self.process()
     
@@ -110,6 +117,42 @@ class Graph:
     
     def retrieve_all_sites_of_type(self, type : int):
         return self.sites_info[type]
+    
+    def get_worker_cost(self, type : int):
+        return self.workers_cost_rate[type - 1]
+    
+    def get_Origin(self):
+        return self.retrieve_all_sites_of_type(ORIGN)[0]
+    
+    def is_reward_site_by_node(self, node : Node):
+        return node.get_type() > 0
+    
+    def is_reward_site(self, x : int, y : int):
+        return self.is_reward_site_by_node(self.get_Node(x, y))
+    
+class Worker:
+
+    def __init__(self, type : int, start, rate, timestamp):
+        self.type = type
+        self.location = start
+        self.rate = rate
+        self.ts = timestamp
+
+    def get_type(self):
+        return self.type
+
+    def get_location(self):
+        return self.location
+    
+    def get_rate(self):
+        return self.rate
+    
+    def move(self, next_node: Node):
+        self.location = next_node.get_coordinate()
+
+    def get_timestamp(self):
+        return self.ts
+
 
 # if __name__ == "__main__" :
 #     graph = Graph("Test_Graph_Slightly_Off_the_Beaten_Path/Test_Graph_Slightly_Off_the_Beaten_Path.json")
