@@ -4,7 +4,7 @@ from lyra_graphtool_test import Configuration, Config_Single_Time, Edge, Graph, 
 
 #pargs = lgtool.ProcessArgs.load(arguments_file='args_sandbox', graph_file='Test_Graph_Slightly_Off_the_Beaten_Path.json')
 
-for i in range(100):
+for i in range(5001, 10001):
 
     pargs = lgtool.ProcessArgs.load(arguments_file='args_cs3263')
 
@@ -16,11 +16,11 @@ for i in range(100):
 
     cfg = lgtool.Configuration(params)
 
-    print(f"Problem budget constraint: {cfg.budget}")
-    print(f"Problem duration constraint: {cfg.duration_time}")
-    print(f"Worker cost rates per timestep: {cfg.worker_cost_rate}")
+    #print(f"Problem budget constraint: {cfg.budget}")
+    #print(f"Problem duration constraint: {cfg.duration_time}")
+    #print(f"Worker cost rates per timestep: {cfg.worker_cost_rate}")
     # cfg.graph.print_graph()
-    name = "graphs/graph" + str(i + 1) + ".json"
-    # cfg.graph.save_to_json(name)
-
+    name = "graphs/training_graphs/g" + str(i + 1) + ".json"
+    cfg.graph.save_to_json(name)
+    print("Graph " + str(i) + " saved!")
 print("Imported")

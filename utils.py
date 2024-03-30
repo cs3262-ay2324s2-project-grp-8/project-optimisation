@@ -50,6 +50,10 @@ class Node:
     
     def get_reward(self):
         return self.reward
+    
+    def zero_reward(self):
+        self.reward = 0
+        self.accessed = True
 
 
 class Graph:
@@ -137,6 +141,9 @@ class Worker:
         self.location = start
         self.rate = rate
         self.ts = timestamp
+        self.isHired = False
+        self.isExtracting = False
+        self.waitTime = 0
 
     def get_type(self):
         return self.type
@@ -152,6 +159,34 @@ class Worker:
 
     def get_timestamp(self):
         return self.ts
+    
+    def hire(self):
+        self.isHired = True
+
+    def extract(self, graph):
+        self.isExtracting = True
+        node = graph.get_Node(self.location[0], self.location[1])
+        self.waitTime = node.get_type() - 1
+
+    def done_extracting(self):
+        self.isExtracting = False
+
+    def is_extracting(self):
+        return self.isExtracting
+
+    def decrease_waitTime(self):
+        self.waitTime -= 1
+
+    def get_waitTime(self):
+        return self.waitTime
+    
+    def reward_at_location(self, graph, zero_out):
+        node = graph.get_Node(self.location[0], self.location[1])
+        reward = node.get_reward()
+        if (zero_out):
+            node.zero_reward()
+            return 0
+        return reward
 
 
 # if __name__ == "__main__" :
