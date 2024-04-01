@@ -126,7 +126,7 @@ class Environment(object):
                 state.extend(type2.get_coordinate())
             for type3 in type3_sites:
                 state.extend(type3.get_coordinate())
-            state.extend([0, 0 , 0]) # budget ,costs incurred so far, followed by rewards collected so far
+            state.extend([10000, 0 , 0]) # budget ,costs incurred so far, followed by rewards collected so far
 
             # we will forgo the randomness move from the actual implementation
 
