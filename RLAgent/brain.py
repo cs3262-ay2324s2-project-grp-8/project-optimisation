@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -5,7 +6,7 @@ import torch.optim as optim
 import os
 
 
-class Brain(nn.Module):
+class Brain():
     def __init__(self, state_size, action_size, brain_name, arguments):
         super(Brain, self).__init__()
         self.state_size = state_size
@@ -18,9 +19,62 @@ class Brain(nn.Module):
         self.optimizer_model = arguments['optimizer']
         
         # Network for the primary model
-        self.model = self._build_model()
+        self.model = SubBrain(state_size, action_size, f"{brain_name}_1", arguments)
         # Network for the target model
-        self.model_ = self._build_model()
+        self.model_ = SubBrain(state_size, action_size, f"{brain_name}_2", arguments)
+
+    def forward(self, x, target=False):
+        if target:
+            # Pass through the target model
+            return self.model_.forward(x)
+        else:
+            # Pass through the primary model
+            return self.model(x)
+
+    def train_model(self, x, y, sample_weight=None, epochs=1, verbose=0):
+        self.model.train_model(x, y, sample_weight, epochs, verbose)
+
+    def predict(self, state, target=False):
+        if target:
+            return self.model_.predict(state)
+        else:
+            return self.model.predict(state)
+
+    def predict_one_sample(self, state, target=False):
+        if target:
+            return self.model_.predict(state.reshape(1, self.state_size)).flatten()
+        else:
+            return self.model.predict(state.reshape(1, self.state_size)).flatten()
+
+    def update_target_model(self):
+        self.model_.load_state_dict(self.model.state_dict())
+
+    def save_model(self):
+        self.model.save_model()
+        self.model_.save_model()
+
+class SubBrain(nn.Module):
+    def __init__(self, state_size, action_size, brain_name, arguments):
+        super(SubBrain, self).__init__()
+        self.state_size = state_size
+        self.action_size = action_size
+        self.weight_backup = brain_name
+        self.batch_size = arguments['batch_size']
+        self.learning_rate = arguments['learning_rate']
+        self.test = arguments['test']
+        self.num_nodes = arguments['number_nodes']
+        self.optimizer_model = arguments['optimizer']
+        self.model = self._build_model()
+
+        if self.test:
+            if os.path.isfile(self.weight_backup):
+                d = torch.load(self.weight_backup)
+                new_d = OrderedDict()
+                for k in d.keys():
+                    new_d[k.replace("model.","")] = d[k]
+                self.model.load_state_dict(new_d)
+            else:
+                print('Error: No such file')
         
         # Choose optimizer for the primary model only
         if self.optimizer_model == 'Adam':
@@ -39,22 +93,11 @@ class Brain(nn.Module):
             nn.ReLU(),
             nn.Linear(self.num_nodes, self.action_size)
         )
-        
-        if self.test:
-            if os.path.isfile(self.weight_backup):
-                self.load_state_dict(torch.load(self.weight_backup))
-            else:
-                print('Error: No such file')
 
         return model
 
-    def forward(self, x, target=False):
-        if target:
-            # Pass through the target model
-            return self.model_(x)
-        else:
-            # Pass through the primary model
-            return self.model(x)
+    def forward(self, x):
+        return self.model(x)
 
     def train_model(self, x, y, sample_weight=None, epochs=1, verbose=0):
         x_tensor = torch.tensor(x, dtype=torch.float32)
@@ -69,8 +112,6 @@ class Brain(nn.Module):
         for epoch in range(epochs):
             self.optimizer.zero_grad()
             outputs = self.forward(x_tensor)
-            # print(outputs)
-            # print(y_tensor)
             loss = nn.SmoothL1Loss()
             loss_output = loss(outputs, y_tensor)
             
@@ -83,26 +124,13 @@ class Brain(nn.Module):
             if verbose:
                 print(f"Epoch {epoch}, Loss: {weighted_loss.item()}")
 
-    def predict(self, state, target=False):
+    def predict(self, state):
         with torch.no_grad():  # Ensure no gradients are computed
             state_tensor = torch.tensor(state, dtype=torch.float32)
-            if target:
-                # Use the target model for prediction
-                self.model_.eval()  # Set the target model to evaluation mode
-                prediction = self.model_(state_tensor)
-                self.model_.train()  # Set the target model back to training mode
-            else:
-                # Use the primary model for prediction
-                self.model.eval()  # Set the primary model to evaluation mode
-                prediction = self.model(state_tensor)
-                self.model.train()  # Set the primary model back to training mode
+            self.model.eval() 
+            prediction = self.model(state_tensor)
+            self.model.train() 
             return prediction.numpy()
-
-    def predict_one_sample(self, state, target=False):
-        return self.predict(state.reshape(1, self.state_size), target=target).flatten()
-
-    def update_target_model(self):
-        self.model_.load_state_dict(self.model.state_dict())
 
     def save_model(self):
         torch.save(self.state_dict(), self.weight_backup)
