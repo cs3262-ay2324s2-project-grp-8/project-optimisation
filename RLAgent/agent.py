@@ -97,6 +97,7 @@ class AgentWorker(Worker):
         if (is_valid_move):
             return move
         else:
+            print("Invalid move!")
             return 10
 
     
