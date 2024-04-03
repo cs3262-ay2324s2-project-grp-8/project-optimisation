@@ -157,13 +157,15 @@ class Environment(object):
                 profit_all = next_state[REWARDS_EXTRACTED] - next_state[COST_INCURRED] # Actually the profit
             profit_history.append(profit_all)
 
-            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=reward_all, ts=time_step, done=done))
+            # print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=reward_all, ts=time_step, done=done))
 
-            if (self.isTrain):
+            if self.isTrain:
                 if total_step % 100 == 0:
                     if profit_all > max_profit:
                         max_profit = profit_all
                         for agent in self.worker_agents:
+                            print(agent.agent_name)
+                            print(agent.brain)
                             agent.brain.save_model()
         print(f'Graph finished running')
 

@@ -47,5 +47,7 @@ if __name__ == "__main__":
         
         new_agent = AgentWorker(args, type=agent_type, start=None, rate=agent_learning_rate, timestamp=timestamp, agent_index=idx, state_size=state_size, action_size=action_size, agent_name=agent_name)
         
+        agents.append(new_agent)
+        
     environment = Environment(agents, isTrain=True)
     environment.train()

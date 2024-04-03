@@ -102,4 +102,5 @@ class Brain(nn.Module):
         self.model_.load_state_dict(self.model.state_dict())
 
     def save_model(self):
+        print('test')
         torch.save(self.state_dict(), self.weight_backup)
