@@ -33,6 +33,11 @@ class AgentWorker(Worker):
         if self.test:
             self.epsilon = MIN_EPSILON
 
+    def reset_worker_without_model(self, origin: Node):
+        self.isExtracting = False
+        self.is_Hired = False
+        self.move_back_to_origin(origin=origin)
+
     def find_targets_uer(self, batch):
         batch_len = len(batch)
 
