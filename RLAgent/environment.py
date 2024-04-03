@@ -116,7 +116,7 @@ class Environment(object):
             '''
             profit_history = []
             for agent in self.worker_agents:
-                agent.move_back_to_origin(origin) # Does not AND should not reset the model
+                agent.reset_worker_without_model(origin) # Does not AND should not reset the model
             state = []
             for p in range(self.number_of_workers):
                 state.extend(origin.get_coordinate())

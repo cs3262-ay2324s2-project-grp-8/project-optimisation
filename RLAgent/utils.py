@@ -185,7 +185,7 @@ class Worker:
 
     def get_waitTime(self):
         return self.waitTime
-    
+        
     def isHired(self):
         return self.is_Hired
     
