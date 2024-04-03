@@ -9,6 +9,22 @@ from brain import Brain
 MAX_EPSILON, MIN_EPSILON = 1.0, 0.01
 MAX_BETA, MIN_BETA = 0.4, 1.0
 
+MOVE_NORTH = 1
+MOVE_SOUTH = 2
+MOVE_EAST = 3
+MOVE_WEST = 4
+MOVE_NORTH_EAST = 5
+MOVE_NORTH_WEST = 6
+MOVE_SOUTH_EAST = 7
+MOVE_SOUTH_WEST = 8
+HIRE = 9
+EXTRACT = 10
+IDLE = 11
+
+CURRENT_BUDGET = -3
+COST_INCURRED = -2
+REWARDS_EXTRACTED = -1
+
 class AgentWorker(Worker):
     
     epsilon = MAX_EPSILON
@@ -76,7 +92,12 @@ class AgentWorker(Worker):
 
         return [x, y]
     
-    def greedy_move(self, state, graph, ACTIONS):
+    def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn):
+        if (self.is_extracting()):
+            return EXTRACT
+        if (not self.is_Hired):
+            return HIRE if np.random.rand() <= self.epsilon
+        
         if np.random.rand() <= self.epsilon:
             move = random.randrange(self.action_size)
         else:

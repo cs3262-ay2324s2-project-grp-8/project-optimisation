@@ -202,7 +202,7 @@ class Environment(object):
             while not done and time_step <= self.max_timestamps:
                 actions = []
                 for agent in self.worker_agents:
-                    a = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA)
+                    a = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward)
                     print("time_step: ", time_step, "action: ", a , " for agent")
                     actions.append(a)
                 next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step, shortest_path=shortest_path)
