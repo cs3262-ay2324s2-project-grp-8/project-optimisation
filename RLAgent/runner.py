@@ -5,7 +5,7 @@ from environment import Environment
 args = {
     'agent_count': 9,
     'learning_rate': 0.001,
-    'memory_model': 'PER',
+    'memory_model': 'UER',
     'memory_capacity': 10000,
     'target_type': 'DDQN',
     'target_frequency': 1000,

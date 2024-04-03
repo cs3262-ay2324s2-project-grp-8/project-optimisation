@@ -78,13 +78,13 @@ class Environment(object):
                 state[worker_idx + 1] = state[worker_idx + 1] + Environment.ACTIONS_TO_DELTA[actions[worker_idx]][1]
                 state[COST_INCURRED] += worker.get_rate()
                 state[CURRENT_BUDGET] -= worker.get_rate()
-                worker.move(state[worker_idx], state[worker_idx + 1])
+                worker.move_to_coordinates(state[worker_idx], state[worker_idx + 1])
             if (actions[worker_idx] == HIRE):
                 worker.hire()
             if (actions[worker_idx] == EXTRACT):
                 state[COST_INCURRED] += worker.get_rate()
                 state[CURRENT_BUDGET] -= worker.get_rate()
-                if (worker.isExtracting()):
+                if (worker.is_extracting()):
                     assert(worker.isHired())
                     worker.decrease_waitTime()
                     if (worker.get_waitTime() == 0):
@@ -92,8 +92,8 @@ class Environment(object):
                         state[REWARDS_EXTRACTED] += worker.reward_at_location(graph, zero_out=True)
                 else:
                     assert(worker.isHired())
-                    worker.extract()
-                    assert(worker.isExtracting())
+                    worker.extract(graph)
+                    assert(worker.is_extracting())
         if (ts >= self.max_timestamps or state[CURRENT_BUDGET] <= 0):
             done = True
         return state, state[REWARDS_EXTRACTED], done
@@ -172,7 +172,7 @@ class Environment(object):
     def train(self, number_of_graphs=5):
 
         for graph_number in range(0, number_of_graphs):
-            graph = Graph(f"./graphs/graph{graph_number + 1}.json")
+            graph = Graph(f"../graphs/graph{graph_number + 1}.json")
             # print(f"Training for graph {graph_number + 1}")
             # graph = Graph(f"../graphs/training_graphs/g{graph_number + 1}.json")
             self.run_for_graph(graph=graph)

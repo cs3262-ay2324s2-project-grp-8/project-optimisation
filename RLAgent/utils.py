@@ -141,7 +141,7 @@ class Worker:
         self.location = start
         self.rate = rate
         self.ts = timestamp
-        self.isHired = False
+        self.is_Hired = False
         self.isExtracting = False
         self.waitTime = 0
 
@@ -157,11 +157,14 @@ class Worker:
     def move(self, next_node: Node):
         self.location = next_node.get_coordinate()
 
+    def move_to_coordinates(self, x, y):
+        self.location = (x, y)
+
     def get_timestamp(self):
         return self.ts
     
     def hire(self):
-        self.isHired = True
+        self.is_Hired = True
 
     def extract(self, graph):
         self.isExtracting = True
@@ -179,6 +182,9 @@ class Worker:
 
     def get_waitTime(self):
         return self.waitTime
+    
+    def isHired(self):
+        return self.is_Hired
     
     def reward_at_location(self, graph, zero_out):
         node = graph.get_Node(self.location[0], self.location[1])
