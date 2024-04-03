@@ -123,6 +123,8 @@ class AgentWorker(Worker):
     def greedy_move(self, state):
         if np.random.rand() <= self.epsilon:
             return random.randrange(self.action_size)
+        return np.argmax(self.brain.predict_one_sample(state))
+
     
     def observe(self, sample):
         if self.memory_model == 'UER':
