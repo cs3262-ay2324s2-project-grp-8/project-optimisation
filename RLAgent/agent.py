@@ -159,7 +159,7 @@ class AgentWorker(Worker):
                                            for i in normalized_batch_priorities]
             normalized_importance_sampling_weights = [float(i) / max(importance_sampling_weights)
                                                       for i in importance_sampling_weights]
-            sample_weights = [errors[i] * normalized_importance_sampling_weights[i] for i in xrange(len(errors))]
+            sample_weights = [errors[i] * normalized_importance_sampling_weights[i] for i in range(len(errors))]
 
             self.brain.train_model(x, y, np.array(sample_weights))
 
