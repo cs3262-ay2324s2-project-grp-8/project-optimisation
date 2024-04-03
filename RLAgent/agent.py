@@ -98,9 +98,6 @@ class AgentWorker(Worker):
         if (not self.is_Hired):
             return HIRE if np.random.rand() <= self.epsilon else IDLE
         rng = np.random.rand()
-        if rng <= self.epsilon:
-            move = random.randrange(self.action_size)
-
         curr_location = self.get_location()
         valid_moves_reward_signal_dict = dict()
         for mv in range(1, 12):
@@ -110,7 +107,12 @@ class AgentWorker(Worker):
             is_valid_move = new_location in adj_nodes
             if (is_valid_move):
                 valid_moves_reward_signal_dict[mv] = 0
-        if self.epsilon < rng <= 2 * self.epsilon:
+        if rng <= self.epsilon:
+            move = random.randrange(self.action_size)
+            while (move not in valid_moves_reward_signal_dict.keys()):
+                move = random.randrange(self.action_size)
+            return move
+        elif self.epsilon < rng <= 2 * self.epsilon:
             # greedy approach
             # iterate through all valid moves and estimate reward
             best_move, highest_reward = None, -np.inf
