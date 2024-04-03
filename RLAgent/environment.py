@@ -164,8 +164,8 @@ class Environment(object):
                     if profit_all > max_profit:
                         max_profit = profit_all
                         for agent in self.worker_agents:
-                            print(agent.agent_name)
-                            print(agent.brain)
+                            # print(agent.agent_name)
+                            # print(agent.brain)
                             agent.brain.save_model()
         print(f'Graph finished running')
 

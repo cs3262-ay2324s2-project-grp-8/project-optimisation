@@ -69,10 +69,13 @@ class Brain(nn.Module):
         for epoch in range(epochs):
             self.optimizer.zero_grad()
             outputs = self.forward(x_tensor)
-            loss = nn.SmoothL1Loss(outputs, y_tensor)
+            # print(outputs)
+            # print(y_tensor)
+            loss = nn.SmoothL1Loss()
+            loss_output = loss(outputs, y_tensor)
             
             # Apply sample weights
-            weighted_loss = (loss * sample_weight_tensor).mean()
+            weighted_loss = (loss_output * sample_weight_tensor).mean()
             
             weighted_loss.backward()
             self.optimizer.step()

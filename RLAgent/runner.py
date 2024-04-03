@@ -7,7 +7,7 @@ args = {
     'learning_rate': 0.001,
     'memory_model': 'UER',
     'memory_capacity': 10000,
-    'target_type': 'DDQN',
+    'target_type': 'DQN',
     'target_frequency': 1000,
     'maximum_exploration': 1000,
     'batch_size': 32,
@@ -16,7 +16,7 @@ args = {
     'optimizer': 'Adam',
     'memory_capacity': 1000000,
     'pr_scale': 0.5,
-    'test': False
+    'test': True
 }
 
 def get_agent_type(agent_index):
