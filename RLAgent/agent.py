@@ -120,10 +120,30 @@ class AgentWorker(Worker):
 
         return [x, y]
     
-    def greedy_move(self, state):
+    def greedy_move(self, state, graph, ACTIONS):
         if np.random.rand() <= self.epsilon:
-            return random.randrange(self.action_size)
-        return np.argmax(self.brain.predict_one_sample(state))
+            move = random.randrange(self.action_size)
+            
+            curr_location = self.get_location()
+            selected_move = ACTIONS[move + 1]
+            
+            # print(f'Curr Location: {curr_location}, Move: {selected_move}, Move Code: {move + 1}')
+            
+            new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
+            
+            adj_nodes = [coordinate.get_coordinate() for coordinate in graph.get_adjacent_nodes_by_coordinates(curr_location[0], curr_location[1])]
+            
+            is_valid_move = new_location in adj_nodes
+            # print(f'Agent: {self.agent_index+1}, Current Location: {curr_location}, New Location: {new_location}, Adjacent Nodes: {adj_nodes}, Is Valid Move: {is_valid_move}')
+            
+            if (is_valid_move):
+                return move
+            else:
+                return 11
+        
+        exploration = np.argmax(self.brain.predict_one_sample(state))
+        print(exploration)
+        return exploration
 
     
     def observe(self, sample):

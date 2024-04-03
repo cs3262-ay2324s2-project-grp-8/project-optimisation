@@ -27,6 +27,9 @@ class Node:
         '''
         return self.type
 
+    def get_coordinate(self):
+        return self.coordinate
+
     def get_active_period(self) -> list :
         return self.active_period
     

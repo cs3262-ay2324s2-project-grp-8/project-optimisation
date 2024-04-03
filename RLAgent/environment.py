@@ -139,7 +139,7 @@ class Environment(object):
             while not done and time_step <= self.max_timestamps:
                 actions = []
                 for agent in self.worker_agents:
-                    actions.append(agent.greedy_move(state))
+                    actions.append(agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA))
                 next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step)
                 next_state = np.array(next_state)
 
@@ -172,8 +172,7 @@ class Environment(object):
     def train(self, number_of_graphs=5):
 
         for graph_number in range(0, number_of_graphs):
-            graph = Graph(f"../graphs/graph{graph_number + 1}.json")
-            # print(f"Training for graph {graph_number + 1}")
+            graph = Graph(f"./graphs/graph{graph_number + 1}.json")
             # graph = Graph(f"../graphs/training_graphs/g{graph_number + 1}.json")
             self.run_for_graph(graph=graph)
 
