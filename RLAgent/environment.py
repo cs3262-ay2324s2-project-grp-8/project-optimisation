@@ -126,7 +126,7 @@ class Environment(object):
                 state.extend(type2.get_coordinate())
             for type3 in type3_sites:
                 state.extend(type3.get_coordinate())
-            state.extend([0, 0 , 0]) # budget ,costs incurred so far, followed by rewards collected so far
+            state.extend([10000, 0 , 0]) # budget ,costs incurred so far, followed by rewards collected so far
 
             # we will forgo the randomness move from the actual implementation
 
@@ -143,7 +143,7 @@ class Environment(object):
                 next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step)
                 next_state = np.array(next_state)
 
-                if self.IsTrain :
+                if self.isTrain :
                     for agent in self.worker_agents:
                         agent.observe((state, actions, reward, next_state, done))
                         if total_step >= self.filling_steps:
@@ -157,7 +157,7 @@ class Environment(object):
                 profit_all = next_state[REWARDS_EXTRACTED] - next_state[COST_INCURRED] # Actually the profit
             profit_history.append(profit_all)
 
-            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=iter, profit=reward_all, ts=time_step, done=done))
+            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=reward_all, ts=time_step, done=done))
 
             if (self.isTrain):
                 if total_step % 100 == 0:
@@ -170,7 +170,9 @@ class Environment(object):
     def train(self, number_of_graphs=5):
 
         for graph_number in range(0, number_of_graphs):
-            graph = Graph(f"../graphs/training_graphs/g{graph_number + 1}.json")
+            graph = Graph(f"./graphs/graph{graph_number + 1}.json")
+            # print(f"Training for graph {graph_number + 1}")
+            # graph = Graph(f"../graphs/training_graphs/g{graph_number + 1}.json")
             self.run_for_graph(graph=graph)
 
         print(f"Finished Training")

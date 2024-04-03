@@ -15,18 +15,19 @@ class AgentWorker(Worker):
     epsilon = MAX_EPSILON
     beta = MAX_BETA
     
-    def __init__(self, arguments, type, start, rate, timestamp, bee_index, state_size, action_size, brain_name, arguments):
+    def __init__(self, arguments, type, start, rate, timestamp, agent_index, state_size, action_size, agent_name):
         super().__init__(type=type, start=start, rate=rate, timestamp=timestamp)
 
-        self.bee_index = bee_index
+        self.agent_index = agent_index
         self.state_size = state_size
         self.action_size = action_size
-        self.brain = Brain(state_size, action_size, brain_name, arguments)
-        self.gamma = 0.95
+        self.brain = Brain(state_size, action_size, agent_name, arguments)
+        self.gamma = arguments['gamma']
+        self.learning_rate = arguments['learning_rate']
         self.memory_model = arguments['memory_model']
         
         if self.memory_model == 'PER':
-            self.memory = PER(arguments['memory_capacity'])
+            self.memory = PER(arguments['memory_capacity'], arguments['pr_scale'])
         elif self.memory_model == 'UER':
             self.memory = UER(arguments['memory_capacity'])
         
@@ -38,8 +39,6 @@ class AgentWorker(Worker):
         self.test = arguments['test']
         if self.test:
             self.epsilon = MIN_EPSILON
-        
-        raise NotImplementedError
     
     def find_targets_per(self, batch):
         batch_len = len(batch)
@@ -58,7 +57,7 @@ class AgentWorker(Worker):
         for i in range(batch_len):
             o = batch[i][1]
             s = o[0]
-            a = o[1][self.bee_index]
+            a = o[1][self.agent_index]
             r = o[2]
             s_ = o[3]
             done = o[4]
@@ -98,7 +97,7 @@ class AgentWorker(Worker):
         for i in range(batch_len):
             o = batch[i]
             s = o[0]
-            a = o[1][self.bee_index]
+            a = o[1][self.agent_index]
             r = o[2]
             s_ = o[3]
             done = o[4]
