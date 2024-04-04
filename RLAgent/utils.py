@@ -70,6 +70,16 @@ class Graph:
         self.sites_info = dict() # key : site type -> value: list of Node objects
         self.process()
     
+    def __str__(self) -> str:
+        stuff =  {
+            "vertices": self.vertices,
+            "edges" : self.edges
+        }
+        string_construct = "Origin : " + str(self.get_Origin()) + "\n"
+        for e, v in stuff["edges"].items():
+            string_construct += str(e) + str(v) + "\n"
+        return string_construct
+
     def process(self):
 
         # Process the vertices

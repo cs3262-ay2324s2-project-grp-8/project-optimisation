@@ -45,7 +45,7 @@ class Environment(object):
         MOVE_NORTH_EAST : (1, 1),
         MOVE_NORTH_WEST : (-1, 1),
         MOVE_SOUTH_EAST : (1, -1),
-        MOVE_SOUTH_WEST : (-1, 1),
+        MOVE_SOUTH_WEST : (-1, -1),
         HIRE : (0, 0),
         EXTRACT: (0, 0),
         IDLE: (0, 0)
@@ -59,14 +59,14 @@ class Environment(object):
         (1, 1) : MOVE_NORTH_EAST,
         (-1, 1): MOVE_NORTH_WEST,
         (1, -1): MOVE_SOUTH_EAST,
-        (-1, 1): MOVE_SOUTH_WEST
+        (-1, -1): MOVE_SOUTH_WEST
     }
 
     def __init__(self, agents, isTrain=True) -> None:
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        self.playoff_iterations = 5000
+        self.playoff_iterations = 1 #5000
         self.isTrain = isTrain
         self.filling_steps = 4
         self.steps_b_updates = 500
@@ -77,15 +77,16 @@ class Environment(object):
         return Graph(name)
     
     def step(self, state, actions, graph, ts, ssp):
+        # Note : ACTIONS is 0-indexed here
         done = False
         reward_signal = 0
         for worker_idx in range(0, len(self.worker_agents)):
             # if worker idle, then dont care. If worker is not hired and action is not hired, dont care
-            if (actions[worker_idx] == IDLE or (not self.worker_agents[worker_idx].isHired() and actions[worker_idx] != HIRE)):
+            if (actions[worker_idx] == IDLE - 1 or (not self.worker_agents[worker_idx].isHired() and actions[worker_idx] != HIRE - 1)):
                 continue
             worker = self.worker_agents[worker_idx]
             w_x, w_y = state[worker_idx], state[worker_idx + 1] 
-            if (MOVE_NORTH <= actions[worker_idx] <= MOVE_SOUTH_WEST):
+            if (MOVE_NORTH <= actions[worker_idx] + 1 <= MOVE_SOUTH_WEST):
                 # standard move.
                 assert(worker.isHired())
                 new_x , new_y = state[worker_idx] + Environment.ACTIONS_TO_DELTA[actions[worker_idx]][0], state[worker_idx + 1] + Environment.ACTIONS_TO_DELTA[actions[worker_idx]][1]
@@ -96,12 +97,12 @@ class Environment(object):
                 state[COST_INCURRED] += worker.get_rate()
                 state[CURRENT_BUDGET] -= worker.get_rate()
                 worker.move_to_coordinates(state[worker_idx], state[worker_idx + 1])
-            if (actions[worker_idx] == HIRE):
+            if (actions[worker_idx] == HIRE - 1):
                 loc = (state[worker_idx], state[worker_idx + 1])
                 reward_signal_i, _ = self.calculate_reward(graph, loc, loc, ssp, worker.get_type(), state[CURRENT_BUDGET])
                 reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
                 worker.hire()
-            if (actions[worker_idx] == EXTRACT):
+            if (actions[worker_idx] == EXTRACT - 1):
                 state[COST_INCURRED] += worker.get_rate()
                 state[CURRENT_BUDGET] -= worker.get_rate()
                 if (worker.is_extracting()):
@@ -149,7 +150,7 @@ class Environment(object):
                 if (graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())]) > curr_budget):
                     continue
                 else:
-                    reward = graph.site_type_reward[i + 1] - graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())])
+                    reward = graph.site_type_rewards[i + 1] - graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())])
                     if (reward > max_calculated_reward):
                         max_calculated_reward = reward
                         if (curr_loc == next_loc):
@@ -169,6 +170,7 @@ class Environment(object):
         vertices = graph.get_vertices()
         edges = graph.get_edges()
         shortest_path = dict()
+        print(graph)
 
         shortest_path = self.floyd_warshall(graph)
 
@@ -203,9 +205,9 @@ class Environment(object):
                 actions = []
                 for agent in self.worker_agents:
                     a = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward)
-                    print("time_step: ", time_step, "action: ", a , " for agent")
+                    print("time_step: ", time_step, "0-index action: ", a , " for agent")
                     actions.append(a)
-                next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step, shortest_path=shortest_path)
+                next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step, ssp=shortest_path)
                 next_state = np.array(next_state)
 
                 if self.isTrain :

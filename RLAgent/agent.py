@@ -93,20 +93,34 @@ class AgentWorker(Worker):
         return [x, y]
     
     def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn):
+        # Returns MOVES by zero-index
+        print("===================================")
+        print(f'Agent state: {"HIRED" if self.is_Hired else "UNEMPLOYED"}')
         if (self.is_extracting()):
-            return EXTRACT
+            return EXTRACT - 1
+        #print("Agent is Hired Already")
         if (not self.is_Hired):
-            return HIRE if np.random.rand() <= self.epsilon else IDLE
+            print("Agent not Hired")
+            return HIRE - 1 if np.random.rand() <= 0.5 else IDLE - 1
         rng = np.random.rand()
         curr_location = self.get_location()
-        valid_moves_reward_signal_dict = dict()
+        valid_moves_reward_signal_dict = dict() # store moves in 0-index also
+        print("===================================")
         for mv in range(1, 12):
+            if ((mv == HIRE or mv == IDLE) and self.is_Hired):
+                continue
             selected_move = ACTIONS[mv]
             new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
-            adj_nodes = graph.get_edges[curr_location]
-            is_valid_move = new_location in adj_nodes
+            print("curr loc : ", curr_location, " new loc: ", new_location)
+            # print("get edges : \n", graph.get_edges)
+            adj_nodes = graph.get_edges()[curr_location]
+            print("adj modes: ", adj_nodes)
+            is_valid_move = (new_location in adj_nodes) # or (new_location == curr_location)
             if (is_valid_move):
-                valid_moves_reward_signal_dict[mv] = 0
+                print("mv ", mv , " is a valid move from ", curr_location, " to ", new_location)
+                valid_moves_reward_signal_dict[mv - 1] = 0 # back to 0 index
+        print("valid moves: ", valid_moves_reward_signal_dict.keys())
+        assert(len(valid_moves_reward_signal_dict.keys()) > 0)
         if rng <= self.epsilon:
             move = random.randrange(self.action_size)
             while (move not in valid_moves_reward_signal_dict.keys()):
@@ -116,8 +130,8 @@ class AgentWorker(Worker):
             # greedy approach
             # iterate through all valid moves and estimate reward
             best_move, highest_reward = None, -np.inf
-            for vm in valid_moves_reward_signal_dict.keys():
-                selected_move = ACTIONS[vm]
+            for vm in valid_moves_reward_signal_dict.keys(): # 0-idex
+                selected_move = ACTIONS[vm + 1]
                 new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
                 valid_moves_reward_signal_dict[vm] = reward_fn(graph, curr_location, new_location, ssp, self.type, state[CURRENT_BUDGET])
                 if (valid_moves_reward_signal_dict[vm] > highest_reward):
@@ -126,13 +140,14 @@ class AgentWorker(Worker):
             return best_move
         else:
             probabilities = self.brain.predict_one_sample(state)
-            move = np.argmax(probabilities) + 1
-        # print(f'Agent: {self.agent_index+1}, Current Location: {curr_location}, New Location: {new_location}, Adjacent Nodes: {adj_nodes}, Is Valid Move: {is_valid_move}')
+            #print("Probabilities from Agent's brain: ",probabilities)
+            move = np.argmax(probabilities)
             # check if move is within the valid moves, 
             # if invalid, then 0 the prob, then get the next highest
             while (int(move) not in valid_moves_reward_signal_dict.keys()):
-                probabilities[move - 1] = 0
-                move = np.argmax(probabilities) + 1
+                probabilities[move] = -np.inf
+                move = np.argmax(probabilities)
+                #print("Probabilities from Agent's brain: ",probabilities)
             return move
 
 
