@@ -25,6 +25,10 @@ CURRENT_BUDGET = -3
 COST_INCURRED = -2
 REWARDS_EXTRACTED = -1
 
+WORKER_TYPE_1 = 2
+WORKER_TYPE_2 = 3
+WORKER_TYPE_3 = 4
+
 class AgentWorker(Worker):
     
     epsilon = MAX_EPSILON
@@ -93,6 +97,10 @@ class AgentWorker(Worker):
         return [x, y]
     
     def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn, idx):
+        def active_hiring_probability(type_of_worker):
+            if type_of_worker == WORKER_TYPE_1:
+                return 1.0 / 3.0
+            return 2.0 / 9.0 if type_of_worker == WORKER_TYPE_2 else 4.0 / 9.0
         # Returns MOVES by zero-index
         if DEBUG:
             print("======================================================================")
@@ -101,17 +109,17 @@ class AgentWorker(Worker):
             return EXTRACT - 1
         #print("Agent is Hired Already")
         if (not self.is_Hired):
-            return HIRE - 1 if np.random.rand() <= 0.5 else IDLE - 1
+            return HIRE - 1 if np.random.rand() <= active_hiring_probability(self.type) else IDLE - 1
         # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         rng = np.random.rand()
         curr_location = self.get_location()
          # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         curr_node : Node = graph.get_vertices()[curr_location]
-        if (curr_node.get_reward() > 0):
+        if (graph.get_vertices()[curr_location].get_reward() > 0):
             print("Current Loc is Reward Site")
-            if (curr_node.can_extract()):
+            if (graph.get_vertices()[curr_location].can_extract()):
                 print("Reward Site can be extracted!")
-        if (curr_node.get_reward() > 0 and curr_node.can_extract() and not curr_node.someone_eyeing_node()):
+        if (curr_node.get_reward() > 0 and curr_node.get_type() - 1 <= self.type and curr_node.can_extract() and not curr_node.someone_eyeing_node()):
             curr_node.sight() # this agent chope the node already, other agents on this node cant extract anymore
             return EXTRACT - 1 
         valid_moves_reward_signal_dict = dict() # store moves in 0-index also

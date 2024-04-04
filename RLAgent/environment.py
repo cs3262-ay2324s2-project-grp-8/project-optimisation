@@ -95,8 +95,8 @@ class Environment(object):
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        # self.playoff_iterations = 1 
-        self.playoff_iterations = 5000
+        self.playoff_iterations = 1 
+        # self.playoff_iterations = 5000
         self.isTrain = isTrain
         self.filling_steps = 4
         self.steps_b_updates = 500
@@ -131,7 +131,9 @@ class Environment(object):
                 reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
                 state[worker_idx] = new_x
                 state[worker_idx + 1] = new_y
+                print(f"Worker's rate add to cost : {worker.get_rate()}")
                 state[COST_INCURRED] += worker.get_rate()
+                print(f"Total Cost incurred : {state[COST_INCURRED]}")
                 state[CURRENT_BUDGET] -= worker.get_rate()
                 worker.move_to_coordinates(state[worker_idx], state[worker_idx + 1])
             if (actions[w_idx] == HIRE - 1):
@@ -148,8 +150,10 @@ class Environment(object):
                     worker.decrease_waitTime()
                     if (worker.get_waitTime() == 0):
                         worker.done_extracting()
+                        print(f"Worker {w_idx} is done extracting")
                         curr_node.leave_node_extractor()
                         assert(curr_node.extractor is None)
+                        print(f"Getting reward : ",worker.reward_at_location(graph, zero_out=False) )
                         state[REWARDS_EXTRACTED] += worker.reward_at_location(graph, zero_out=True)
                 else:
                     assert(worker.isHired())
@@ -158,6 +162,7 @@ class Environment(object):
                     reward_signal += worker.reward_at_location(graph, zero_out=False) - worker.get_type() * worker.get_rate()
         if (ts >= self.max_timestamps or state[CURRENT_BUDGET] <= 0):
             done = True
+        print("New state : ", state)
         return state, reward_signal, done
 
     def floyd_warshall(self, graph: Graph) :
