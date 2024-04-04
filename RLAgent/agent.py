@@ -107,7 +107,11 @@ class AgentWorker(Worker):
         curr_location = self.get_location()
          # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         curr_node : Node = graph.get_vertices()[curr_location]
-        if (curr_node.get_reward() > 0 and curr_node.can_extract()):
+        if (curr_node.get_reward() > 0):
+            print("Current Loc is Reward Site")
+            if (curr_node.can_extract()):
+                print("Reward Site can be extracted!")
+        if (curr_node.get_reward() > 0 and curr_node.can_extract() and not curr_node.someone_eyeing_node()):
             curr_node.sight() # this agent chope the node already, other agents on this node cant extract anymore
             return EXTRACT - 1 
         valid_moves_reward_signal_dict = dict() # store moves in 0-index also

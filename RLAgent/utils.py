@@ -29,6 +29,7 @@ class Node:
         self.current_accessors = []
         self.sighted = False
         self.extracted = False
+        self.extracted_before = False
         self.extractor : Node | None = None
     
     def __repr__(self) -> str:
@@ -64,7 +65,7 @@ class Node:
         self.current_accessors.remove(agent_worker)
 
     def can_extract(self):
-        return self.extracted
+        return self.extracted_before
 
     def extract(self, agent_worker):
         self.enter(agent_worker=agent_worker)
