@@ -268,6 +268,10 @@ class Environment(object):
                 time_step += 1
                 state = next_state
                 profit_all = next_state[REWARDS_EXTRACTED] - next_state[COST_INCURRED] # Actually the profit
+                agent_idx = 1
+                for agent in self.worker_agents:
+                    print(f"Position of Agent {agent_idx} @ TS {time_step} : {agent.get_location()}")
+                    agent_idx+=1
             profit_history.append(profit_all)
 
             print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=reward_all, ts=time_step, done=done))
@@ -281,7 +285,7 @@ class Environment(object):
                             # print(agent.brain)
                             agent.brain.save_model()
         print(f'Graph finished running')
-        agent_idx = 0
+        agent_idx = 1
         for agent in self.worker_agents:
             print(f"Final Position of Agent {agent_idx} : {agent.get_location()}")
             agent_idx+=1
