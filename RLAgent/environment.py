@@ -3,7 +3,7 @@ import os
 import random
 import argparse
 from agent import AgentWorker
-from utils import Graph, Worker, Node
+from utils import Graph, Worker, Node, DEBUG
 
 '''
 1 - Move North
@@ -94,7 +94,8 @@ class Environment(object):
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        self.playoff_iterations = 1 #5000
+        # self.playoff_iterations = 1 
+        self.playoff_iterations = 5000
         self.isTrain = isTrain
         self.filling_steps = 4
         self.steps_b_updates = 500
@@ -185,7 +186,7 @@ class Environment(object):
         return ssp
     
     def calculate_reward(self, graph, curr_loc, next_loc, ssp, agent_type, curr_budget):
-        print(f"Calculating Reward for : {curr_loc} -> {next_loc}")
+        print(f"Calculating Reward for : {curr_loc} -> {next_loc}") if DEBUG else None
         max_calculated_reward = -np.inf
         best_action = None
         #print("Agent type : ", agent_type)
@@ -199,14 +200,14 @@ class Environment(object):
                     continue
                 else:
                     reward = graph.site_type_rewards[i] - graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())])
-                    print(f"Reward for {curr_loc} -> {next_loc} -> {rs.get_coordinate()} : {reward}")
+                    print(f"Reward for {curr_loc} -> {next_loc} -> {rs.get_coordinate()} : {reward}") if DEBUG else None
                     if (reward > max_calculated_reward):
                         max_calculated_reward = reward
                         if (curr_loc == next_loc):
                             best_action = HIRE
                         else:
                             best_action = Environment.DELTA_TO_ACTIONS[(next_loc[0] - curr_loc[0], next_loc[1] - curr_loc[1])]
-        print(f"est reward : {max_calculated_reward} ; best_action : {best_action}")
+        print(f"est reward : {max_calculated_reward} ; best_action : {best_action}") if DEBUG else None
         return max_calculated_reward, best_action
 
     def run_for_graph(self, graph: Graph):
@@ -220,7 +221,7 @@ class Environment(object):
         vertices = graph.get_vertices()
         edges = graph.get_edges()
         shortest_path = dict()
-        print(graph)
+        print(graph) if DEBUG else None
 
         shortest_path = self.floyd_warshall(graph)
 
@@ -259,7 +260,7 @@ class Environment(object):
                 for agent in self.worker_agents:
                     a = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward, agent_idx)
                     #print("time_step: ", time_step, "0-index action: ", a , " for agent ", agent_idx)
-                    print(f"TS : {time_step}, Agent {agent_idx} chooses action : {Environment.ZERO_INDEXED_NUMERIC_TO_STRING_ACTIONS[a]}")
+                    print(f"TS : {time_step}, Agent {agent_idx} chooses action : {Environment.ZERO_INDEXED_NUMERIC_TO_STRING_ACTIONS[a]}") if DEBUG else None
                     agent_idx += 1
                     actions.append(a)
                 next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step, ssp=shortest_path)
@@ -279,11 +280,11 @@ class Environment(object):
                 profit_all = next_state[REWARDS_EXTRACTED] - next_state[COST_INCURRED] # Actually the profit
                 agent_idx = 1
                 for agent in self.worker_agents:
-                    print(f"Position of Agent {agent_idx} @ TS {time_step} : {agent.get_location()}")
+                    print(f"Position of Agent {agent_idx} @ TS {time_step} : {agent.get_location()}") if DEBUG else None
                     agent_idx+=1
             profit_history.append(profit_all)
 
-            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=reward_all, ts=time_step, done=done))
+            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=reward_all, ts=time_step, done=done)) if DEBUG else None
 
             if self.isTrain:
                 if total_step % 100 == 0:
@@ -296,7 +297,7 @@ class Environment(object):
         print(f'Graph finished running')
         agent_idx = 1
         for agent in self.worker_agents:
-            print(f"Final Position of Agent {agent_idx} : {agent.get_location()}")
+            print(f"Final Position of Agent {agent_idx} : {agent.get_location()}") if DEBUG else None
             agent_idx+=1
 
     def train(self, number_of_graphs=1):

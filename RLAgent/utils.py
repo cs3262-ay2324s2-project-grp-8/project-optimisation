@@ -1,5 +1,7 @@
 import json
 
+DEBUG = False
+
 BASIC_SITE = 0
 ORIGN      = 1
 SITE1      = 2

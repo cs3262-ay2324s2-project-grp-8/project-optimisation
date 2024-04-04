@@ -3,3 +3,5 @@
 /__pycache__
 /venv
 /RLAgent/__pycache__
+agent_*
+/logs

@@ -16,16 +16,11 @@ args = {
     'optimizer': 'Adam',
     'memory_capacity': 1000000,
     'pr_scale': 0.5,
-    'test': True
+    'test': False
 }
 
 def get_agent_type(agent_index):
-    if agent_index < 3:
-        return 1
-    elif agent_index < 5:
-        return 2
-    else:
-        return 3
+    return 1 if agent_index < 3 else 2 if agent_index < 5 else 3
 
 if __name__ == "__main__":
     agents = []
@@ -50,4 +45,4 @@ if __name__ == "__main__":
         agents.append(new_agent)
         
     environment = Environment(agents, isTrain=True)
-    environment.train()
+    environment.train(number_of_graphs=1)
