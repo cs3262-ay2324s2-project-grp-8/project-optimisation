@@ -106,13 +106,13 @@ Agent 1 MOVEMENT state: UNEMPLOYED
 TS : 1, Agent 1 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 2 MOVEMENT state: UNEMPLOYED
-TS : 1, Agent 2 chooses action : HIRING
+TS : 1, Agent 2 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 3 MOVEMENT state: UNEMPLOYED
-TS : 1, Agent 3 chooses action : HIRING
+TS : 1, Agent 3 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 4 MOVEMENT state: UNEMPLOYED
-TS : 1, Agent 4 chooses action : HIRING
+TS : 1, Agent 4 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 5 MOVEMENT state: UNEMPLOYED
 TS : 1, Agent 5 chooses action : IDLE - REMAIN THERE
@@ -128,12 +128,6 @@ TS : 1, Agent 8 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 9 MOVEMENT state: UNEMPLOYED
 TS : 1, Agent 9 chooses action : IDLE - REMAIN THERE
-Calculating Reward for : (1, 9) -> (1, 9)
-est reward : -inf ; best_action : None
-Calculating Reward for : (1, 9) -> (1, 9)
-est reward : -inf ; best_action : None
-Calculating Reward for : (1, 9) -> (1, 9)
-est reward : -inf ; best_action : None
 New state :  [    1     9     1     9     1     9     1     9     1     9     1     9
      1     9     1     9     1     9     9     1     8     6     4     4
      7     5     2     6     4     8     7     8     7     3     0     4
@@ -149,31 +143,25 @@ Position of Agent 8 @ TS 2 : (1, 9)
 Position of Agent 9 @ TS 2 : (1, 9)
 ======================================================================
 Agent 1 MOVEMENT state: UNEMPLOYED
-TS : 2, Agent 1 chooses action : HIRING
+TS : 2, Agent 1 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 2 MOVEMENT state: HIRED
-Agent 2 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 2, Agent 2 chooses action : MOVE SOUTH-WEST
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 2, Agent 2 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 3 MOVEMENT state: HIRED
-Agent 3 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 2, Agent 3 chooses action : MOVE SOUTH-WEST
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 2, Agent 3 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 4 MOVEMENT state: HIRED
-Agent 4 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 2, Agent 4 chooses action : MOVE SOUTH-WEST
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 2, Agent 4 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 5 MOVEMENT state: UNEMPLOYED
-TS : 2, Agent 5 chooses action : IDLE - REMAIN THERE
+TS : 2, Agent 5 chooses action : HIRING
 ======================================================================
 Agent 6 MOVEMENT state: UNEMPLOYED
 TS : 2, Agent 6 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 7 MOVEMENT state: UNEMPLOYED
-TS : 2, Agent 7 chooses action : HIRING
+TS : 2, Agent 7 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 8 MOVEMENT state: UNEMPLOYED
 TS : 2, Agent 8 chooses action : IDLE - REMAIN THERE
@@ -182,461 +170,855 @@ Agent 9 MOVEMENT state: UNEMPLOYED
 TS : 2, Agent 9 chooses action : IDLE - REMAIN THERE
 Calculating Reward for : (1, 9) -> (1, 9)
 est reward : -inf ; best_action : None
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 100
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 200
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 200
-Total Cost incurred : 400
-Calculating Reward for : (1, 9) -> (1, 9)
-est reward : -inf ; best_action : None
-New state :  [   1    9    0    8    0    8    0    8    1    9    1    9    1    9
-    1    9    1    9    9    1    8    6    4    4    7    5    2    6
-    4    8    7    8    7    3    0    4 9600  400    0]
+New state :  [    1     9     1     9     1     9     1     9     1     9     1     9
+     1     9     1     9     1     9     9     1     8     6     4     4
+     7     5     2     6     4     8     7     8     7     3     0     4
+ 10000     0     0]
 Position of Agent 1 @ TS 3 : (1, 9)
-Position of Agent 2 @ TS 3 : (0, 8)
-Position of Agent 3 @ TS 3 : (0, 8)
-Position of Agent 4 @ TS 3 : (0, 8)
+Position of Agent 2 @ TS 3 : (1, 9)
+Position of Agent 3 @ TS 3 : (1, 9)
+Position of Agent 4 @ TS 3 : (1, 9)
 Position of Agent 5 @ TS 3 : (1, 9)
 Position of Agent 6 @ TS 3 : (1, 9)
 Position of Agent 7 @ TS 3 : (1, 9)
 Position of Agent 8 @ TS 3 : (1, 9)
 Position of Agent 9 @ TS 3 : (1, 9)
 ======================================================================
-Agent 1 MOVEMENT state: HIRED
-Agent 1 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 3, Agent 1 chooses action : MOVE SOUTH-WEST
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 3, Agent 1 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 2 MOVEMENT state: HIRED
-Agent 2 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 3, Agent 2 chooses action : MOVE NORTH-EAST
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 3, Agent 2 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 3 MOVEMENT state: HIRED
-Agent 3 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 3, Agent 3 chooses action : MOVE SOUTH
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 3, Agent 3 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 4 MOVEMENT state: HIRED
-Agent 4 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 3, Agent 4 chooses action : MOVE NORTH-EAST
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 3, Agent 4 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 5 MOVEMENT state: UNEMPLOYED
-TS : 3, Agent 5 chooses action : IDLE - REMAIN THERE
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 3, Agent 5 chooses action : MOVE SOUTH-WEST
 ======================================================================
 Agent 6 MOVEMENT state: UNEMPLOYED
 TS : 3, Agent 6 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 7 MOVEMENT state: HIRED
-Agent 7 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 3, Agent 7 chooses action : MOVE SOUTH-WEST
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 3, Agent 7 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 8 MOVEMENT state: UNEMPLOYED
 TS : 3, Agent 8 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 9 MOVEMENT state: UNEMPLOYED
-TS : 3, Agent 9 chooses action : HIRING
+TS : 3, Agent 9 chooses action : IDLE - REMAIN THERE
 Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 500
-Calculating Reward for : (0, 8) -> (1, 9)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 600
-Calculating Reward for : (0, 8) -> (0, 7)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 700
-Calculating Reward for : (0, 8) -> (1, 9)
 est reward : -inf ; best_action : None
 Worker's rate add to cost : 200
-Total Cost incurred : 900
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 1400
-Calculating Reward for : (1, 9) -> (1, 9)
-est reward : -inf ; best_action : None
-New state :  [   0    8    1    9    0    7    1    9    1    9    1    9    0    8
+Total Cost incurred : 200
+New state :  [   1    9    1    9    1    9    1    9    0    8    1    9    1    9
     1    9    1    9    9    1    8    6    4    4    7    5    2    6
-    4    8    7    8    7    3    0    4 8600 1400    0]
-Position of Agent 1 @ TS 4 : (0, 8)
+    4    8    7    8    7    3    0    4 9800  200    0]
+Position of Agent 1 @ TS 4 : (1, 9)
 Position of Agent 2 @ TS 4 : (1, 9)
-Position of Agent 3 @ TS 4 : (0, 7)
+Position of Agent 3 @ TS 4 : (1, 9)
 Position of Agent 4 @ TS 4 : (1, 9)
-Position of Agent 5 @ TS 4 : (1, 9)
+Position of Agent 5 @ TS 4 : (0, 8)
 Position of Agent 6 @ TS 4 : (1, 9)
-Position of Agent 7 @ TS 4 : (0, 8)
+Position of Agent 7 @ TS 4 : (1, 9)
 Position of Agent 8 @ TS 4 : (1, 9)
 Position of Agent 9 @ TS 4 : (1, 9)
 ======================================================================
-Agent 1 MOVEMENT state: HIRED
-Agent 1 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 4, Agent 1 chooses action : MOVE NORTH-EAST
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 1 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 2 MOVEMENT state: HIRED
-Agent 2 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 4, Agent 2 chooses action : MOVE SOUTH-WEST
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 2 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 3 MOVEMENT state: HIRED
-Agent 3 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 4, Agent 3 chooses action : MOVE NORTH
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 3 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 4 MOVEMENT state: HIRED
-Agent 4 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 4, Agent 4 chooses action : MOVE SOUTH-WEST
-======================================================================
-Agent 5 MOVEMENT state: UNEMPLOYED
-TS : 4, Agent 5 chooses action : IDLE - REMAIN THERE
-======================================================================
-Agent 6 MOVEMENT state: UNEMPLOYED
-TS : 4, Agent 6 chooses action : HIRING
-======================================================================
-Agent 7 MOVEMENT state: HIRED
-Agent 7 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 4, Agent 7 chooses action : MOVE SOUTH
-======================================================================
-Agent 8 MOVEMENT state: UNEMPLOYED
-TS : 4, Agent 8 chooses action : HIRING
-======================================================================
-Agent 9 MOVEMENT state: HIRED
-Agent 9 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 4, Agent 9 chooses action : MOVE SOUTH-WEST
-Calculating Reward for : (0, 8) -> (1, 9)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 1500
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 1600
-Calculating Reward for : (0, 7) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 1700
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 200
-Total Cost incurred : 1900
-Calculating Reward for : (1, 9) -> (1, 9)
-est reward : -inf ; best_action : None
-Calculating Reward for : (0, 8) -> (0, 7)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 2400
-Calculating Reward for : (1, 9) -> (1, 9)
-est reward : -inf ; best_action : None
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 2900
-New state :  [   1    9    0    8    0    8    0    8    1    9    1    9    0    7
-    1    9    0    8    9    1    8    6    4    4    7    5    2    6
-    4    8    7    8    7    3    0    4 7100 2900    0]
-Position of Agent 1 @ TS 5 : (1, 9)
-Position of Agent 2 @ TS 5 : (0, 8)
-Position of Agent 3 @ TS 5 : (0, 8)
-Position of Agent 4 @ TS 5 : (0, 8)
-Position of Agent 5 @ TS 5 : (1, 9)
-Position of Agent 6 @ TS 5 : (1, 9)
-Position of Agent 7 @ TS 5 : (0, 7)
-Position of Agent 8 @ TS 5 : (1, 9)
-Position of Agent 9 @ TS 5 : (0, 8)
-======================================================================
-Agent 1 MOVEMENT state: HIRED
-Agent 1 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 5, Agent 1 chooses action : MOVE SOUTH-WEST
-======================================================================
-Agent 2 MOVEMENT state: HIRED
-Agent 2 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 5, Agent 2 chooses action : MOVE NORTH-EAST
-======================================================================
-Agent 3 MOVEMENT state: HIRED
-Agent 3 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 5, Agent 3 chooses action : MOVE SOUTH
-======================================================================
-Agent 4 MOVEMENT state: HIRED
-Agent 4 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 5, Agent 4 chooses action : MOVE NORTH-EAST
-======================================================================
-Agent 5 MOVEMENT state: UNEMPLOYED
-TS : 5, Agent 5 chooses action : IDLE - REMAIN THERE
-======================================================================
-Agent 6 MOVEMENT state: HIRED
-Agent 6 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 5, Agent 6 chooses action : MOVE SOUTH-WEST
-======================================================================
-Agent 7 MOVEMENT state: HIRED
-Agent 7 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 5, Agent 7 chooses action : MOVE NORTH
-======================================================================
-Agent 8 MOVEMENT state: HIRED
-Agent 8 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 5, Agent 8 chooses action : MOVE SOUTH-WEST
-======================================================================
-Agent 9 MOVEMENT state: HIRED
-Agent 9 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 5, Agent 9 chooses action : MOVE SOUTH
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 3000
-Calculating Reward for : (0, 8) -> (1, 9)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 3100
-Calculating Reward for : (0, 8) -> (0, 7)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 3200
-Calculating Reward for : (0, 8) -> (1, 9)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 200
-Total Cost incurred : 3400
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 3900
-Calculating Reward for : (0, 7) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 4400
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 4900
-Calculating Reward for : (0, 8) -> (0, 7)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 5400
-New state :  [   0    8    1    9    0    7    1    9    1    9    0    8    0    8
-    0    8    0    7    9    1    8    6    4    4    7    5    2    6
-    4    8    7    8    7    3    0    4 4600 5400    0]
-Position of Agent 1 @ TS 6 : (0, 8)
-Position of Agent 2 @ TS 6 : (1, 9)
-Position of Agent 3 @ TS 6 : (0, 7)
-Position of Agent 4 @ TS 6 : (1, 9)
-Position of Agent 5 @ TS 6 : (1, 9)
-Position of Agent 6 @ TS 6 : (0, 8)
-Position of Agent 7 @ TS 6 : (0, 8)
-Position of Agent 8 @ TS 6 : (0, 8)
-Position of Agent 9 @ TS 6 : (0, 7)
-======================================================================
-Agent 1 MOVEMENT state: HIRED
-Agent 1 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 6, Agent 1 chooses action : MOVE SOUTH
-======================================================================
-Agent 2 MOVEMENT state: HIRED
-Agent 2 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 6, Agent 2 chooses action : MOVE SOUTH-WEST
-======================================================================
-Agent 3 MOVEMENT state: HIRED
-Agent 3 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 6, Agent 3 chooses action : MOVE NORTH
-======================================================================
-Agent 4 MOVEMENT state: HIRED
-Agent 4 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 6, Agent 4 chooses action : MOVE SOUTH-WEST
-======================================================================
-Agent 5 MOVEMENT state: UNEMPLOYED
-TS : 6, Agent 5 chooses action : HIRING
-======================================================================
-Agent 6 MOVEMENT state: HIRED
-Agent 6 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 6, Agent 6 chooses action : MOVE SOUTH
-======================================================================
-Agent 7 MOVEMENT state: HIRED
-Agent 7 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 6, Agent 7 chooses action : MOVE NORTH-EAST
-======================================================================
-Agent 8 MOVEMENT state: HIRED
-Agent 8 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 6, Agent 8 chooses action : MOVE NORTH-EAST
-======================================================================
-Agent 9 MOVEMENT state: HIRED
-Agent 9 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 6, Agent 9 chooses action : MOVE NORTH
-Calculating Reward for : (0, 8) -> (0, 7)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 5500
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 5600
-Calculating Reward for : (0, 7) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 5700
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 200
-Total Cost incurred : 5900
-Calculating Reward for : (1, 9) -> (1, 9)
-est reward : -inf ; best_action : None
-Calculating Reward for : (0, 8) -> (0, 7)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 6400
-Calculating Reward for : (0, 8) -> (1, 9)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 6900
-Calculating Reward for : (0, 8) -> (1, 9)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 7400
-Calculating Reward for : (0, 7) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 7900
-New state :  [   0    7    0    8    0    8    0    8    1    9    0    7    1    9
-    1    9    0    8    9    1    8    6    4    4    7    5    2    6
-    4    8    7    8    7    3    0    4 2100 7900    0]
-Position of Agent 1 @ TS 7 : (0, 7)
-Position of Agent 2 @ TS 7 : (0, 8)
-Position of Agent 3 @ TS 7 : (0, 8)
-Position of Agent 4 @ TS 7 : (0, 8)
-Position of Agent 5 @ TS 7 : (1, 9)
-Position of Agent 6 @ TS 7 : (0, 7)
-Position of Agent 7 @ TS 7 : (1, 9)
-Position of Agent 8 @ TS 7 : (1, 9)
-Position of Agent 9 @ TS 7 : (0, 8)
-======================================================================
-Agent 1 MOVEMENT state: HIRED
-Agent 1 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 7, Agent 1 chooses action : MOVE SOUTH-EAST
-======================================================================
-Agent 2 MOVEMENT state: HIRED
-Agent 2 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 7, Agent 2 chooses action : MOVE SOUTH
-======================================================================
-Agent 3 MOVEMENT state: HIRED
-Agent 3 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 7, Agent 3 chooses action : MOVE SOUTH
-======================================================================
-Agent 4 MOVEMENT state: HIRED
-Agent 4 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 7, Agent 4 chooses action : MOVE NORTH-EAST
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 4 chooses action : IDLE - REMAIN THERE
 ======================================================================
 Agent 5 MOVEMENT state: HIRED
 Agent 5 filtered all Invalid Moves, and there exists at least 1!
 Random Predicting This Round
-TS : 7, Agent 5 chooses action : MOVE SOUTH-WEST
+TS : 4, Agent 5 chooses action : MOVE NORTH-EAST
 ======================================================================
-Agent 6 MOVEMENT state: HIRED
-Agent 6 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 7, Agent 6 chooses action : MOVE SOUTH-EAST
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 6 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 7 MOVEMENT state: HIRED
-Agent 7 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 7, Agent 7 chooses action : MOVE SOUTH-WEST
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 7 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 8 MOVEMENT state: HIRED
-Agent 8 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 7, Agent 8 chooses action : MOVE SOUTH-WEST
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 8 chooses action : IDLE - REMAIN THERE
 ======================================================================
-Agent 9 MOVEMENT state: HIRED
-Agent 9 filtered all Invalid Moves, and there exists at least 1!
-Random Predicting This Round
-TS : 7, Agent 9 chooses action : MOVE NORTH-EAST
-Calculating Reward for : (0, 7) -> (1, 6)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 8000
-Calculating Reward for : (0, 8) -> (0, 7)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 8100
-Calculating Reward for : (0, 8) -> (0, 7)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 100
-Total Cost incurred : 8200
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 9 chooses action : IDLE - REMAIN THERE
 Calculating Reward for : (0, 8) -> (1, 9)
 est reward : -inf ; best_action : None
 Worker's rate add to cost : 200
-Total Cost incurred : 8400
+Total Cost incurred : 400
+New state :  [   1    9    1    9    1    9    1    9    1    9    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 9600  400    0]
+Position of Agent 1 @ TS 5 : (1, 9)
+Position of Agent 2 @ TS 5 : (1, 9)
+Position of Agent 3 @ TS 5 : (1, 9)
+Position of Agent 4 @ TS 5 : (1, 9)
+Position of Agent 5 @ TS 5 : (1, 9)
+Position of Agent 6 @ TS 5 : (1, 9)
+Position of Agent 7 @ TS 5 : (1, 9)
+Position of Agent 8 @ TS 5 : (1, 9)
+Position of Agent 9 @ TS 5 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 5, Agent 5 chooses action : MOVE SOUTH-WEST
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 9 chooses action : IDLE - REMAIN THERE
 Calculating Reward for : (1, 9) -> (0, 8)
 est reward : -inf ; best_action : None
 Worker's rate add to cost : 200
-Total Cost incurred : 8600
+Total Cost incurred : 600
+New state :  [   1    9    1    9    1    9    1    9    0    8    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 9400  600    0]
+Position of Agent 1 @ TS 6 : (1, 9)
+Position of Agent 2 @ TS 6 : (1, 9)
+Position of Agent 3 @ TS 6 : (1, 9)
+Position of Agent 4 @ TS 6 : (1, 9)
+Position of Agent 5 @ TS 6 : (0, 8)
+Position of Agent 6 @ TS 6 : (1, 9)
+Position of Agent 7 @ TS 6 : (1, 9)
+Position of Agent 8 @ TS 6 : (1, 9)
+Position of Agent 9 @ TS 6 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 6, Agent 5 chooses action : MOVE SOUTH
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (0, 8) -> (0, 7)
+est reward : -inf ; best_action : None
+Worker's rate add to cost : 200
+Total Cost incurred : 800
+New state :  [   1    9    1    9    1    9    1    9    0    7    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 9200  800    0]
+Position of Agent 1 @ TS 7 : (1, 9)
+Position of Agent 2 @ TS 7 : (1, 9)
+Position of Agent 3 @ TS 7 : (1, 9)
+Position of Agent 4 @ TS 7 : (1, 9)
+Position of Agent 5 @ TS 7 : (0, 7)
+Position of Agent 6 @ TS 7 : (1, 9)
+Position of Agent 7 @ TS 7 : (1, 9)
+Position of Agent 8 @ TS 7 : (1, 9)
+Position of Agent 9 @ TS 7 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 7, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 7, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 7, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 7, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 7, Agent 5 chooses action : MOVE SOUTH-EAST
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 7, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 7, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 7, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 7, Agent 9 chooses action : IDLE - REMAIN THERE
 Calculating Reward for : (0, 7) -> (1, 6)
 est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 9100
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 9600
-Calculating Reward for : (1, 9) -> (0, 8)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 10100
-Calculating Reward for : (0, 8) -> (1, 9)
-est reward : -inf ; best_action : None
-Worker's rate add to cost : 500
-Total Cost incurred : 10600
-New state :  [    1     6     0     7     0     7     1     9     0     8     1     6
-     0     8     0     8     1     9     9     1     8     6     4     4
-     7     5     2     6     4     8     7     8     7     3     0     4
-  -600 10600     0]
-Position of Agent 1 @ TS 8 : (1, 6)
-Position of Agent 2 @ TS 8 : (0, 7)
-Position of Agent 3 @ TS 8 : (0, 7)
+Worker's rate add to cost : 200
+Total Cost incurred : 1000
+New state :  [   1    9    1    9    1    9    1    9    1    6    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 9000 1000    0]
+Position of Agent 1 @ TS 8 : (1, 9)
+Position of Agent 2 @ TS 8 : (1, 9)
+Position of Agent 3 @ TS 8 : (1, 9)
 Position of Agent 4 @ TS 8 : (1, 9)
-Position of Agent 5 @ TS 8 : (0, 8)
-Position of Agent 6 @ TS 8 : (1, 6)
-Position of Agent 7 @ TS 8 : (0, 8)
-Position of Agent 8 @ TS 8 : (0, 8)
+Position of Agent 5 @ TS 8 : (1, 6)
+Position of Agent 6 @ TS 8 : (1, 9)
+Position of Agent 7 @ TS 8 : (1, 9)
+Position of Agent 8 @ TS 8 : (1, 9)
 Position of Agent 9 @ TS 8 : (1, 9)
-Graph 1, Profit 0, Final Timestamp 8, Done? True
-Graph finished running, time taken : 0.0025589466094970703
-Final Position of Agent 1 : (1, 6)
-Final Position of Agent 2 : (0, 7)
-Final Position of Agent 3 : (0, 7)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 8, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 8, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 8, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 8, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 8, Agent 5 chooses action : MOVE NORTH-EAST
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 8, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 8, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 8, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 8, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (1, 6) -> (2, 7)
+est reward : -inf ; best_action : None
+Worker's rate add to cost : 200
+Total Cost incurred : 1200
+New state :  [   1    9    1    9    1    9    1    9    2    7    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 8800 1200    0]
+Position of Agent 1 @ TS 9 : (1, 9)
+Position of Agent 2 @ TS 9 : (1, 9)
+Position of Agent 3 @ TS 9 : (1, 9)
+Position of Agent 4 @ TS 9 : (1, 9)
+Position of Agent 5 @ TS 9 : (2, 7)
+Position of Agent 6 @ TS 9 : (1, 9)
+Position of Agent 7 @ TS 9 : (1, 9)
+Position of Agent 8 @ TS 9 : (1, 9)
+Position of Agent 9 @ TS 9 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 9, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 9, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 9, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 9, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 9, Agent 5 chooses action : MOVE SOUTH
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 9, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 9, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 9, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 9, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (2, 7) -> (2, 6)
+est reward : -inf ; best_action : None
+Worker's rate add to cost : 200
+Total Cost incurred : 1400
+New state :  [   1    9    1    9    1    9    1    9    2    6    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 8600 1400    0]
+Position of Agent 1 @ TS 10 : (1, 9)
+Position of Agent 2 @ TS 10 : (1, 9)
+Position of Agent 3 @ TS 10 : (1, 9)
+Position of Agent 4 @ TS 10 : (1, 9)
+Position of Agent 5 @ TS 10 : (2, 6)
+Position of Agent 6 @ TS 10 : (1, 9)
+Position of Agent 7 @ TS 10 : (1, 9)
+Position of Agent 8 @ TS 10 : (1, 9)
+Position of Agent 9 @ TS 10 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 10, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 10, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 10, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 10, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Current Loc is Reward Site
+Reward Site can be extracted!
+TS : 10, Agent 5 chooses action : EXTRACTING REWARD
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 10, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 10, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 10, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 10, Agent 9 chooses action : IDLE - REMAIN THERE
+New state :  [   1    9    1    9    1    9    1    9    2    6    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 8400 1600    0]
+Position of Agent 1 @ TS 11 : (1, 9)
+Position of Agent 2 @ TS 11 : (1, 9)
+Position of Agent 3 @ TS 11 : (1, 9)
+Position of Agent 4 @ TS 11 : (1, 9)
+Position of Agent 5 @ TS 11 : (2, 6)
+Position of Agent 6 @ TS 11 : (1, 9)
+Position of Agent 7 @ TS 11 : (1, 9)
+Position of Agent 8 @ TS 11 : (1, 9)
+Position of Agent 9 @ TS 11 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 11, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 11, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 11, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 11, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+TS : 11, Agent 5 chooses action : EXTRACTING REWARD
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 11, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 11, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 11, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 11, Agent 9 chooses action : IDLE - REMAIN THERE
+New state :  [   1    9    1    9    1    9    1    9    2    6    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 8200 1800    0]
+Position of Agent 1 @ TS 12 : (1, 9)
+Position of Agent 2 @ TS 12 : (1, 9)
+Position of Agent 3 @ TS 12 : (1, 9)
+Position of Agent 4 @ TS 12 : (1, 9)
+Position of Agent 5 @ TS 12 : (2, 6)
+Position of Agent 6 @ TS 12 : (1, 9)
+Position of Agent 7 @ TS 12 : (1, 9)
+Position of Agent 8 @ TS 12 : (1, 9)
+Position of Agent 9 @ TS 12 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 12, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 12, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 12, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 12, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+TS : 12, Agent 5 chooses action : EXTRACTING REWARD
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 12, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 12, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 12, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 12, Agent 9 chooses action : IDLE - REMAIN THERE
+Worker 4 is done extracting
+Getting reward :  2000.0
+New state :  [   1    9    1    9    1    9    1    9    2    6    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 8000 2000 2000]
+Position of Agent 1 @ TS 13 : (1, 9)
+Position of Agent 2 @ TS 13 : (1, 9)
+Position of Agent 3 @ TS 13 : (1, 9)
+Position of Agent 4 @ TS 13 : (1, 9)
+Position of Agent 5 @ TS 13 : (2, 6)
+Position of Agent 6 @ TS 13 : (1, 9)
+Position of Agent 7 @ TS 13 : (1, 9)
+Position of Agent 8 @ TS 13 : (1, 9)
+Position of Agent 9 @ TS 13 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 13, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 13, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 13, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 13, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Current Loc is Reward Site
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 13, Agent 5 chooses action : MOVE SOUTH-EAST
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 13, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 13, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 13, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 13, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (2, 6) -> (3, 5)
+Reward for (2, 6) -> (3, 5) -> (2, 6) : 4200.0
+est reward : 4200.0 ; best_action : 7
+Worker's rate add to cost : 200
+Total Cost incurred : 2200
+New state :  [   1    9    1    9    1    9    1    9    3    5    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 7800 2200 2000]
+Position of Agent 1 @ TS 14 : (1, 9)
+Position of Agent 2 @ TS 14 : (1, 9)
+Position of Agent 3 @ TS 14 : (1, 9)
+Position of Agent 4 @ TS 14 : (1, 9)
+Position of Agent 5 @ TS 14 : (3, 5)
+Position of Agent 6 @ TS 14 : (1, 9)
+Position of Agent 7 @ TS 14 : (1, 9)
+Position of Agent 8 @ TS 14 : (1, 9)
+Position of Agent 9 @ TS 14 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 14, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 14, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 14, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 14, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 14, Agent 5 chooses action : MOVE SOUTH-EAST
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 14, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 14, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 14, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 14, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (3, 5) -> (4, 4)
+Reward for (3, 5) -> (4, 4) -> (2, 6) : 4000.0
+est reward : 4000.0 ; best_action : 7
+Worker's rate add to cost : 200
+Total Cost incurred : 2400
+New state :  [   1    9    1    9    1    9    1    9    4    4    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 7600 2400 2000]
+Position of Agent 1 @ TS 15 : (1, 9)
+Position of Agent 2 @ TS 15 : (1, 9)
+Position of Agent 3 @ TS 15 : (1, 9)
+Position of Agent 4 @ TS 15 : (1, 9)
+Position of Agent 5 @ TS 15 : (4, 4)
+Position of Agent 6 @ TS 15 : (1, 9)
+Position of Agent 7 @ TS 15 : (1, 9)
+Position of Agent 8 @ TS 15 : (1, 9)
+Position of Agent 9 @ TS 15 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 15, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 15, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 15, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 15, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Current Loc is Reward Site
+Reward Site can be extracted!
+TS : 15, Agent 5 chooses action : EXTRACTING REWARD
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 15, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 15, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 15, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 15, Agent 9 chooses action : IDLE - REMAIN THERE
+New state :  [   1    9    1    9    1    9    1    9    4    4    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 7400 2600 2000]
+Position of Agent 1 @ TS 16 : (1, 9)
+Position of Agent 2 @ TS 16 : (1, 9)
+Position of Agent 3 @ TS 16 : (1, 9)
+Position of Agent 4 @ TS 16 : (1, 9)
+Position of Agent 5 @ TS 16 : (4, 4)
+Position of Agent 6 @ TS 16 : (1, 9)
+Position of Agent 7 @ TS 16 : (1, 9)
+Position of Agent 8 @ TS 16 : (1, 9)
+Position of Agent 9 @ TS 16 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 16, Agent 1 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 16, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 16, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 16, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+TS : 16, Agent 5 chooses action : EXTRACTING REWARD
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 16, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 16, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 16, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 16, Agent 9 chooses action : IDLE - REMAIN THERE
+Worker 4 is done extracting
+Getting reward :  1000.0
+New state :  [   1    9    1    9    1    9    1    9    4    4    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 7200 2800 3000]
+Position of Agent 1 @ TS 17 : (1, 9)
+Position of Agent 2 @ TS 17 : (1, 9)
+Position of Agent 3 @ TS 17 : (1, 9)
+Position of Agent 4 @ TS 17 : (1, 9)
+Position of Agent 5 @ TS 17 : (4, 4)
+Position of Agent 6 @ TS 17 : (1, 9)
+Position of Agent 7 @ TS 17 : (1, 9)
+Position of Agent 8 @ TS 17 : (1, 9)
+Position of Agent 9 @ TS 17 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 17, Agent 1 chooses action : HIRING
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 17, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 17, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 17, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Current Loc is Reward Site
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 17, Agent 5 chooses action : MOVE NORTH-EAST
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 17, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 17, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 17, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 17, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (1, 9) -> (1, 9)
+Reward for (1, 9) -> (1, 9) -> (4, 4) : 1200.0
+est reward : 1200.0 ; best_action : 9
+Calculating Reward for : (4, 4) -> (5, 5)
+Reward for (4, 4) -> (5, 5) -> (4, 4) : 1400.0
+Reward for (4, 4) -> (5, 5) -> (2, 6) : 3800.0
+est reward : 3800.0 ; best_action : 5
+Worker's rate add to cost : 200
+Total Cost incurred : 3000
+New state :  [   1    9    1    9    1    9    1    9    5    5    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 7000 3000 3000]
+Position of Agent 1 @ TS 18 : (1, 9)
+Position of Agent 2 @ TS 18 : (1, 9)
+Position of Agent 3 @ TS 18 : (1, 9)
+Position of Agent 4 @ TS 18 : (1, 9)
+Position of Agent 5 @ TS 18 : (5, 5)
+Position of Agent 6 @ TS 18 : (1, 9)
+Position of Agent 7 @ TS 18 : (1, 9)
+Position of Agent 8 @ TS 18 : (1, 9)
+Position of Agent 9 @ TS 18 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 18, Agent 1 chooses action : MOVE SOUTH-WEST
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 18, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 18, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 18, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 18, Agent 5 chooses action : MOVE SOUTH
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 18, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 18, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 18, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 18, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (1, 9) -> (0, 8)
+Reward for (1, 9) -> (0, 8) -> (4, 4) : 1300.0
+est reward : 1300.0 ; best_action : 8
+Worker's rate add to cost : 100
+Total Cost incurred : 3100
+Calculating Reward for : (5, 5) -> (5, 4)
+Reward for (5, 5) -> (5, 4) -> (4, 4) : 1400.0
+Reward for (5, 5) -> (5, 4) -> (2, 6) : 3800.0
+est reward : 3800.0 ; best_action : 2
+Worker's rate add to cost : 200
+Total Cost incurred : 3300
+New state :  [   0    8    1    9    1    9    1    9    5    4    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 6700 3300 3000]
+Position of Agent 1 @ TS 19 : (0, 8)
+Position of Agent 2 @ TS 19 : (1, 9)
+Position of Agent 3 @ TS 19 : (1, 9)
+Position of Agent 4 @ TS 19 : (1, 9)
+Position of Agent 5 @ TS 19 : (5, 4)
+Position of Agent 6 @ TS 19 : (1, 9)
+Position of Agent 7 @ TS 19 : (1, 9)
+Position of Agent 8 @ TS 19 : (1, 9)
+Position of Agent 9 @ TS 19 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 19, Agent 1 chooses action : MOVE SOUTH
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 19, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 19, Agent 3 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 19, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 19, Agent 5 chooses action : MOVE SOUTH-EAST
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 19, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 19, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 19, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 19, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (0, 8) -> (0, 7)
+Reward for (0, 8) -> (0, 7) -> (4, 4) : 1400.0
+est reward : 1400.0 ; best_action : 2
+Worker's rate add to cost : 100
+Total Cost incurred : 3400
+Calculating Reward for : (5, 4) -> (6, 3)
+Reward for (5, 4) -> (6, 3) -> (4, 4) : 1200.0
+Reward for (5, 4) -> (6, 3) -> (2, 6) : 3600.0
+est reward : 3600.0 ; best_action : 7
+Worker's rate add to cost : 200
+Total Cost incurred : 3600
+New state :  [   0    7    1    9    1    9    1    9    6    3    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 6400 3600 3000]
+Position of Agent 1 @ TS 20 : (0, 7)
+Position of Agent 2 @ TS 20 : (1, 9)
+Position of Agent 3 @ TS 20 : (1, 9)
+Position of Agent 4 @ TS 20 : (1, 9)
+Position of Agent 5 @ TS 20 : (6, 3)
+Position of Agent 6 @ TS 20 : (1, 9)
+Position of Agent 7 @ TS 20 : (1, 9)
+Position of Agent 8 @ TS 20 : (1, 9)
+Position of Agent 9 @ TS 20 : (1, 9)
+======================================================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 20, Agent 1 chooses action : MOVE NORTH
+======================================================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 20, Agent 2 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 20, Agent 3 chooses action : HIRING
+======================================================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 20, Agent 4 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Random Predicting This Round
+TS : 20, Agent 5 chooses action : MOVE NORTH-WEST
+======================================================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 20, Agent 6 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 20, Agent 7 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 20, Agent 8 chooses action : IDLE - REMAIN THERE
+======================================================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 20, Agent 9 chooses action : IDLE - REMAIN THERE
+Calculating Reward for : (0, 7) -> (0, 8)
+Reward for (0, 7) -> (0, 8) -> (4, 4) : 1300.0
+est reward : 1300.0 ; best_action : 1
+Worker's rate add to cost : 100
+Total Cost incurred : 3700
+Calculating Reward for : (1, 9) -> (1, 9)
+Reward for (1, 9) -> (1, 9) -> (4, 4) : 1200.0
+est reward : 1200.0 ; best_action : 9
+Calculating Reward for : (6, 3) -> (5, 4)
+Reward for (6, 3) -> (5, 4) -> (4, 4) : 1400.0
+Reward for (6, 3) -> (5, 4) -> (2, 6) : 3800.0
+est reward : 3800.0 ; best_action : 6
+Worker's rate add to cost : 200
+Total Cost incurred : 3900
+New state :  [   0    8    1    9    1    9    1    9    5    4    1    9    1    9
+    1    9    1    9    9    1    8    6    4    4    7    5    2    6
+    4    8    7    8    7    3    0    4 6100 3900 3000]
+Position of Agent 1 @ TS 21 : (0, 8)
+Position of Agent 2 @ TS 21 : (1, 9)
+Position of Agent 3 @ TS 21 : (1, 9)
+Position of Agent 4 @ TS 21 : (1, 9)
+Position of Agent 5 @ TS 21 : (5, 4)
+Position of Agent 6 @ TS 21 : (1, 9)
+Position of Agent 7 @ TS 21 : (1, 9)
+Position of Agent 8 @ TS 21 : (1, 9)
+Position of Agent 9 @ TS 21 : (1, 9)
+Graph 1, Profit -900, Final Timestamp 21, Done? True
+Graph finished running, time taken : 0.009344100952148438
+Final Position of Agent 1 : (0, 8)
+Final Position of Agent 2 : (1, 9)
+Final Position of Agent 3 : (1, 9)
 Final Position of Agent 4 : (1, 9)
-Final Position of Agent 5 : (0, 8)
-Final Position of Agent 6 : (1, 6)
-Final Position of Agent 7 : (0, 8)
-Final Position of Agent 8 : (0, 8)
+Final Position of Agent 5 : (5, 4)
+Final Position of Agent 6 : (1, 9)
+Final Position of Agent 7 : (1, 9)
+Final Position of Agent 8 : (1, 9)
 Final Position of Agent 9 : (1, 9)
 Finished Training

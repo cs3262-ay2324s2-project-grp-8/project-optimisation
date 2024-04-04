@@ -263,16 +263,17 @@ class Environment(object):
             done = False
             reward_all = 0
             time_step = 0
-
+            current_budget_left_for_this_agent = state[CURRENT_BUDGET]
             while not done and time_step <= self.max_timestamps:
                 actions = []
                 agent_idx = 1
                 for agent in self.worker_agents:
-                    a = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward, agent_idx)
+                    a, cost_induced_by_agent = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward, agent_idx, current_budget_left_for_this_agent)
                     #print("time_step: ", time_step, "0-index action: ", a , " for agent ", agent_idx)
                     print(f"TS : {time_step}, Agent {agent_idx} chooses action : {Environment.ZERO_INDEXED_NUMERIC_TO_STRING_ACTIONS[a]}") if DEBUG else None
                     agent_idx += 1
                     actions.append(a)
+                    current_budget_left_for_this_agent -= cost_induced_by_agent
                 next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step, ssp=shortest_path)
                 next_state = np.array(next_state)
 
@@ -294,7 +295,7 @@ class Environment(object):
                     agent_idx+=1
             profit_history.append(profit_all)
 
-            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=reward_all, ts=time_step, done=done)) if DEBUG else None
+            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG else None
 
             if self.isTrain:
                 if total_step % 100 == 0:
