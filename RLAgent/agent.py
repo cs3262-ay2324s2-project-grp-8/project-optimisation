@@ -105,16 +105,15 @@ class AgentWorker(Worker):
         rng = np.random.rand()
         curr_location = self.get_location()
         valid_moves_reward_signal_dict = dict() # store moves in 0-index also
-        print("===================================")
+        adj_nodes = graph.get_edges()[curr_location]
+        
         for mv in range(1, 12):
             if ((mv == HIRE or mv == IDLE) and self.is_Hired):
                 continue
             selected_move = ACTIONS[mv]
+            print("action checking: ", selected_move)
             new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
-            print("curr loc : ", curr_location, " new loc: ", new_location)
-            # print("get edges : \n", graph.get_edges)
-            adj_nodes = graph.get_edges()[curr_location]
-            print("adj modes: ", adj_nodes)
+            print("curr loc : ", curr_location, " proposed new loc: ", new_location)
             is_valid_move = (new_location in adj_nodes) # or (new_location == curr_location)
             if (is_valid_move):
                 print("mv ", mv , " is a valid move from ", curr_location, " to ", new_location)
@@ -122,32 +121,40 @@ class AgentWorker(Worker):
         print("valid moves: ", valid_moves_reward_signal_dict.keys())
         assert(len(valid_moves_reward_signal_dict.keys()) > 0)
         if rng <= self.epsilon:
+            print("Random Predicting This Round")
             move = random.randrange(self.action_size)
             while (move not in valid_moves_reward_signal_dict.keys()):
                 move = random.randrange(self.action_size)
+            print("===================================")
             return move
         elif self.epsilon < rng <= 2 * self.epsilon:
+            print("Greedy Predicting This Round")
             # greedy approach
             # iterate through all valid moves and estimate reward
             best_move, highest_reward = None, -np.inf
             for vm in valid_moves_reward_signal_dict.keys(): # 0-idex
                 selected_move = ACTIONS[vm + 1]
                 new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
-                valid_moves_reward_signal_dict[vm] = reward_fn(graph, curr_location, new_location, ssp, self.type, state[CURRENT_BUDGET])
+                print(f"{curr_location} -> {new_location}")
+                valid_moves_reward_signal_dict[vm], _ = reward_fn(graph, curr_location, new_location, ssp, self.type, state[CURRENT_BUDGET])
                 if (valid_moves_reward_signal_dict[vm] > highest_reward):
                     highest_reward = valid_moves_reward_signal_dict[vm]
                     best_move = vm
+            print("===================================")
             return best_move
         else:
             probabilities = self.brain.predict_one_sample(state)
             #print("Probabilities from Agent's brain: ",probabilities)
             move = np.argmax(probabilities)
+            print("Brain Predicting This Round")
             # check if move is within the valid moves, 
             # if invalid, then 0 the prob, then get the next highest
             while (int(move) not in valid_moves_reward_signal_dict.keys()):
                 probabilities[move] = -np.inf
                 move = np.argmax(probabilities)
                 #print("Probabilities from Agent's brain: ",probabilities)
+            print("Brain Predicting BEST MOVE: ", move)
+            print("===================================")
             return move
 
 
