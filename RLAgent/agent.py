@@ -94,20 +94,27 @@ class AgentWorker(Worker):
     
     def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn, idx):
         # Returns MOVES by zero-index
-        print("===================================")
+        print("======================================================================")
         print(f'Agent {idx} MOVEMENT state: {"HIRED" if self.is_Hired else "UNEMPLOYED"}')
         if (self.is_extracting()):
             return EXTRACT - 1
         #print("Agent is Hired Already")
         if (not self.is_Hired):
             return HIRE - 1 if np.random.rand() <= 0.5 else IDLE - 1
+        # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         rng = np.random.rand()
         curr_location = self.get_location()
+         # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
+        curr_node : Node = graph.get_vertices()[curr_location]
+        if (curr_node.get_reward() > 0 and curr_node.can_extract()):
+            curr_node.sight() # this agent chope the node already, other agents on this node cant extract anymore
+            return EXTRACT - 1 
         valid_moves_reward_signal_dict = dict() # store moves in 0-index also
         adj_nodes = graph.get_edges()[curr_location]
-        
         for mv in range(1, 12):
             if ((mv == HIRE or mv == IDLE) and self.is_Hired):
+                continue
+            if (mv == EXTRACT):
                 continue
             selected_move = ACTIONS[mv]
             # print("action checking: ", selected_move)
@@ -117,7 +124,6 @@ class AgentWorker(Worker):
             if (is_valid_move):
                 # print("mv ", mv , " is a valid move from ", curr_location, " to ", new_location)
                 valid_moves_reward_signal_dict[mv - 1] = 0 # back to 0 index
-        # print("valid moves: ", valid_moves_reward_signal_dict.keys())
         assert(len(valid_moves_reward_signal_dict.keys()) > 0)
         print(f"Agent {idx} filtered all Invalid Moves, and there exists at least 1!")
         if rng <= self.epsilon:
@@ -137,7 +143,7 @@ class AgentWorker(Worker):
                 new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
                 print(f"{curr_location} -> {new_location}")
                 valid_moves_reward_signal_dict[vm], _ = reward_fn(graph, curr_location, new_location, ssp, self.type, state[CURRENT_BUDGET])
-                if (valid_moves_reward_signal_dict[vm] > highest_reward):
+                if (valid_moves_reward_signal_dict[vm] >= highest_reward):
                     highest_reward = valid_moves_reward_signal_dict[vm]
                     best_move = vm
             #print("===================================")
@@ -155,8 +161,6 @@ class AgentWorker(Worker):
                 #print("Probabilities from Agent's brain: ",probabilities)
             #print("===================================")
             return move
-
-
     
     def observe(self, sample):
         self.memory.remember(sample)

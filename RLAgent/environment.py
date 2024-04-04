@@ -124,8 +124,6 @@ class Environment(object):
                 new_x , new_y = w_x + selected_delta[0], w_y + selected_delta[1]
                 # print(f"Worker {worker_idx} Selected Delta: ", selected_delta, f" from {(w_x, w_y)} -> {(new_x, new_y)}")
                 assert((w_x, w_y) in ssp.keys())
-                # print((new_x, new_y))
-                # print("inside ? : ", ssp.keys())
                 assert((new_x, new_y) in ssp.keys())
                 reward_signal_i, _ = self.calculate_reward(graph, (w_x, w_y), (new_x, new_y), ssp, worker.get_type(), state[CURRENT_BUDGET])
                 reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
@@ -142,15 +140,18 @@ class Environment(object):
             if (actions[w_idx] == EXTRACT - 1):
                 state[COST_INCURRED] += worker.get_rate()
                 state[CURRENT_BUDGET] -= worker.get_rate()
+                curr_node : Node = graph.get_Node(w_x, w_y)
                 if (worker.is_extracting()):
                     assert(worker.isHired())
                     worker.decrease_waitTime()
                     if (worker.get_waitTime() == 0):
                         worker.done_extracting()
+                        curr_node.leave_node_extractor()
+                        assert(curr_node.extractor is None)
                         state[REWARDS_EXTRACTED] += worker.reward_at_location(graph, zero_out=True)
                 else:
                     assert(worker.isHired())
-                    worker.extract(graph)
+                    worker.extract(curr_node)
                     assert(worker.is_extracting())
                     reward_signal += worker.reward_at_location(graph, zero_out=False) - worker.get_type() * worker.get_rate()
         if (ts >= self.max_timestamps or state[CURRENT_BUDGET] <= 0):
@@ -187,19 +188,25 @@ class Environment(object):
         print(f"Calculating Reward for : {curr_loc} -> {next_loc}")
         max_calculated_reward = -np.inf
         best_action = None
-        for i in range(1, agent_type + 1):
-            reward_sites = graph.retrieve_all_sites_of_type(i)
+        #print("Agent type : ", agent_type)
+        for i in range(2, agent_type + 2):
+            reward_sites = graph.retrieve_all_sites_of_type(i) # correct already
+            #print(reward_sites)
             for rs in reward_sites:
+                if rs.can_extract():  # extractor there -> take it as a basic state - ignore
+                    continue
                 if (graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())]) > curr_budget):
                     continue
                 else:
-                    reward = graph.site_type_rewards[i + 1] - graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())])
+                    reward = graph.site_type_rewards[i] - graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())])
+                    print(f"Reward for {curr_loc} -> {next_loc} -> {rs.get_coordinate()} : {reward}")
                     if (reward > max_calculated_reward):
                         max_calculated_reward = reward
                         if (curr_loc == next_loc):
                             best_action = HIRE
                         else:
                             best_action = Environment.DELTA_TO_ACTIONS[(next_loc[0] - curr_loc[0], next_loc[1] - curr_loc[1])]
+        print(f"est reward : {max_calculated_reward} ; best_action : {best_action}")
         return max_calculated_reward, best_action
 
     def run_for_graph(self, graph: Graph):
@@ -235,7 +242,9 @@ class Environment(object):
             for type3 in type3_sites:
                 state.extend(type3.get_coordinate())
             state.extend([10000, 0 , 0]) # budget ,costs incurred so far, followed by rewards collected so far
-
+            for vertex in vertices.keys():
+                graph.get_Node(vertex[0], vertex[1]).reset_node()
+                # vertex.reset_node()
             # we will forgo the randomness move from the actual implementation
 
             state = np.array(state)
