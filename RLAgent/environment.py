@@ -62,6 +62,34 @@ class Environment(object):
         (-1, -1): MOVE_SOUTH_WEST
     }
 
+    ZERO_INDEXED_NUMERIC_TO_STRING_ACTIONS = {
+        MOVE_NORTH - 1 : "MOVE NORTH",
+        MOVE_SOUTH - 1 : "MOVE SOUTH",
+        MOVE_EAST - 1: "MOVE EAST",
+        MOVE_WEST - 1: "MOVE WEST",
+        MOVE_NORTH_EAST - 1: "MOVE NORTH-EAST",
+        MOVE_NORTH_WEST - 1: "MOVE NORTH-WEST",
+        MOVE_SOUTH_EAST - 1: "MOVE SOUTH-EAST",
+        MOVE_SOUTH_WEST - 1: "MOVE SOUTH-WEST",
+        HIRE - 1: "HIRING",
+        EXTRACT - 1: "EXTRACTING REWARD",
+        IDLE - 1: "IDLE - REMAIN THERE"
+    }
+
+    ONE_INDEXED_NUMERIC_TO_STRING_ACTIONS = {
+        MOVE_NORTH : "MOVE NORTH",
+        MOVE_SOUTH : "MOVE SOUTH",
+        MOVE_EAST: "MOVE EAST",
+        MOVE_WEST: "MOVE WEST",
+        MOVE_NORTH_EAST: "MOVE NORTH-EAST",
+        MOVE_NORTH_WEST: "MOVE NORTH-WEST",
+        MOVE_SOUTH_EAST: "MOVE SOUTH-EAST",
+        MOVE_SOUTH_WEST: "MOVE SOUTH-WEST",
+        HIRE: "HIRING",
+        EXTRACT: "EXTRACTING REWARD",
+        IDLE: "IDLE - REMAIN THERE"
+    }
+
     def __init__(self, agents, isTrain=True) -> None:
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
@@ -79,7 +107,7 @@ class Environment(object):
     def step(self, state, actions, graph, ts, ssp):
         # Assumes all actions are valid
         # Note : ACTIONS is 0-indexed here
-        print("actions: ",actions)
+        # print("actions: ",actions)
         done = False
         reward_signal = 0
         for w_idx in range(0, len(self.worker_agents)):
@@ -94,10 +122,10 @@ class Environment(object):
                 assert(worker.isHired())
                 selected_delta = (Environment.ACTIONS_TO_DELTA[actions[w_idx] + 1])
                 new_x , new_y = w_x + selected_delta[0], w_y + selected_delta[1]
-                print(f"Worker {worker_idx} Selected Delta: ", selected_delta, f" from {(w_x, w_y)} -> {(new_x, new_y)}")
+                # print(f"Worker {worker_idx} Selected Delta: ", selected_delta, f" from {(w_x, w_y)} -> {(new_x, new_y)}")
                 assert((w_x, w_y) in ssp.keys())
-                print((new_x, new_y))
-                print("inside ? : ", ssp.keys())
+                # print((new_x, new_y))
+                # print("inside ? : ", ssp.keys())
                 assert((new_x, new_y) in ssp.keys())
                 reward_signal_i, _ = self.calculate_reward(graph, (w_x, w_y), (new_x, new_y), ssp, worker.get_type(), state[CURRENT_BUDGET])
                 reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
@@ -218,10 +246,11 @@ class Environment(object):
 
             while not done and time_step <= self.max_timestamps:
                 actions = []
-                agent_idx = 0
+                agent_idx = 1
                 for agent in self.worker_agents:
-                    a = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward)
-                    print("time_step: ", time_step, "0-index action: ", a , " for agent ", agent_idx)
+                    a = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward, agent_idx)
+                    #print("time_step: ", time_step, "0-index action: ", a , " for agent ", agent_idx)
+                    print(f"TS : {time_step}, Agent {agent_idx} chooses action : {Environment.ZERO_INDEXED_NUMERIC_TO_STRING_ACTIONS[a]}")
                     agent_idx += 1
                     actions.append(a)
                 next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step, ssp=shortest_path)
@@ -252,6 +281,10 @@ class Environment(object):
                             # print(agent.brain)
                             agent.brain.save_model()
         print(f'Graph finished running')
+        agent_idx = 0
+        for agent in self.worker_agents:
+            print(f"Final Position of Agent {agent_idx} : {agent.get_location()}")
+            agent_idx+=1
 
     def train(self, number_of_graphs=1):
 

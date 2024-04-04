@@ -92,15 +92,14 @@ class AgentWorker(Worker):
 
         return [x, y]
     
-    def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn):
+    def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn, idx):
         # Returns MOVES by zero-index
         print("===================================")
-        print(f'Agent state: {"HIRED" if self.is_Hired else "UNEMPLOYED"}')
+        print(f'Agent {idx} MOVEMENT state: {"HIRED" if self.is_Hired else "UNEMPLOYED"}')
         if (self.is_extracting()):
             return EXTRACT - 1
         #print("Agent is Hired Already")
         if (not self.is_Hired):
-            print("Agent not Hired")
             return HIRE - 1 if np.random.rand() <= 0.5 else IDLE - 1
         rng = np.random.rand()
         curr_location = self.get_location()
@@ -111,21 +110,22 @@ class AgentWorker(Worker):
             if ((mv == HIRE or mv == IDLE) and self.is_Hired):
                 continue
             selected_move = ACTIONS[mv]
-            print("action checking: ", selected_move)
+            # print("action checking: ", selected_move)
             new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
-            print("curr loc : ", curr_location, " proposed new loc: ", new_location)
+            # print("curr loc : ", curr_location, " proposed new loc: ", new_location)
             is_valid_move = (new_location in adj_nodes) # or (new_location == curr_location)
             if (is_valid_move):
-                print("mv ", mv , " is a valid move from ", curr_location, " to ", new_location)
+                # print("mv ", mv , " is a valid move from ", curr_location, " to ", new_location)
                 valid_moves_reward_signal_dict[mv - 1] = 0 # back to 0 index
-        print("valid moves: ", valid_moves_reward_signal_dict.keys())
+        # print("valid moves: ", valid_moves_reward_signal_dict.keys())
         assert(len(valid_moves_reward_signal_dict.keys()) > 0)
+        print(f"Agent {idx} filtered all Invalid Moves, and there exists at least 1!")
         if rng <= self.epsilon:
             print("Random Predicting This Round")
             move = random.randrange(self.action_size)
             while (move not in valid_moves_reward_signal_dict.keys()):
                 move = random.randrange(self.action_size)
-            print("===================================")
+            #print("===================================")
             return move
         elif self.epsilon < rng <= 2 * self.epsilon:
             print("Greedy Predicting This Round")
@@ -140,7 +140,7 @@ class AgentWorker(Worker):
                 if (valid_moves_reward_signal_dict[vm] > highest_reward):
                     highest_reward = valid_moves_reward_signal_dict[vm]
                     best_move = vm
-            print("===================================")
+            #print("===================================")
             return best_move
         else:
             probabilities = self.brain.predict_one_sample(state)
@@ -153,8 +153,7 @@ class AgentWorker(Worker):
                 probabilities[move] = -np.inf
                 move = np.argmax(probabilities)
                 #print("Probabilities from Agent's brain: ",probabilities)
-            print("Brain Predicting BEST MOVE: ", move)
-            print("===================================")
+            #print("===================================")
             return move
 
 
