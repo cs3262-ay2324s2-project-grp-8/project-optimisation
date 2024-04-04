@@ -1,9 +1,10 @@
+import time
 import numpy as np
 import os
 import random
 import argparse
 from agent import AgentWorker
-from utils import Graph, Worker, Node, DEBUG
+from utils import Graph, Worker, Node, DEBUG, DEBUG_RUNTIME
 
 '''
 1 - Move North
@@ -225,8 +226,12 @@ class Environment(object):
 
         shortest_path = self.floyd_warshall(graph)
 
+        total_time = 0
         for play_off_iters in range(1, self.playoff_iterations + 1):
-
+            
+            if DEBUG_RUNTIME:
+                start_time = time.time()
+                
             '''
             This part is for state reset and worker agents reset position - worker agents reset on location, but not their models
             '''
@@ -294,7 +299,17 @@ class Environment(object):
                             # print(agent.agent_name)
                             # print(agent.brain)
                             agent.brain.save_model()
-        print(f'Graph finished running')
+            if DEBUG_RUNTIME:                            
+                end_time = time.time()
+                if (play_off_iters % 100 == 0):
+                    print(f"Time taken for iteration {play_off_iters} : {(end_time - start_time)*100}")
+                total_time += end_time - start_time
+        
+        if DEBUG_RUNTIME:
+            print(f'Graph finished running, time taken : {total_time}')
+        else: 
+            print(f'Graph finished running')
+            
         agent_idx = 1
         for agent in self.worker_agents:
             print(f"Final Position of Agent {agent_idx} : {agent.get_location()}") if DEBUG else None

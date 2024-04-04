@@ -1,6 +1,7 @@
 import json
 
 DEBUG = False
+DEBUG_RUNTIME = True
 
 BASIC_SITE = 0
 ORIGN      = 1
