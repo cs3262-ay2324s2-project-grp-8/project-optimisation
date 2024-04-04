@@ -9,6 +9,22 @@ from brain import Brain
 MAX_EPSILON, MIN_EPSILON = 1.0, 0.01
 MAX_BETA, MIN_BETA = 0.4, 1.0
 
+MOVE_NORTH = 1
+MOVE_SOUTH = 2
+MOVE_EAST = 3
+MOVE_WEST = 4
+MOVE_NORTH_EAST = 5
+MOVE_NORTH_WEST = 6
+MOVE_SOUTH_EAST = 7
+MOVE_SOUTH_WEST = 8
+HIRE = 9
+EXTRACT = 10
+IDLE = 11
+
+CURRENT_BUDGET = -3
+COST_INCURRED = -2
+REWARDS_EXTRACTED = -1
+
 class AgentWorker(Worker):
     
     epsilon = MAX_EPSILON
@@ -76,29 +92,75 @@ class AgentWorker(Worker):
 
         return [x, y]
     
-    def greedy_move(self, state, graph, ACTIONS):
-        if np.random.rand() <= self.epsilon:
-            move = random.randrange(self.action_size)
-        else:
-            move = np.argmax(self.brain.predict_one_sample(state))
-        
+    def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn, idx):
+        # Returns MOVES by zero-index
+        print("======================================================================")
+        print(f'Agent {idx} MOVEMENT state: {"HIRED" if self.is_Hired else "UNEMPLOYED"}')
+        if (self.is_extracting()):
+            return EXTRACT - 1
+        #print("Agent is Hired Already")
+        if (not self.is_Hired):
+            return HIRE - 1 if np.random.rand() <= 0.5 else IDLE - 1
+        # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
+        rng = np.random.rand()
         curr_location = self.get_location()
-        selected_move = ACTIONS[move + 1]
-            
-        # print(f'Curr Location: {curr_location}, Move: {selected_move}, Move Code: {move + 1}')
-            
-        new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
-            
-        adj_nodes = [coordinate.get_coordinate() for coordinate in graph.get_adjacent_nodes_by_coordinates(curr_location[0], curr_location[1])]
-            
-        is_valid_move = new_location in adj_nodes
-        # print(f'Agent: {self.agent_index+1}, Current Location: {curr_location}, New Location: {new_location}, Adjacent Nodes: {adj_nodes}, Is Valid Move: {is_valid_move}')
-            
-        if (is_valid_move):
+         # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
+        curr_node : Node = graph.get_vertices()[curr_location]
+        if (curr_node.get_reward() > 0 and curr_node.can_extract()):
+            curr_node.sight() # this agent chope the node already, other agents on this node cant extract anymore
+            return EXTRACT - 1 
+        valid_moves_reward_signal_dict = dict() # store moves in 0-index also
+        adj_nodes = graph.get_edges()[curr_location]
+        for mv in range(1, 12):
+            if ((mv == HIRE or mv == IDLE) and self.is_Hired):
+                continue
+            if (mv == EXTRACT):
+                continue
+            selected_move = ACTIONS[mv]
+            # print("action checking: ", selected_move)
+            new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
+            # print("curr loc : ", curr_location, " proposed new loc: ", new_location)
+            is_valid_move = (new_location in adj_nodes) # or (new_location == curr_location)
+            if (is_valid_move):
+                # print("mv ", mv , " is a valid move from ", curr_location, " to ", new_location)
+                valid_moves_reward_signal_dict[mv - 1] = 0 # back to 0 index
+        assert(len(valid_moves_reward_signal_dict.keys()) > 0)
+        print(f"Agent {idx} filtered all Invalid Moves, and there exists at least 1!")
+        if rng <= self.epsilon:
+            print("Random Predicting This Round")
+            move = random.randrange(self.action_size)
+            while (move not in valid_moves_reward_signal_dict.keys()):
+                move = random.randrange(self.action_size)
+            #print("===================================")
             return move
+        elif self.epsilon < rng <= 2 * self.epsilon:
+            print("Greedy Predicting This Round")
+            # greedy approach
+            # iterate through all valid moves and estimate reward
+            best_move, highest_reward = None, -np.inf
+            for vm in valid_moves_reward_signal_dict.keys(): # 0-idex
+                selected_move = ACTIONS[vm + 1]
+                new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
+                print(f"{curr_location} -> {new_location}")
+                valid_moves_reward_signal_dict[vm], _ = reward_fn(graph, curr_location, new_location, ssp, self.type, state[CURRENT_BUDGET])
+                if (valid_moves_reward_signal_dict[vm] >= highest_reward):
+                    highest_reward = valid_moves_reward_signal_dict[vm]
+                    best_move = vm
+            #print("===================================")
+            return best_move
         else:
-            return 10
-
+            probabilities = self.brain.predict_one_sample(state)
+            #print("Probabilities from Agent's brain: ",probabilities)
+            move = np.argmax(probabilities)
+            print("Brain Predicting This Round")
+            # check if move is within the valid moves, 
+            # if invalid, then 0 the prob, then get the next highest
+            while (int(move) not in valid_moves_reward_signal_dict.keys()):
+                probabilities[move] = -np.inf
+                move = np.argmax(probabilities)
+                #print("Probabilities from Agent's brain: ",probabilities)
+            #print("===================================")
+            return move
     
     def observe(self, sample):
         self.memory.remember(sample)

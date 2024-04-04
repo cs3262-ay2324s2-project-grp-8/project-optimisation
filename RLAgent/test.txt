@@ -1,0 +1,1330 @@
+Graph Initialised Successfully!
+Origin : ((1, 9) TYPE : 1)
+(1, 9)[(0, 8)]
+(0, 8)[(1, 9), (0, 7)]
+(5, 4)[(4, 4), (5, 3), (6, 3), (5, 5)]
+(4, 4)[(5, 4), (3, 5), (5, 3), (5, 5)]
+(5, 3)[(5, 4), (4, 4), (4, 2), (5, 2), (6, 2), (6, 3)]
+(6, 3)[(5, 4), (7, 4), (5, 2), (5, 3), (6, 2), (7, 3)]
+(5, 5)[(5, 4), (4, 4), (4, 6), (5, 6)]
+(9, 9)[(8, 8), (8, 9)]
+(8, 8)[(9, 9), (7, 8), (7, 7), (8, 7), (8, 9)]
+(8, 9)[(9, 9), (7, 8), (8, 8)]
+(8, 5)[(7, 4), (7, 5), (8, 6), (9, 6)]
+(7, 4)[(8, 5), (7, 5), (7, 3), (6, 3)]
+(7, 5)[(8, 5), (7, 4), (8, 6)]
+(8, 6)[(8, 5), (7, 5), (7, 7), (9, 6), (8, 7)]
+(9, 6)[(8, 5), (8, 6), (8, 7)]
+(3, 5)[(4, 4), (3, 6), (2, 4), (2, 6), (4, 6)]
+(7, 8)[(8, 8), (7, 7), (6, 7), (8, 7), (8, 9)]
+(7, 7)[(7, 8), (8, 8), (8, 6), (6, 7), (8, 7)]
+(6, 7)[(7, 8), (7, 7), (5, 6)]
+(8, 7)[(7, 8), (8, 8), (7, 7), (8, 6), (9, 6)]
+(6, 0)[(7, 1), (5, 0)]
+(7, 1)[(6, 0), (8, 2), (6, 2), (8, 1)]
+(5, 0)[(6, 0), (4, 0)]
+(7, 3)[(7, 4), (8, 2), (6, 2), (6, 3)]
+(3, 8)[(2, 7), (4, 8)]
+(2, 7)[(3, 8), (3, 6), (2, 6), (1, 6)]
+(4, 8)[(3, 8), (5, 9)]
+(1, 4)[(2, 4), (0, 4)]
+(2, 4)[(1, 4), (3, 5)]
+(0, 4)[(1, 4)]
+(4, 2)[(5, 2), (3, 2), (5, 3)]
+(5, 2)[(4, 2), (5, 3), (6, 2), (6, 3)]
+(3, 2)[(4, 2)]
+(6, 2)[(5, 2), (7, 1), (5, 3), (7, 3), (6, 3)]
+(5, 9)[(4, 8)]
+(3, 6)[(2, 7), (2, 6), (3, 5), (4, 6)]
+(2, 6)[(3, 6), (2, 7), (3, 5), (1, 6)]
+(4, 6)[(3, 6), (3, 5), (5, 6), (5, 5)]
+(1, 6)[(2, 7), (0, 7), (2, 6)]
+(8, 2)[(7, 1), (9, 1), (7, 3), (8, 1)]
+(9, 1)[(8, 2), (8, 1)]
+(8, 1)[(8, 2), (7, 1), (9, 1)]
+(5, 6)[(6, 7), (4, 6), (5, 5)]
+(0, 7)[(1, 6), (0, 8)]
+(4, 0)[(5, 0)]
+
+===================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 1 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 2 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 2 chooses action : HIRING
+===================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 3 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 4 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 4 chooses action : HIRING
+===================================
+Agent 5 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 5 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 6 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 7 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 7 chooses action : HIRING
+===================================
+Agent 8 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 8 chooses action : HIRING
+===================================
+Agent 9 MOVEMENT state: UNEMPLOYED
+TS : 0, Agent 9 chooses action : HIRING
+Calculating Reward for : (1, 9) -> (1, 9)
+Calculating Reward for : (1, 9) -> (1, 9)
+Calculating Reward for : (1, 9) -> (1, 9)
+Calculating Reward for : (1, 9) -> (1, 9)
+Calculating Reward for : (1, 9) -> (1, 9)
+Position of Agent 1 @ TS 1 : (1, 9)
+Position of Agent 2 @ TS 1 : (1, 9)
+Position of Agent 3 @ TS 1 : (1, 9)
+Position of Agent 4 @ TS 1 : (1, 9)
+Position of Agent 5 @ TS 1 : (1, 9)
+Position of Agent 6 @ TS 1 : (1, 9)
+Position of Agent 7 @ TS 1 : (1, 9)
+Position of Agent 8 @ TS 1 : (1, 9)
+Position of Agent 9 @ TS 1 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: UNEMPLOYED
+TS : 1, Agent 1 chooses action : HIRING
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 1, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: UNEMPLOYED
+TS : 1, Agent 3 chooses action : HIRING
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 1, Agent 4 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 5 MOVEMENT state: UNEMPLOYED
+TS : 1, Agent 5 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 1, Agent 6 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 1, Agent 7 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 1, Agent 8 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 1, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 9) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 9) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 2 : (1, 9)
+Position of Agent 2 @ TS 2 : (0, 8)
+Position of Agent 3 @ TS 2 : (1, 9)
+Position of Agent 4 @ TS 2 : (0, 8)
+Position of Agent 5 @ TS 2 : (1, 9)
+Position of Agent 6 @ TS 2 : (1, 9)
+Position of Agent 7 @ TS 2 : (0, 8)
+Position of Agent 8 @ TS 2 : (0, 8)
+Position of Agent 9 @ TS 2 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 2, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 2, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 2, Agent 3 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 2, Agent 4 chooses action : MOVE SOUTH
+===================================
+Agent 5 MOVEMENT state: UNEMPLOYED
+TS : 2, Agent 5 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 2, Agent 6 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 2, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 2, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 2, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 3 : (0, 8)
+Position of Agent 2 @ TS 3 : (1, 9)
+Position of Agent 3 @ TS 3 : (0, 8)
+Position of Agent 4 @ TS 3 : (0, 7)
+Position of Agent 5 @ TS 3 : (1, 9)
+Position of Agent 6 @ TS 3 : (1, 9)
+Position of Agent 7 @ TS 3 : (0, 7)
+Position of Agent 8 @ TS 3 : (0, 7)
+Position of Agent 9 @ TS 3 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 3, Agent 1 chooses action : MOVE SOUTH
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 3, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 3, Agent 3 chooses action : MOVE SOUTH
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 3, Agent 4 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 5 MOVEMENT state: UNEMPLOYED
+TS : 3, Agent 5 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 3, Agent 6 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 3, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 3, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 3, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 4 : (0, 7)
+Position of Agent 2 @ TS 4 : (0, 8)
+Position of Agent 3 @ TS 4 : (0, 7)
+Position of Agent 4 @ TS 4 : (1, 6)
+Position of Agent 5 @ TS 4 : (1, 9)
+Position of Agent 6 @ TS 4 : (1, 9)
+Position of Agent 7 @ TS 4 : (0, 8)
+Position of Agent 8 @ TS 4 : (0, 8)
+Position of Agent 9 @ TS 4 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 4, Agent 1 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 4, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 4, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 4, Agent 4 chooses action : MOVE EAST
+===================================
+Agent 5 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 5 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 4, Agent 6 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 4, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 4, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 4, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (1, 6) -> (2, 6)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 5 : (1, 6)
+Position of Agent 2 @ TS 5 : (1, 9)
+Position of Agent 3 @ TS 5 : (1, 6)
+Position of Agent 4 @ TS 5 : (2, 6)
+Position of Agent 5 @ TS 5 : (1, 9)
+Position of Agent 6 @ TS 5 : (1, 9)
+Position of Agent 7 @ TS 5 : (0, 7)
+Position of Agent 8 @ TS 5 : (0, 7)
+Position of Agent 9 @ TS 5 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 5, Agent 1 chooses action : MOVE NORTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 5, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 5, Agent 3 chooses action : MOVE NORTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 5, Agent 4 chooses action : MOVE EAST
+===================================
+Agent 5 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 5 chooses action : HIRING
+===================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 5, Agent 6 chooses action : IDLE - REMAIN THERE
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 5, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 5, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 5, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 6) -> (2, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 6) -> (0, 7)
+Calculating Reward for : (2, 6) -> (3, 6)
+Calculating Reward for : (1, 9) -> (1, 9)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 6 : (2, 7)
+Position of Agent 2 @ TS 6 : (0, 8)
+Position of Agent 3 @ TS 6 : (0, 7)
+Position of Agent 4 @ TS 6 : (3, 6)
+Position of Agent 5 @ TS 6 : (1, 9)
+Position of Agent 6 @ TS 6 : (1, 9)
+Position of Agent 7 @ TS 6 : (0, 8)
+Position of Agent 8 @ TS 6 : (0, 8)
+Position of Agent 9 @ TS 6 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 6, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 6, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 6, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 6, Agent 4 chooses action : MOVE SOUTH
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 6, Agent 5 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 6 MOVEMENT state: UNEMPLOYED
+TS : 6, Agent 6 chooses action : HIRING
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 6, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 6, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 6, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (2, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (3, 6) -> (3, 5)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 9) -> (1, 9)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 7 : (1, 6)
+Position of Agent 2 @ TS 7 : (1, 9)
+Position of Agent 3 @ TS 7 : (1, 6)
+Position of Agent 4 @ TS 7 : (3, 5)
+Position of Agent 5 @ TS 7 : (0, 8)
+Position of Agent 6 @ TS 7 : (1, 9)
+Position of Agent 7 @ TS 7 : (0, 7)
+Position of Agent 8 @ TS 7 : (0, 7)
+Position of Agent 9 @ TS 7 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 1 chooses action : MOVE NORTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 3 chooses action : MOVE NORTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 4 chooses action : MOVE NORTH-EAST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 5 chooses action : MOVE NORTH-EAST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 6 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 7, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 6) -> (2, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 6) -> (0, 7)
+Calculating Reward for : (3, 5) -> (4, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 8 : (2, 7)
+Position of Agent 2 @ TS 8 : (0, 8)
+Position of Agent 3 @ TS 8 : (0, 7)
+Position of Agent 4 @ TS 8 : (4, 6)
+Position of Agent 5 @ TS 8 : (1, 9)
+Position of Agent 6 @ TS 8 : (0, 8)
+Position of Agent 7 @ TS 8 : (0, 8)
+Position of Agent 8 @ TS 8 : (0, 8)
+Position of Agent 9 @ TS 8 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 4 chooses action : MOVE EAST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 5 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 6 chooses action : MOVE NORTH-EAST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 8, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (2, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (4, 6) -> (5, 6)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 9 : (1, 6)
+Position of Agent 2 @ TS 9 : (1, 9)
+Position of Agent 3 @ TS 9 : (1, 6)
+Position of Agent 4 @ TS 9 : (5, 6)
+Position of Agent 5 @ TS 9 : (0, 8)
+Position of Agent 6 @ TS 9 : (1, 9)
+Position of Agent 7 @ TS 9 : (0, 7)
+Position of Agent 8 @ TS 9 : (0, 7)
+Position of Agent 9 @ TS 9 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 1 chooses action : MOVE NORTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 3 chooses action : MOVE NORTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 4 chooses action : MOVE SOUTH
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 5 chooses action : MOVE NORTH-EAST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 6 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 9, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 6) -> (2, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 6) -> (0, 7)
+Calculating Reward for : (5, 6) -> (5, 5)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 10 : (2, 7)
+Position of Agent 2 @ TS 10 : (0, 8)
+Position of Agent 3 @ TS 10 : (0, 7)
+Position of Agent 4 @ TS 10 : (5, 5)
+Position of Agent 5 @ TS 10 : (1, 9)
+Position of Agent 6 @ TS 10 : (0, 8)
+Position of Agent 7 @ TS 10 : (0, 8)
+Position of Agent 8 @ TS 10 : (0, 8)
+Position of Agent 9 @ TS 10 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 4 chooses action : MOVE SOUTH
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 5 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 6 chooses action : MOVE NORTH-EAST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 10, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (2, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (5, 5) -> (5, 4)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 11 : (1, 6)
+Position of Agent 2 @ TS 11 : (1, 9)
+Position of Agent 3 @ TS 11 : (1, 6)
+Position of Agent 4 @ TS 11 : (5, 4)
+Position of Agent 5 @ TS 11 : (0, 8)
+Position of Agent 6 @ TS 11 : (1, 9)
+Position of Agent 7 @ TS 11 : (0, 7)
+Position of Agent 8 @ TS 11 : (0, 7)
+Position of Agent 9 @ TS 11 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 1 chooses action : MOVE NORTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 3 chooses action : MOVE NORTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 4 chooses action : MOVE SOUTH
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 5 chooses action : MOVE NORTH-EAST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 6 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 11, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 6) -> (2, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 6) -> (0, 7)
+Calculating Reward for : (5, 4) -> (5, 3)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 12 : (2, 7)
+Position of Agent 2 @ TS 12 : (0, 8)
+Position of Agent 3 @ TS 12 : (0, 7)
+Position of Agent 4 @ TS 12 : (5, 3)
+Position of Agent 5 @ TS 12 : (1, 9)
+Position of Agent 6 @ TS 12 : (0, 8)
+Position of Agent 7 @ TS 12 : (0, 8)
+Position of Agent 8 @ TS 12 : (0, 8)
+Position of Agent 9 @ TS 12 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 4 chooses action : MOVE SOUTH
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 5 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 6 chooses action : MOVE NORTH-EAST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 12, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (2, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (5, 3) -> (5, 2)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 13 : (1, 6)
+Position of Agent 2 @ TS 13 : (1, 9)
+Position of Agent 3 @ TS 13 : (1, 6)
+Position of Agent 4 @ TS 13 : (5, 2)
+Position of Agent 5 @ TS 13 : (0, 8)
+Position of Agent 6 @ TS 13 : (1, 9)
+Position of Agent 7 @ TS 13 : (0, 7)
+Position of Agent 8 @ TS 13 : (0, 7)
+Position of Agent 9 @ TS 13 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 1 chooses action : MOVE NORTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 3 chooses action : MOVE NORTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 4 chooses action : MOVE EAST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 5 chooses action : MOVE NORTH-EAST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 6 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 13, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 6) -> (2, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 6) -> (0, 7)
+Calculating Reward for : (5, 2) -> (6, 2)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 14 : (2, 7)
+Position of Agent 2 @ TS 14 : (0, 8)
+Position of Agent 3 @ TS 14 : (0, 7)
+Position of Agent 4 @ TS 14 : (6, 2)
+Position of Agent 5 @ TS 14 : (1, 9)
+Position of Agent 6 @ TS 14 : (0, 8)
+Position of Agent 7 @ TS 14 : (0, 8)
+Position of Agent 8 @ TS 14 : (0, 8)
+Position of Agent 9 @ TS 14 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 4 chooses action : MOVE NORTH-EAST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 5 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 6 chooses action : MOVE NORTH-EAST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 14, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (2, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (6, 2) -> (7, 3)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 15 : (1, 6)
+Position of Agent 2 @ TS 15 : (1, 9)
+Position of Agent 3 @ TS 15 : (1, 6)
+Position of Agent 4 @ TS 15 : (7, 3)
+Position of Agent 5 @ TS 15 : (0, 8)
+Position of Agent 6 @ TS 15 : (1, 9)
+Position of Agent 7 @ TS 15 : (0, 7)
+Position of Agent 8 @ TS 15 : (0, 7)
+Position of Agent 9 @ TS 15 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 1 chooses action : MOVE NORTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 3 chooses action : MOVE NORTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 4 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 5 chooses action : MOVE NORTH-EAST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 6 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 15, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 6) -> (2, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 6) -> (0, 7)
+Calculating Reward for : (7, 3) -> (8, 2)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 16 : (2, 7)
+Position of Agent 2 @ TS 16 : (0, 8)
+Position of Agent 3 @ TS 16 : (0, 7)
+Position of Agent 4 @ TS 16 : (8, 2)
+Position of Agent 5 @ TS 16 : (1, 9)
+Position of Agent 6 @ TS 16 : (0, 8)
+Position of Agent 7 @ TS 16 : (0, 8)
+Position of Agent 8 @ TS 16 : (0, 8)
+Position of Agent 9 @ TS 16 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 4 chooses action : MOVE SOUTH
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 5 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 6 chooses action : MOVE NORTH-EAST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 16, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (2, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (8, 2) -> (8, 1)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 17 : (1, 6)
+Position of Agent 2 @ TS 17 : (1, 9)
+Position of Agent 3 @ TS 17 : (1, 6)
+Position of Agent 4 @ TS 17 : (8, 1)
+Position of Agent 5 @ TS 17 : (0, 8)
+Position of Agent 6 @ TS 17 : (1, 9)
+Position of Agent 7 @ TS 17 : (0, 7)
+Position of Agent 8 @ TS 17 : (0, 7)
+Position of Agent 9 @ TS 17 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 1 chooses action : MOVE NORTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 3 chooses action : MOVE NORTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 4 chooses action : MOVE EAST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 5 chooses action : MOVE NORTH-EAST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 6 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 17, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 6) -> (2, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 6) -> (0, 7)
+Calculating Reward for : (8, 1) -> (9, 1)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 18 : (2, 7)
+Position of Agent 2 @ TS 18 : (0, 8)
+Position of Agent 3 @ TS 18 : (0, 7)
+Position of Agent 4 @ TS 18 : (9, 1)
+Position of Agent 5 @ TS 18 : (1, 9)
+Position of Agent 6 @ TS 18 : (0, 8)
+Position of Agent 7 @ TS 18 : (0, 8)
+Position of Agent 8 @ TS 18 : (0, 8)
+Position of Agent 9 @ TS 18 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 4 chooses action : MOVE WEST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 5 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 6 chooses action : MOVE NORTH-EAST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 18, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (2, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (9, 1) -> (8, 1)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 19 : (1, 6)
+Position of Agent 2 @ TS 19 : (1, 9)
+Position of Agent 3 @ TS 19 : (1, 6)
+Position of Agent 4 @ TS 19 : (8, 1)
+Position of Agent 5 @ TS 19 : (0, 8)
+Position of Agent 6 @ TS 19 : (1, 9)
+Position of Agent 7 @ TS 19 : (0, 7)
+Position of Agent 8 @ TS 19 : (0, 7)
+Position of Agent 9 @ TS 19 : (1, 9)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 1 chooses action : MOVE NORTH-EAST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 2 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 3 chooses action : MOVE NORTH-WEST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 4 chooses action : MOVE EAST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 5 chooses action : MOVE NORTH-EAST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 6 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 7 chooses action : MOVE NORTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 8 chooses action : MOVE NORTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 19, Agent 9 chooses action : MOVE SOUTH-WEST
+Calculating Reward for : (1, 6) -> (2, 7)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (1, 6) -> (0, 7)
+Calculating Reward for : (8, 1) -> (9, 1)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (0, 7) -> (0, 8)
+Calculating Reward for : (1, 9) -> (0, 8)
+Position of Agent 1 @ TS 20 : (2, 7)
+Position of Agent 2 @ TS 20 : (0, 8)
+Position of Agent 3 @ TS 20 : (0, 7)
+Position of Agent 4 @ TS 20 : (9, 1)
+Position of Agent 5 @ TS 20 : (1, 9)
+Position of Agent 6 @ TS 20 : (0, 8)
+Position of Agent 7 @ TS 20 : (0, 8)
+Position of Agent 8 @ TS 20 : (0, 8)
+Position of Agent 9 @ TS 20 : (0, 8)
+===================================
+Agent 1 MOVEMENT state: HIRED
+Agent 1 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 20, Agent 1 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 2 MOVEMENT state: HIRED
+Agent 2 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 20, Agent 2 chooses action : MOVE NORTH-EAST
+===================================
+Agent 3 MOVEMENT state: HIRED
+Agent 3 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 20, Agent 3 chooses action : MOVE SOUTH-EAST
+===================================
+Agent 4 MOVEMENT state: HIRED
+Agent 4 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 20, Agent 4 chooses action : MOVE WEST
+===================================
+Agent 5 MOVEMENT state: HIRED
+Agent 5 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 20, Agent 5 chooses action : MOVE SOUTH-WEST
+===================================
+Agent 6 MOVEMENT state: HIRED
+Agent 6 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 20, Agent 6 chooses action : MOVE NORTH-EAST
+===================================
+Agent 7 MOVEMENT state: HIRED
+Agent 7 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 20, Agent 7 chooses action : MOVE SOUTH
+===================================
+Agent 8 MOVEMENT state: HIRED
+Agent 8 filtered all Invalid Moves, and there exists at least 1!
+Greedy Predicting This Round
+(0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+(0, 8) -> (1, 9)
+Calculating Reward for : (0, 8) -> (1, 9)
+TS : 20, Agent 8 chooses action : MOVE SOUTH
+===================================
+Agent 9 MOVEMENT state: HIRED
+Agent 9 filtered all Invalid Moves, and there exists at least 1!
+Brain Predicting This Round
+TS : 20, Agent 9 chooses action : MOVE NORTH-EAST
+Calculating Reward for : (2, 7) -> (1, 6)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 7) -> (1, 6)
+Calculating Reward for : (9, 1) -> (8, 1)
+Calculating Reward for : (1, 9) -> (0, 8)
+Calculating Reward for : (0, 8) -> (1, 9)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (0, 7)
+Calculating Reward for : (0, 8) -> (1, 9)
+Position of Agent 1 @ TS 21 : (1, 6)
+Position of Agent 2 @ TS 21 : (1, 9)
+Position of Agent 3 @ TS 21 : (1, 6)
+Position of Agent 4 @ TS 21 : (8, 1)
+Position of Agent 5 @ TS 21 : (0, 8)
+Position of Agent 6 @ TS 21 : (1, 9)
+Position of Agent 7 @ TS 21 : (0, 7)
+Position of Agent 8 @ TS 21 : (0, 7)
+Position of Agent 9 @ TS 21 : (1, 9)
+Graph 1, Profit 0, Final Timestamp 21, Done? True
+Graph finished running
+Final Position of Agent 1 : (1, 6)
+Final Position of Agent 2 : (1, 9)
+Final Position of Agent 3 : (1, 6)
+Final Position of Agent 4 : (8, 1)
+Final Position of Agent 5 : (0, 8)
+Final Position of Agent 6 : (1, 9)
+Final Position of Agent 7 : (0, 7)
+Final Position of Agent 8 : (0, 7)
+Final Position of Agent 9 : (1, 9)
+Finished Training

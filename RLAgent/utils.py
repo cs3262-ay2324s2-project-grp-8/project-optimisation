@@ -6,18 +6,30 @@ SITE1      = 2
 SITE2      = 3
 SITE3      = 4
 
+TYPE_ID_TO_STRING_TYPE: dict[int, str] = {
+    0 : "BASIC SITE",
+    1 : "ORIGIN",
+    2 : "REWARD TYPE 1",
+    3 : "REWARD TYPE 2",
+    4 : "REWARD TYPE 3"
+}
 class Node:
 
     def __init__(self, node_info, coordinate):
         self.type = node_info["vertex_type"]
         self.reward = node_info["reward"]
+        self.current_reward = node_info["reward"]
         self.active_period = node_info["mult_time_active"]
         self.acquire_time = node_info["time_to_acquire"]
         self.coordinate = coordinate
         self.accessed = False
+        self.current_accessors = []
+        self.sighted = False
+        self.extracted = False
+        self.extractor : Node | None = None
     
     def __repr__(self) -> str:
-        return f'({self.get_x_coordinate(), self.get_y_coordinate()} TYPE : {self.type})'
+        return f'({self.get_x_coordinate(), self.get_y_coordinate()} TYPE : {TYPE_ID_TO_STRING_TYPE[self.type]})'
 
     def get_type(self):
         '''
@@ -33,9 +45,44 @@ class Node:
     def get_active_period(self) -> list :
         return self.active_period
     
+    def someone_eyeing_node(self):
+        return self.sighted
+    
+    def sight(self):
+        self.sighted = True
+    
     def get_acquire_time(self):
         return self.acquire_time
     
+    def enter(self, agent_worker):
+        self.current_accessors.append(agent_worker)
+
+    def leave(self, agent_worker):
+        self.current_accessors.remove(agent_worker)
+
+    def can_extract(self):
+        return self.extracted
+
+    def extract(self, agent_worker):
+        self.enter(agent_worker=agent_worker)
+        self.extractor = agent_worker
+        self.extracted = True
+
+    def has_extractor(self):
+        return self.extractor is not None
+    
+    def leave_node_extractor(self):
+        self.leave(self.extractor)
+        self.extractor = None
+        
+    def reset_node(self):
+        self.current_accessors.clear()
+        self.extractor = None
+        self.current_reward = self.reward
+        self.extracted = False
+        self.accessed = False
+        self.sighted = False
+
     def access(self):
         self.accessed = True
 
@@ -55,7 +102,7 @@ class Node:
         return self.reward
     
     def zero_reward(self):
-        self.reward = 0
+        self.current_reward = 0
         self.accessed = True
 
 
@@ -70,6 +117,28 @@ class Graph:
         self.sites_info = dict() # key : site type -> value: list of Node objects
         self.process()
     
+    def __str__(self) -> str:
+        stuff =  {
+            "vertices": self.vertices,
+            "edges" : self.edges
+        }
+        string_construct = "Origin : " + str(self.get_Origin()) + "\n"
+        for e, v in stuff["edges"].items():
+            string_construct += str(e) + str(v) + "\n"
+        string_construct += "Type 1 Reward Sites: \n"
+        for k in self.retrieve_all_sites_of_type(SITE1):
+            string_construct += str(k) + "\n"
+        string_construct += "\n"
+        string_construct += "Type 2 Reward Sites: \n"
+        for k in self.retrieve_all_sites_of_type(SITE2):
+            string_construct += str(k) + "\n"
+        string_construct += "\n"
+        string_construct += "Type 3 Reward Sites: \n"
+        for k in self.retrieve_all_sites_of_type(SITE3):
+            string_construct += str(k) + "\n"
+        string_construct += "\n"
+        return string_construct
+
     def process(self):
 
         # Process the vertices
@@ -169,10 +238,10 @@ class Worker:
     def hire(self):
         self.is_Hired = True
 
-    def extract(self, graph):
+    def extract(self, node : Node):
         self.isExtracting = True
-        node = graph.get_Node(self.location[0], self.location[1])
         self.waitTime = node.get_type() - 1
+        node.extract(self)
 
     def done_extracting(self):
         self.isExtracting = False
