@@ -95,8 +95,8 @@ class Environment(object):
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        # self.playoff_iterations = 1 
-        self.playoff_iterations = 5000
+        self.playoff_iterations = 1 
+        # self.playoff_iterations = 5000
         self.isTrain = isTrain
         self.filling_steps = 4
         self.steps_b_updates = 500
@@ -131,7 +131,9 @@ class Environment(object):
                 reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
                 state[worker_idx] = new_x
                 state[worker_idx + 1] = new_y
+                print(f"Worker's rate add to cost : {worker.get_rate()}")
                 state[COST_INCURRED] += worker.get_rate()
+                print(f"Total Cost incurred : {state[COST_INCURRED]}")
                 state[CURRENT_BUDGET] -= worker.get_rate()
                 worker.move_to_coordinates(state[worker_idx], state[worker_idx + 1])
             if (actions[w_idx] == HIRE - 1):
@@ -148,8 +150,10 @@ class Environment(object):
                     worker.decrease_waitTime()
                     if (worker.get_waitTime() == 0):
                         worker.done_extracting()
+                        print(f"Worker {w_idx} is done extracting")
                         curr_node.leave_node_extractor()
                         assert(curr_node.extractor is None)
+                        print(f"Getting reward : ",worker.reward_at_location(graph, zero_out=False) )
                         state[REWARDS_EXTRACTED] += worker.reward_at_location(graph, zero_out=True)
                 else:
                     assert(worker.isHired())
@@ -158,6 +162,7 @@ class Environment(object):
                     reward_signal += worker.reward_at_location(graph, zero_out=False) - worker.get_type() * worker.get_rate()
         if (ts >= self.max_timestamps or state[CURRENT_BUDGET] <= 0):
             done = True
+        print("New state : ", state)
         return state, reward_signal, done
 
     def floyd_warshall(self, graph: Graph) :
@@ -195,7 +200,7 @@ class Environment(object):
             reward_sites = graph.retrieve_all_sites_of_type(i) # correct already
             #print(reward_sites)
             for rs in reward_sites:
-                if rs.can_extract():  # extractor there -> take it as a basic state - ignore
+                if not rs.can_extract():  # extractor there -> take it as a basic state - ignore
                     continue
                 if (graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())]) > curr_budget):
                     continue
@@ -258,16 +263,17 @@ class Environment(object):
             done = False
             reward_all = 0
             time_step = 0
-
+            current_budget_left_for_this_agent = state[CURRENT_BUDGET]
             while not done and time_step <= self.max_timestamps:
                 actions = []
                 agent_idx = 1
                 for agent in self.worker_agents:
-                    a = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward, agent_idx)
+                    a, cost_induced_by_agent = agent.greedy_move(state, graph, self.ACTIONS_TO_DELTA, shortest_path, self.calculate_reward, agent_idx, current_budget_left_for_this_agent)
                     #print("time_step: ", time_step, "0-index action: ", a , " for agent ", agent_idx)
                     print(f"TS : {time_step}, Agent {agent_idx} chooses action : {Environment.ZERO_INDEXED_NUMERIC_TO_STRING_ACTIONS[a]}") if DEBUG else None
                     agent_idx += 1
                     actions.append(a)
+                    current_budget_left_for_this_agent -= cost_induced_by_agent
                 next_state, reward, done = self.step(state, actions, graph=graph, ts=time_step, ssp=shortest_path)
                 next_state = np.array(next_state)
 
@@ -289,7 +295,7 @@ class Environment(object):
                     agent_idx+=1
             profit_history.append(profit_all)
 
-            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=reward_all, ts=time_step, done=done)) if DEBUG else None
+            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG else None
 
             if self.isTrain:
                 if total_step % 100 == 0:

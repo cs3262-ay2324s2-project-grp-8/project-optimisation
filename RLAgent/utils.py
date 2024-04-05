@@ -1,6 +1,6 @@
 import json
 
-DEBUG = False
+DEBUG = True
 DEBUG_RUNTIME = True
 
 BASIC_SITE = 0
@@ -29,6 +29,7 @@ class Node:
         self.current_accessors = []
         self.sighted = False
         self.extracted = False
+        self.extracted_before = False
         self.extractor : Node | None = None
     
     def __repr__(self) -> str:
@@ -64,7 +65,7 @@ class Node:
         self.current_accessors.remove(agent_worker)
 
     def can_extract(self):
-        return self.extracted
+        return not self.extracted_before and not self.extracted and not self.sighted
 
     def extract(self, agent_worker):
         self.enter(agent_worker=agent_worker)
@@ -214,7 +215,7 @@ class Worker:
     def __init__(self, type : int, start, rate, timestamp):
         self.type = type
         self.location = start
-        self.rate = rate
+        self.rate = 500 if type == 3 else type * 100
         self.ts = timestamp
         self.is_Hired = False
         self.isExtracting = False
@@ -266,7 +267,6 @@ class Worker:
         reward = node.get_reward()
         if (zero_out):
             node.zero_reward()
-            return 0
         return reward
 
 

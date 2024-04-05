@@ -25,6 +25,10 @@ CURRENT_BUDGET = -3
 COST_INCURRED = -2
 REWARDS_EXTRACTED = -1
 
+WORKER_TYPE_1 = 1
+WORKER_TYPE_2 = 2
+WORKER_TYPE_3 = 3
+
 class AgentWorker(Worker):
     
     epsilon = MAX_EPSILON
@@ -92,24 +96,39 @@ class AgentWorker(Worker):
 
         return [x, y]
     
-    def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn, idx):
+    def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn, idx, current_budget_left_this_round):
+        '''
+        3 * 3 + 2 * 5 + 4 * 9 = 19 + 36 = 55
+        '''
+        def active_hiring_probability(type_of_worker):
+            if type_of_worker == WORKER_TYPE_1:
+                return 9.0 / 55
+            return 10.0 / 55 if type_of_worker == WORKER_TYPE_2 else 36.0 / 55
         # Returns MOVES by zero-index
         if DEBUG:
             print("======================================================================")
             print(f'Agent {idx} MOVEMENT state: {"HIRED" if self.is_Hired else "UNEMPLOYED"}')
         if (self.is_extracting()):
-            return EXTRACT - 1
+            return EXTRACT - 1, self.get_rate()
         #print("Agent is Hired Already")
         if (not self.is_Hired):
-            return HIRE - 1 if np.random.rand() <= 0.5 else IDLE - 1
+            if (np.random.rand() <= active_hiring_probability(self.type)):
+                if (current_budget_left_this_round >= 2000):
+                    return HIRE - 1, 0
+            else:
+                return IDLE - 1, 0
         # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         rng = np.random.rand()
         curr_location = self.get_location()
          # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         curr_node : Node = graph.get_vertices()[curr_location]
-        if (curr_node.get_reward() > 0 and curr_node.can_extract()):
+        if (graph.get_vertices()[curr_location].get_reward() > 0):
+            print("Current Loc is Reward Site")
+            if (graph.get_vertices()[curr_location].can_extract()):
+                print("Reward Site can be extracted!")
+        if (curr_node.get_reward() > 0 and curr_node.get_type() - 1 <= self.type and curr_node.can_extract() and not curr_node.someone_eyeing_node()):
             curr_node.sight() # this agent chope the node already, other agents on this node cant extract anymore
-            return EXTRACT - 1 
+            return EXTRACT - 1 , self.get_rate()
         valid_moves_reward_signal_dict = dict() # store moves in 0-index also
         adj_nodes = graph.get_edges()[curr_location]
         for mv in range(1, 12):
@@ -133,7 +152,7 @@ class AgentWorker(Worker):
             while (move not in valid_moves_reward_signal_dict.keys()):
                 move = random.randrange(self.action_size)
             #print("===================================")
-            return move
+            return move, self.get_rate()
         elif self.epsilon < rng <= 2 * self.epsilon:
             print("Greedy Predicting This Round") if DEBUG else None
             # greedy approach
@@ -148,7 +167,7 @@ class AgentWorker(Worker):
                     highest_reward = valid_moves_reward_signal_dict[vm]
                     best_move = vm
             #print("===================================")
-            return best_move
+            return best_move,  self.get_rate()
         else:
             probabilities = self.brain.predict_one_sample(state)
             #print("Probabilities from Agent's brain: ",probabilities)
@@ -161,7 +180,7 @@ class AgentWorker(Worker):
                 move = np.argmax(probabilities)
                 #print("Probabilities from Agent's brain: ",probabilities)
             #print("===================================")
-            return move
+            return move, self.get_rate()
     
     def observe(self, sample):
         self.memory.remember(sample)
