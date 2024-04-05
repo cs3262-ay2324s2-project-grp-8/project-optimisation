@@ -31,6 +31,7 @@ MOVE_SOUTH_WEST = 8
 HIRE = 9
 EXTRACT = 10
 IDLE = 11
+FIRE = 12
 
 CURRENT_BUDGET = -3
 COST_INCURRED = -2
@@ -49,7 +50,8 @@ class Environment(object):
         MOVE_SOUTH_WEST : (-1, -1),
         HIRE : (0, 0),
         EXTRACT: (0, 0),
-        IDLE: (0, 0)
+        IDLE: (0, 0),
+        FIRE: (0,0)
     }
 
     DELTA_TO_ACTIONS = {
@@ -74,7 +76,8 @@ class Environment(object):
         MOVE_SOUTH_WEST - 1: "MOVE SOUTH-WEST",
         HIRE - 1: "HIRING",
         EXTRACT - 1: "EXTRACTING REWARD",
-        IDLE - 1: "IDLE - REMAIN THERE"
+        IDLE - 1: "IDLE - REMAIN THERE",
+        FIRE - 1: "FIRING"
     }
 
     ONE_INDEXED_NUMERIC_TO_STRING_ACTIONS = {
@@ -88,15 +91,16 @@ class Environment(object):
         MOVE_SOUTH_WEST: "MOVE SOUTH-WEST",
         HIRE: "HIRING",
         EXTRACT: "EXTRACTING REWARD",
-        IDLE: "IDLE - REMAIN THERE"
+        IDLE: "IDLE - REMAIN THERE",
+        FIRE: "FIRING"
     }
 
     def __init__(self, agents, isTrain=True) -> None:
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        # self.playoff_iterations = 1 
-        self.playoff_iterations = 5000
+        self.playoff_iterations = 1 
+        # self.playoff_iterations = 5000
         self.isTrain = isTrain
         self.filling_steps = 0
         self.steps_b_updates = 5
@@ -117,6 +121,11 @@ class Environment(object):
             # if worker idle, then dont care. If worker is not hired and action is not hired, dont care
             if (actions[w_idx] == IDLE - 1 or (not self.worker_agents[w_idx].isHired() and actions[w_idx] != HIRE - 1)):
                 continue
+            elif (actions[w_idx] == FIRE - 1):
+                state[worker_idx] = graph.get_Origin().get_coordinate()[0]
+                state[worker_idx + 1] = graph.get_Origin().get_coordinate()[1]
+                self.worker_agents[w_idx].fire()
+                continue
             worker = self.worker_agents[w_idx]
             w_x, w_y = state[worker_idx], state[worker_idx + 1] 
             if (MOVE_NORTH <= actions[w_idx] + 1 <= MOVE_SOUTH_WEST):
@@ -125,8 +134,8 @@ class Environment(object):
                 selected_delta = (Environment.ACTIONS_TO_DELTA[actions[w_idx] + 1])
                 new_x , new_y = w_x + selected_delta[0], w_y + selected_delta[1]
                 # print(f"Worker {worker_idx} Selected Delta: ", selected_delta, f" from {(w_x, w_y)} -> {(new_x, new_y)}")
-                assert((w_x, w_y) in ssp.keys())
-                assert((new_x, new_y) in ssp.keys())
+                # assert((w_x, w_y) in ssp.keys())
+                # assert((new_x, new_y) in ssp.keys())
                 reward_signal_i, _ = self.calculate_reward(graph, (w_x, w_y), (new_x, new_y), ssp, worker.get_type(), state[CURRENT_BUDGET])
                 reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
                 state[worker_idx] = new_x
@@ -136,12 +145,12 @@ class Environment(object):
                 print(f"Total Cost incurred : {state[COST_INCURRED]}")
                 state[CURRENT_BUDGET] -= worker.get_rate()
                 worker.move_to_coordinates(state[worker_idx], state[worker_idx + 1])
-            if (actions[w_idx] == HIRE - 1):
+            elif (actions[w_idx] == HIRE - 1):
                 loc = (state[worker_idx], state[worker_idx + 1])
                 reward_signal_i, _ = self.calculate_reward(graph, loc, loc, ssp, worker.get_type(), state[CURRENT_BUDGET])
                 reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
                 worker.hire()
-            if (actions[w_idx] == EXTRACT - 1):
+            elif (actions[w_idx] == EXTRACT - 1):
                 state[COST_INCURRED] += worker.get_rate()
                 state[CURRENT_BUDGET] -= worker.get_rate()
                 curr_node : Node = graph.get_Node(w_x, w_y)
@@ -213,6 +222,9 @@ class Environment(object):
                             best_action = HIRE
                         else:
                             best_action = Environment.DELTA_TO_ACTIONS[(next_loc[0] - curr_loc[0], next_loc[1] - curr_loc[1])]
+        if best_action == None or max_calculated_reward < 0:
+            best_action = FIRE
+            max_calculated_reward = 0
         print(f"Best reward : {max_calculated_reward} ; best_action : {best_action}") if DEBUG else None
         return max_calculated_reward, best_action
 
@@ -295,7 +307,7 @@ class Environment(object):
                     agent_idx+=1
             profit_history.append(profit_all)
 
-            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG else None
+            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG_RUNTIME else None
 
             if self.isTrain:
                 if total_step % 100 == 0:
