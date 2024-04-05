@@ -99,8 +99,8 @@ class AgentWorker(Worker):
     def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn, idx, current_budget_left_this_round):
         def active_hiring_probability(type_of_worker):
             if type_of_worker == WORKER_TYPE_1:
-                return 1.0 / 30
-            return 2.0 / 90 if type_of_worker == WORKER_TYPE_2 else 4.0 / 90
+                return 1.0 / 3
+            return 2.0 / 9 if type_of_worker == WORKER_TYPE_2 else 4.0 / 9
         # Returns MOVES by zero-index
         if DEBUG:
             print("======================================================================")
@@ -109,7 +109,11 @@ class AgentWorker(Worker):
             return EXTRACT - 1, self.get_rate()
         #print("Agent is Hired Already")
         if (not self.is_Hired):
-            return (HIRE - 1 if np.random.rand() <= active_hiring_probability(self.type) else IDLE - 1, 0)
+            if (np.random.rand() <= active_hiring_probability(self.type)):
+                if (current_budget_left_this_round >= 2000):
+                    return HIRE - 1, 0
+            else:
+                return IDLE - 1, 0
         # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         rng = np.random.rand()
         curr_location = self.get_location()
