@@ -122,6 +122,8 @@ class Environment(object):
             if (actions[w_idx] == IDLE - 1 or (not self.worker_agents[w_idx].isHired() and actions[w_idx] != HIRE - 1)):
                 continue
             elif (actions[w_idx] == FIRE - 1):
+                self.fire()
+            elif (actions[w_idx] == FIRE - 1):
                 state[worker_idx] = graph.get_Origin().get_coordinate()[0]
                 state[worker_idx + 1] = graph.get_Origin().get_coordinate()[1]
                 self.worker_agents[w_idx].fire()
