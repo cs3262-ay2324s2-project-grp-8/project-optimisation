@@ -200,7 +200,7 @@ class Environment(object):
             reward_sites = graph.retrieve_all_sites_of_type(i) # correct already
             #print(reward_sites)
             for rs in reward_sites:
-                if rs.can_extract():  # extractor there -> take it as a basic state - ignore
+                if not rs.can_extract():  # extractor there -> take it as a basic state - ignore
                     continue
                 if (graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())]) > curr_budget):
                     continue
