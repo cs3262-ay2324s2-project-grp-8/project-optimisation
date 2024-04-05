@@ -246,9 +246,7 @@ class Environment(object):
 
         total_time = 0
         for play_off_iters in range(1, self.playoff_iterations + 1):
-
-            print(f'Playoff Iteration {play_off_iters}:') if DEBUG_PROFIT_ONLY else None
-            
+                        
             if DEBUG_RUNTIME:
                 start_time = time.time()
                 
@@ -310,7 +308,7 @@ class Environment(object):
                     agent_idx+=1
             profit_history.append(profit_all)
 
-            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG_RUNTIME or DEBUG_PROFIT_ONLY else None
+            print("Playoff Iteration {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG_RUNTIME or DEBUG_PROFIT_ONLY else None
 
             if self.isTrain:
                 if total_step % 100 == 0:
