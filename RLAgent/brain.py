@@ -5,7 +5,6 @@ import torch.nn.functional as F
 import torch.optim as optim
 import os
 
-
 class Brain():
     def __init__(self, state_size, action_size, brain_name, arguments):
         super(Brain, self).__init__()

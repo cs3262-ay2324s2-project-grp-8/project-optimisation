@@ -95,11 +95,11 @@ class Environment(object):
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        self.playoff_iterations = 1 
-        # self.playoff_iterations = 5000
+        # self.playoff_iterations = 1 
+        self.playoff_iterations = 5000
         self.isTrain = isTrain
-        self.filling_steps = 4
-        self.steps_b_updates = 500
+        self.filling_steps = 0
+        self.steps_b_updates = 5
         self.worker_agents = agents # Note: Worker Agents will each have a model, but it will not be reset.
 
     def obtain_graph_information(self, id : int):
@@ -213,7 +213,7 @@ class Environment(object):
                             best_action = HIRE
                         else:
                             best_action = Environment.DELTA_TO_ACTIONS[(next_loc[0] - curr_loc[0], next_loc[1] - curr_loc[1])]
-        print(f"est reward : {max_calculated_reward} ; best_action : {best_action}") if DEBUG else None
+        print(f"Best reward : {max_calculated_reward} ; best_action : {best_action}") if DEBUG else None
         return max_calculated_reward, best_action
 
     def run_for_graph(self, graph: Graph):

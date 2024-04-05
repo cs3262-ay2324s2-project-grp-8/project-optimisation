@@ -68,31 +68,32 @@ class AgentWorker(Worker):
         p_ = self.brain.predict(states_)
         pTarget_ = self.brain.predict(states_, target=True)
 
-        x = np.zeros((batch_len, self.state_size))
-        y = np.zeros((batch_len, self.action_size))
-        errors = np.zeros(batch_len)
+        x = np.zeros((batch_len, self.state_size)) # States
+        y = np.zeros((batch_len, self.action_size)) # Target Q-values
 
         for i in range(batch_len):
-            o = batch[i]
-            s = o[0]
-            a = o[1][self.agent_index]
-            r = o[2]
-            s_ = o[3]
-            done = o[4]
+            o = batch[i] # Batch i
+            s = o[0] # State
+            a = o[1][self.agent_index] # Agent id
+            r = o[2] # Reward
+            s_ = o[3] # Next State
+            done = o[4] # Is Terminal state
 
-            t = p[i]
+            t = p[i] #target
             old_value = t[a]
+            
+            #Update target Q-value
             if done:
-                t[a] = r
+                t[a] = r # No future rewards, so reward is just itself
             else:
                 if self.target_type == 'DQN':
-                    t[a] = r + self.gamma * np.amax(pTarget_[i])
+                    t[a] = r + self.gamma * np.amax(pTarget_[i]) # Selects discounted maximum of future rewards
                 else:
                     print('Invalid type for target network!')
 
+            # Update final state and target Q-values
             x[i] = s
             y[i] = t
-            errors[i] = np.abs(t[a] - old_value)
 
         return [x, y]
     

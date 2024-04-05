@@ -1,6 +1,8 @@
 from agent import AgentWorker
 from brain import Brain
 from environment import Environment
+import torch
+import sys
 
 args = {
     'agent_count': 9,
@@ -8,21 +10,26 @@ args = {
     'memory_model': 'UER',
     'memory_capacity': 10000,
     'target_type': 'DQN',
-    'target_frequency': 1000,
+    'target_frequency': 100,
     'maximum_exploration': 1000,
     'batch_size': 32,
     'gamma': 0.95,
     'number_nodes': 256,
     'optimizer': 'Adam',
-    'memory_capacity': 1000000,
-    'pr_scale': 0.5,
-    'test': False
+    'test': True
 }
 
 def get_agent_type(agent_index):
     return 1 if agent_index < 3 else 2 if agent_index < 5 else 3
 
 if __name__ == "__main__":
+    
+    log = True
+    log_file = None
+    if log:
+        log_file = open("log_30.txt", "w")
+        sys.stdout = log_file
+    
     agents = []
     
     """
@@ -45,4 +52,8 @@ if __name__ == "__main__":
         agents.append(new_agent)
         
     environment = Environment(agents, isTrain=True)
-    environment.train(number_of_graphs=1)
+    environment.train(number_of_graphs=30)
+    
+    if log:
+        log_file.close()
+        sys.stdout = sys.__stdout__
