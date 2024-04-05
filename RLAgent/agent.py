@@ -97,10 +97,13 @@ class AgentWorker(Worker):
         return [x, y]
     
     def greedy_move(self, state, graph, ACTIONS, ssp, reward_fn, idx, current_budget_left_this_round):
+        '''
+        3 * 3 + 2 * 4 + 4 * 9 = 17 + 36 = 53
+        '''
         def active_hiring_probability(type_of_worker):
             if type_of_worker == WORKER_TYPE_1:
-                return 1.0 / 3
-            return 2.0 / 9 if type_of_worker == WORKER_TYPE_2 else 4.0 / 9
+                return 9.0 / 53
+            return 8.0 / 53 if type_of_worker == WORKER_TYPE_2 else 36.0 / 53
         # Returns MOVES by zero-index
         if DEBUG:
             print("======================================================================")
