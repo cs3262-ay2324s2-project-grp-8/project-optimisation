@@ -1,7 +1,9 @@
 import json
 
-DEBUG = True
-DEBUG_RUNTIME = True
+DEBUG = False
+DEBUG_RUNTIME = False
+DEBUG_PROFIT_ONLY = True
+LOG_FULL = False
 
 BASIC_SITE = 0
 ORIGN      = 1

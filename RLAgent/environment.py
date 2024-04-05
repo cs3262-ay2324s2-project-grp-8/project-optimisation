@@ -4,7 +4,8 @@ import os
 import random
 import argparse
 from agent import AgentWorker
-from utils import Graph, Worker, Node, DEBUG, DEBUG_RUNTIME
+from utils import Graph, Worker, Node
+from utils import DEBUG, DEBUG_RUNTIME, DEBUG_PROFIT_ONLY, LOG_FULL
 
 '''
 1 - Move North
@@ -99,7 +100,7 @@ class Environment(object):
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        self.playoff_iterations = 1 
+        self.playoff_iterations = 50000 
         # self.playoff_iterations = 5000
         self.isTrain = isTrain
         self.filling_steps = 0
@@ -140,9 +141,9 @@ class Environment(object):
                 reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
                 state[worker_idx] = new_x
                 state[worker_idx + 1] = new_y
-                print(f"Worker's rate add to cost : {worker.get_rate()}")
+                print(f"Worker's rate add to cost : {worker.get_rate()}") if LOG_FULL else None
                 state[COST_INCURRED] += worker.get_rate()
-                print(f"Total Cost incurred : {state[COST_INCURRED]}")
+                print(f"Total Cost incurred : {state[COST_INCURRED]}") if LOG_FULL else None
                 state[CURRENT_BUDGET] -= worker.get_rate()
                 worker.move_to_coordinates(state[worker_idx], state[worker_idx + 1])
             elif (actions[w_idx] == HIRE - 1):
@@ -171,7 +172,7 @@ class Environment(object):
                     reward_signal += worker.reward_at_location(graph, zero_out=False) - worker.get_type() * worker.get_rate()
         if (ts >= self.max_timestamps or state[CURRENT_BUDGET] <= 0):
             done = True
-        print("New state : ", state)
+        print("New state : ", state) if LOG_FULL else None
         return state, reward_signal, done
 
     def floyd_warshall(self, graph: Graph) :
@@ -245,6 +246,8 @@ class Environment(object):
 
         total_time = 0
         for play_off_iters in range(1, self.playoff_iterations + 1):
+
+            print(f'Playoff Iteration {play_off_iters}:') if DEBUG_PROFIT_ONLY else None
             
             if DEBUG_RUNTIME:
                 start_time = time.time()
@@ -307,7 +310,7 @@ class Environment(object):
                     agent_idx+=1
             profit_history.append(profit_all)
 
-            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG_RUNTIME else None
+            print("Graph {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG_RUNTIME or DEBUG_PROFIT_ONLY else None
 
             if self.isTrain:
                 if total_step % 100 == 0:
