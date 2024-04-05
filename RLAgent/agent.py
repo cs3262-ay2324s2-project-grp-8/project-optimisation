@@ -20,6 +20,7 @@ MOVE_SOUTH_WEST = 8
 HIRE = 9
 EXTRACT = 10
 IDLE = 11
+FIRE = 12
 
 CURRENT_BUDGET = -3
 COST_INCURRED = -2
@@ -181,6 +182,8 @@ class AgentWorker(Worker):
                 move = np.argmax(probabilities)
                 #print("Probabilities from Agent's brain: ",probabilities)
             #print("===================================")
+            if probabilities[move] < 0:
+                return FIRE - 1, 0
             return move, self.get_rate()
     
     def observe(self, sample):

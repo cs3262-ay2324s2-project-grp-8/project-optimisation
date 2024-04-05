@@ -16,7 +16,7 @@ args = {
     'gamma': 0.95,
     'number_nodes': 256,
     'optimizer': 'Adam',
-    'test': True
+    'test': False
 }
 
 def get_agent_type(agent_index):
@@ -27,7 +27,7 @@ if __name__ == "__main__":
     log = True
     log_file = None
     if log:
-        log_file = open("log_30.txt", "w")
+        log_file = open("log_1.txt", "w")
         sys.stdout = log_file
     
     agents = []
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     , CurrentBudget, CostsIncurredSoFar, RewardsExtractedSoFar
     """
     state_size = 39
-    action_size = 11
+    action_size = 12
     
     for idx, agent in enumerate(range(args['agent_count'])):
         

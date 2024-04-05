@@ -241,6 +241,9 @@ class Worker:
     
     def hire(self):
         self.is_Hired = True
+        
+    def fire(self):
+        self.is_Hired = False
 
     def extract(self, node : Node):
         self.isExtracting = True
