@@ -221,6 +221,7 @@ class Worker:
         self.ts = timestamp
         self.is_Hired = False
         self.isExtracting = False
+        self.fired = False
         self.waitTime = 0
 
     def get_type(self):
@@ -243,6 +244,10 @@ class Worker:
     
     def hire(self):
         self.is_Hired = True
+
+    def fire(self):
+        self.is_Hired = False
+        self.fired = True
         
     def fire(self):
         self.is_Hired = False
@@ -266,6 +271,9 @@ class Worker:
         
     def isHired(self):
         return self.is_Hired
+
+    def isFiredBefore(self):
+        return self.fired
     
     def reward_at_location(self, graph, zero_out):
         node = graph.get_Node(self.location[0], self.location[1])

@@ -58,6 +58,8 @@ class AgentWorker(Worker):
     def reset_worker_without_model(self, origin: Node):
         self.isExtracting = False
         self.is_Hired = False
+        self.fired = False
+        self.waitTime = 0
         self.move_back_to_origin(origin=origin)
 
     def find_targets_uer(self, batch):
@@ -111,6 +113,8 @@ class AgentWorker(Worker):
         if DEBUG:
             print("======================================================================")
             print(f'Agent {idx} MOVEMENT state: {"HIRED" if self.is_Hired else "UNEMPLOYED"}')
+        if (self.isFiredBefore()):
+            return IDLE - 1, 0
         if (self.is_extracting()):
             return EXTRACT - 1, self.get_rate()
         #print("Agent is Hired Already")
@@ -169,6 +173,8 @@ class AgentWorker(Worker):
                 if (valid_moves_reward_signal_dict[vm] >= highest_reward):
                     highest_reward = valid_moves_reward_signal_dict[vm]
                     best_move = vm
+            if best_move is None:
+                return FIRE - 1, 0
             #print("===================================")
             return best_move,  self.get_rate()
         else:
