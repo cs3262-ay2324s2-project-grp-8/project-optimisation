@@ -100,7 +100,7 @@ class Environment(object):
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        self.playoff_iterations = 20000 
+        self.playoff_iterations = 200 
         # self.playoff_iterations = 5000
         # self.playoff_iterations = 1
         self.isTrain = isTrain
@@ -337,8 +337,8 @@ class Environment(object):
                     agent_idx+=1
             profit_history.append(profit_all)
 
-            print("Playoff Iteration {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG_TIME_TAKEN or DEBUG_PROFIT_ONLY else None
-
+            print(f'Graph {graph.filename}, Playoff Iteration {play_off_iters}, Profit {profit_all}, Final Timestamp {time_step}, Done? {done}') if DEBUG_TIME_TAKEN or DEBUG_PROFIT_ONLY else None
+                
             if self.isTrain:
                 if total_step % 100 == 0:
                     if profit_all > max_profit:

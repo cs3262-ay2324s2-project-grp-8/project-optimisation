@@ -1,4 +1,4 @@
-import json
+import json, re
 
 DEBUG = False
 DEBUG_TIME_TAKEN = False
@@ -115,6 +115,7 @@ class Node:
 class Graph:
 
     def __init__(self, json_filename):
+        self.filename = re.search(r'graph(\d+)\.json', json_filename).group(1)
         self.data = json.load(open(json_filename))
         self.vertices = dict() # key (x1, y1) -> value : Node
         self.edges = dict() # key (x1, y1) -> value : list of int tuples

@@ -54,7 +54,7 @@ if __name__ == "__main__":
         agents.append(new_agent)
         
     environment = Environment(agents, isTrain=True)
-    environment.train(number_of_graphs=1)
+    environment.train(number_of_graphs=100)
     
     if log:
         log_file.close()
