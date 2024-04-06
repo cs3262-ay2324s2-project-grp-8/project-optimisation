@@ -5,7 +5,7 @@ import random
 import argparse
 from agent import AgentWorker
 from utils import Graph, Worker, Node
-from utils import DEBUG, DEBUG_RUNTIME, DEBUG_PROFIT_ONLY, LOG_FULL
+from utils import DEBUG, DEBUG_TIME_TAKEN, DEBUG_PROFIT_ONLY, LOG_FULL
 
 '''
 1 - Move North
@@ -245,7 +245,7 @@ class Environment(object):
         total_time = 0
         for play_off_iters in range(1, self.playoff_iterations + 1):
                         
-            if DEBUG_RUNTIME:
+            if DEBUG_TIME_TAKEN:
                 start_time = time.time()
                 
             '''
@@ -306,7 +306,7 @@ class Environment(object):
                     agent_idx+=1
             profit_history.append(profit_all)
 
-            print("Playoff Iteration {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG_RUNTIME or DEBUG_PROFIT_ONLY else None
+            print("Playoff Iteration {p}, Profit {profit}, Final Timestamp {ts}, Done? {done}".format(p=play_off_iters, profit=profit_all, ts=time_step, done=done)) if DEBUG_TIME_TAKEN or DEBUG_PROFIT_ONLY else None
 
             if self.isTrain:
                 if total_step % 100 == 0:
@@ -316,13 +316,13 @@ class Environment(object):
                             # print(agent.agent_name)
                             # print(agent.brain)
                             agent.brain.save_model()
-            if DEBUG_RUNTIME:                            
+            if DEBUG_TIME_TAKEN:                            
                 end_time = time.time()
                 if (play_off_iters % 100 == 0):
                     print(f"Time taken for iteration {play_off_iters} : {(end_time - start_time)*100}")
                 total_time += end_time - start_time
         
-        if DEBUG_RUNTIME:
+        if DEBUG_TIME_TAKEN:
             print(f'Graph finished running, time taken : {total_time}')
         else: 
             print(f'Graph finished running')

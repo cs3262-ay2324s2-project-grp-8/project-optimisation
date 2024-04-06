@@ -174,6 +174,7 @@ class AgentWorker(Worker):
                     highest_reward = valid_moves_reward_signal_dict[vm]
                     best_move = vm
             if best_move is None:
+                print("No best move found, so FIRE") 
                 return FIRE - 1, 0
             #print("===================================")
             return best_move,  self.get_rate()
