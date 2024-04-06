@@ -1,9 +1,14 @@
-from LS_agent import LocalSearchAgent
-from LS_utils import Graph
+from LocalSearchAgent.agent_LS import LocalSearchAgent
+from LocalSearchAgent.utils_LS import Graph
+import sys
 
 if __name__ == '__main__':
     
+    LOG_FILENAME = 'LS_test.log.txt'
     TEST_GRAPH_COUNT = 5
+    
+    log_file = open(LOG_FILENAME, "w")
+    sys.stdout = log_file
     
     for graph_number in range(TEST_GRAPH_COUNT):
         
