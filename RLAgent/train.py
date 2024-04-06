@@ -11,7 +11,7 @@ args = {
     'memory_capacity': 10000,
     'target_type': 'DQN',
     'target_frequency': 100,
-    'maximum_exploration': 1000,
+    'maximum_exploration': 20,
     'batch_size': 32,
     'gamma': 0.95,
     'number_nodes': 256,
@@ -24,7 +24,7 @@ def get_agent_type(agent_index):
 
 if __name__ == "__main__":
     
-    log = True
+    log = False
     log_file = None
     log_filename = 'train.log.txt'
     

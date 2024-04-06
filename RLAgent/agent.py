@@ -204,32 +204,18 @@ class AgentWorker(Worker):
             print("Brain Predicting This Round") if DEBUG else None
             # check if move is within the valid moves, 
             # if invalid, then 0 the prob, then get the next highest
-                
-            while True:
-                if not self.isHired():
-                    if move != HIRE - 1 or move != IDLE - 1:
-                        utility[move] = -np.inf
-                        move = np.argmax(utility)
-                    elif move == HIRE - 1:
-                        return HIRE - 1, 0
-                    elif move == IDLE - 1:
-                        return IDLE - 1, 0
-                elif utility[move] == -np.inf:
-                    return IDLE - 1, 0                   
-                else:
-                    break
             
-            while (move not in valid_moves_reward_signal_dict.keys()):
-                utility[move] = -np.inf
-                move = np.argmax(utility)
-                if move == HIRE - 1 and not self.isHired():
-                    return HIRE - 1, 0
-                elif move == IDLE - 1 and not self.isHired():
-                    return IDLE - 1, 0
-                elif not self.isHired():
-                    continue
-                elif np.max(utility) == -np.inf:
-                    return IDLE - 1, 0
+            if not self.isHired():
+                while (move != HIRE - 1 or move != IDLE - 1):
+                    utility[move] = -np.inf
+                    move = np.argmax(utility)
+                    if np.max(utility) == -np.inf:
+                        return IDLE - 1, 0
+            else:
+                while (move not in valid_moves_reward_signal_dict.keys()):
+                    utility[move] = -np.inf
+                    move = np.argmax(utility)
+                
             return move, self.get_rate()
     
     def observe(self, sample):
