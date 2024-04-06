@@ -96,13 +96,11 @@ class Environment(object):
         FIRE: "FIRING"
     }
 
-    def __init__(self, agents, isTrain=True) -> None:
+    def __init__(self, agents, isTrain=True, playoff_iterations=1) -> None:
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        self.playoff_iterations = 200 
-        # self.playoff_iterations = 5000
-        # self.playoff_iterations = 1
+        self.playoff_iterations = playoff_iterations
         self.isTrain = isTrain
         self.filling_steps = 60
         self.steps_b_updates = 10

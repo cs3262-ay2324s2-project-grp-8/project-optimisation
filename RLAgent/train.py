@@ -41,6 +41,8 @@ if __name__ == "__main__":
     """
     state_size = 39
     action_size = 12
+    playoff_iterations = 500
+    number_of_graphs = 100
     
     for idx, agent in enumerate(range(args['agent_count'])):
         
@@ -53,8 +55,8 @@ if __name__ == "__main__":
         
         agents.append(new_agent)
         
-    environment = Environment(agents, isTrain=True)
-    environment.train(number_of_graphs=100)
+    environment = Environment(agents, isTrain=True, playoff_iterations=playoff_iterations)
+    environment.train(number_of_graphs=number_of_graphs)
     
     if log:
         log_file.close()
