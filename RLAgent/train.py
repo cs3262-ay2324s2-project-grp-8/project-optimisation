@@ -26,8 +26,10 @@ if __name__ == "__main__":
     
     log = True
     log_file = None
+    log_filename = 'train.log.txt'
+    
     if log:
-        log_file = open("log_1.txt", "w")
+        log_file = open(log_filename, "w")
         sys.stdout = log_file
     
     agents = []

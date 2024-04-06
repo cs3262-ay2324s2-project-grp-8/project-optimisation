@@ -1,7 +1,8 @@
 import numpy as np
 import random
 
-from utils import Worker, Node, DEBUG
+from utils import Worker, Node
+from utils import DEBUG, LOG_FULL
 
 from uniform_experience_replay import Memory as UER
 from brain import Brain
@@ -129,9 +130,9 @@ class AgentWorker(Worker):
          # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         curr_node : Node = graph.get_vertices()[curr_location]
         if (graph.get_vertices()[curr_location].get_reward() > 0):
-            print("Current Loc is Reward Site")
+            print("Current Loc is Reward Site") if LOG_FULL else None
             if (graph.get_vertices()[curr_location].can_extract()):
-                print("Reward Site can be extracted!")
+                print("Reward Site can be extracted!") if LOG_FULL else None
         if (curr_node.get_reward() > 0 and curr_node.get_type() - 1 <= self.type and curr_node.can_extract() and not curr_node.someone_eyeing_node()):
             curr_node.sight() # this agent chope the node already, other agents on this node cant extract anymore
             return EXTRACT - 1 , self.get_rate()
@@ -173,6 +174,7 @@ class AgentWorker(Worker):
                     highest_reward = valid_moves_reward_signal_dict[vm]
                     best_move = vm
             if best_move is None:
+                print("No best move found, so FIRE") 
                 return FIRE - 1, 0
             #print("===================================")
             return best_move,  self.get_rate()
@@ -188,8 +190,8 @@ class AgentWorker(Worker):
                 move = np.argmax(probabilities)
                 #print("Probabilities from Agent's brain: ",probabilities)
             #print("===================================")
-            if probabilities[move] < 0:
-                return FIRE - 1, 0
+            # if probabilities[move] < 0:
+            #     return FIRE - 1, 0
             return move, self.get_rate()
     
     def observe(self, sample):

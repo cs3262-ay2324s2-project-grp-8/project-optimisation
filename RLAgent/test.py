@@ -25,8 +25,10 @@ if __name__ == "__main__":
     
     log = True
     log_file = None
+    log_filename = 'test.log.txt'
+    
     if log:
-        log_file = open("log_30_test.txt", "w")
+        log_file = open(log_filename, "w")
         sys.stdout = log_file
     
     agents = []
