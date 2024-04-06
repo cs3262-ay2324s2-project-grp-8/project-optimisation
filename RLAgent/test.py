@@ -40,7 +40,7 @@ if __name__ == "__main__":
     """
     state_size = 39
     action_size = 12
-    playoff_iterations = 500
+    playoff_iterations = 1
     number_of_graphs = 100
     
     for idx, agent in enumerate(range(args['agent_count'])):

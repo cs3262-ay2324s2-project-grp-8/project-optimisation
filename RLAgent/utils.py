@@ -1,9 +1,10 @@
 import json, re
 
 DEBUG = False
-DEBUG_TIME_TAKEN = False
-DEBUG_PROFIT_ONLY = True
 LOG_FULL = False
+LOG_TIME_TAKEN = False
+LOG_EXTRACTION = False
+LOG_PROFIT = True
 
 BASIC_SITE = 0
 ORIGN      = 1
