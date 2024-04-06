@@ -4,13 +4,16 @@ import matplotlib.pyplot as plt
 
 data  = []
 
-pattern = r"Playoff Iteration (\d+), Profit (-?\d+), Final Timestamp (\d+), Done\? (\w+)"
+"""
+Graph 1, Playoff Iteration 15, Profit -8000, Final Timestamp 18, Done? True
+"""
+pattern = r"Graph (\d+), Playoff Iteration (\d+), Profit (-?\d+), Final Timestamp (\d+), Done\? (\w+)"
 
 with open('train.log.txt', 'r') as file:
     for line in file:
         match = re.match(pattern, line)
         if match:
-            iter, profit, timestamp, done = match.groups()
+            graph, iter, profit, timestamp, done = match.groups()
             data.append(
                 {'Iteration': int(iter), 'Profit': int(profit), 'Timestamp': int(timestamp)}
             )
