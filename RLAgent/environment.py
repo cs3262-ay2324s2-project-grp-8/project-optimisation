@@ -100,11 +100,12 @@ class Environment(object):
         self.number_of_graphs_to_train = 10000
         self.number_of_workers = 9
         self.max_timestamps = 20
-        self.playoff_iterations = 50000 
+        self.playoff_iterations = 20000 
         # self.playoff_iterations = 5000
+        # self.playoff_iterations = 1
         self.isTrain = isTrain
-        self.filling_steps = 0
-        self.steps_b_updates = 5
+        self.filling_steps = 60
+        self.steps_b_updates = 10
         self.worker_agents = agents # Note: Worker Agents will each have a model, but it will not be reset.
 
     def obtain_graph_information(self, id : int):
@@ -116,7 +117,7 @@ class Environment(object):
         # Note : ACTIONS is 0-indexed here
         # print("actions: ",actions)
         done = False
-        reward_signal = 0
+        reward_signal = 1
         for w_idx in range(0, len(self.worker_agents)):
             worker_idx = 2 * w_idx
             # if worker idle, then dont care. If worker is not hired and action is not hired, dont care
@@ -135,19 +136,19 @@ class Environment(object):
                 # print(f"Worker {worker_idx} Selected Delta: ", selected_delta, f" from {(w_x, w_y)} -> {(new_x, new_y)}")
                 # assert((w_x, w_y) in ssp.keys())
                 # assert((new_x, new_y) in ssp.keys())
-                reward_signal_i, _ = self.calculate_reward(graph, (w_x, w_y), (new_x, new_y), ssp, worker.get_type(), state[CURRENT_BUDGET])
-                reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
+                reward_signal_i, _ = self.calculate_reward_step(graph, (w_x, w_y), (new_x, new_y), ssp, worker.get_type(), state[CURRENT_BUDGET])
+                reward_signal *= reward_signal_i
                 state[worker_idx] = new_x
                 state[worker_idx + 1] = new_y
-                print(f"Worker's rate add to cost : {worker.get_rate()}") if LOG_FULL else None
+                print(f"Worker's rate add to cost : {worker.get_rate()}") if DEBUG else None
                 state[COST_INCURRED] += worker.get_rate()
-                print(f"Total Cost incurred : {state[COST_INCURRED]}") if LOG_FULL else None
+                print(f"Total Cost incurred : {state[COST_INCURRED]}") if DEBUG else None
                 state[CURRENT_BUDGET] -= worker.get_rate()
                 worker.move_to_coordinates(state[worker_idx], state[worker_idx + 1])
             elif (actions[w_idx] == HIRE - 1):
                 loc = (state[worker_idx], state[worker_idx + 1])
-                reward_signal_i, _ = self.calculate_reward(graph, loc, loc, ssp, worker.get_type(), state[CURRENT_BUDGET])
-                reward_signal += 0 if reward_signal_i == -np.inf else reward_signal_i
+                reward_signal_i, _ = self.calculate_reward_step(graph, loc, loc, ssp, worker.get_type(), state[CURRENT_BUDGET])
+                reward_signal *= reward_signal_i
                 worker.hire()
             elif (actions[w_idx] == EXTRACT - 1):
                 state[COST_INCURRED] += worker.get_rate()
@@ -167,10 +168,10 @@ class Environment(object):
                     assert(worker.isHired())
                     worker.extract(curr_node)
                     assert(worker.is_extracting())
-                    reward_signal += worker.reward_at_location(graph, zero_out=False) - worker.get_type() * worker.get_rate()
+                    reward_signal *= (worker.reward_at_location(graph, zero_out=False) - worker.get_type() * worker.get_rate())
         if (ts >= self.max_timestamps or state[CURRENT_BUDGET] <= 0):
             done = True
-        print("New state : ", state) if LOG_FULL else None
+        print("New state : ", state) if DEBUG else None
         return state, reward_signal, done
 
     def floyd_warshall(self, graph: Graph) :
@@ -221,11 +222,41 @@ class Environment(object):
                             best_action = HIRE
                         else:
                             best_action = Environment.DELTA_TO_ACTIONS[(next_loc[0] - curr_loc[0], next_loc[1] - curr_loc[1])]
-        if best_action == None or max_calculated_reward < 0:
+        if best_action is None:
             best_action = FIRE
-            max_calculated_reward = 0
+            max_calculated_reward = -np.inf
         print(f"Best reward : {max_calculated_reward} ; best_action : {best_action}") if DEBUG else None
         return max_calculated_reward, best_action
+
+    def calculate_reward_step(self, graph, curr_loc, next_loc, ssp, agent_type, curr_budget):
+        print(f"Calculating Reward for : {curr_loc} -> {next_loc}") if DEBUG else None
+        max_calculated_reward = -np.inf
+        best_action = None
+        #print("Agent type : ", agent_type)
+        for i in range(2, agent_type + 2):
+            reward_sites = graph.retrieve_all_sites_of_type(i) # correct already
+            #print(reward_sites)
+            for rs in reward_sites:
+                if not rs.can_extract():  # extractor there -> take it as a basic state - ignore
+                    continue
+                if (graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())]) > curr_budget):
+                    continue
+                else:
+                    reward = graph.site_type_rewards[i] - graph.workers_cost_rate[agent_type-1] * (i + ssp[next_loc][(rs.get_coordinate())])
+                    print(f"Reward for {curr_loc} -> {next_loc} -> {rs.get_coordinate()} : {reward}") if DEBUG else None
+                    if (reward > max_calculated_reward):
+                        max_calculated_reward = reward
+                        if (curr_loc == next_loc):
+                            best_action = HIRE
+                        else:
+                            best_action = Environment.DELTA_TO_ACTIONS[(next_loc[0] - curr_loc[0], next_loc[1] - curr_loc[1])]
+        if best_action == None or max_calculated_reward < 0:
+            best_action = FIRE
+            max_calculated_reward = 0.01
+        print(f"Best reward : {max_calculated_reward} ; best_action : {best_action}") if DEBUG else None
+        assert(max_calculated_reward >= 0)
+        return max_calculated_reward, best_action
+
 
     def run_for_graph(self, graph: Graph):
 

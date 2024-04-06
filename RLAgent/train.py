@@ -6,7 +6,7 @@ import sys
 
 args = {
     'agent_count': 9,
-    'learning_rate': 0.001,
+    'learning_rate': 0.1,
     'memory_model': 'UER',
     'memory_capacity': 10000,
     'target_type': 'DQN',
@@ -46,7 +46,7 @@ if __name__ == "__main__":
         
         agent_type = get_agent_type(idx)
         agent_name = f'agent_{idx}_type_{agent_type}'
-        agent_learning_rate = 0.00005
+        agent_learning_rate = 0.1
         timestamp = 0
         
         new_agent = AgentWorker(args, type=agent_type, start=None, rate=agent_learning_rate, timestamp=timestamp, agent_index=idx, state_size=state_size, action_size=action_size, agent_name=agent_name)
@@ -54,7 +54,7 @@ if __name__ == "__main__":
         agents.append(new_agent)
         
     environment = Environment(agents, isTrain=True)
-    environment.train(number_of_graphs=30)
+    environment.train(number_of_graphs=1)
     
     if log:
         log_file.close()

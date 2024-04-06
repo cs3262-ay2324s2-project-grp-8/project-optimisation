@@ -14,11 +14,13 @@ with open('train.log.txt', 'r') as file:
             data.append(
                 {'Iteration': int(iter), 'Profit': int(profit), 'Timestamp': int(timestamp)}
             )
-            
+
+print(data)
+
 df = pd.DataFrame(data)
 df.sort_values(by='Iteration', inplace=True)
 
-GROUP_SIZE = 500
+GROUP_SIZE = 100
 
 df['IterationGroup'] = df['Iteration'] // GROUP_SIZE
 avg_profit_per_group = df.groupby('IterationGroup')['Profit'].mean().reset_index()

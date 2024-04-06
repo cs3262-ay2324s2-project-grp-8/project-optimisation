@@ -2,8 +2,8 @@ import json
 
 DEBUG = False
 DEBUG_TIME_TAKEN = False
-DEBUG_PROFIT_ONLY = False
-LOG_FULL = True
+DEBUG_PROFIT_ONLY = True
+LOG_FULL = False
 
 BASIC_SITE = 0
 ORIGN      = 1
