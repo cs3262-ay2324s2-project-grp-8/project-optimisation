@@ -186,7 +186,7 @@ class AgentWorker(Worker):
                     best_move = vm
             if self.isHired():
                 if best_move is None:
-                    print("No best move found, so FIRE") 
+                    # print("No best move found, so FIRE") 
                     return FIRE - 1, 0
                 return best_move,  self.get_rate()
             else:

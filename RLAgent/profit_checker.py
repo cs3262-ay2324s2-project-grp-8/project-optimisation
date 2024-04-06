@@ -15,7 +15,7 @@ with open('train.log.txt', 'r') as file:
                 {'Iteration': int(iter), 'Profit': int(profit), 'Timestamp': int(timestamp)}
             )
 
-print(data)
+# print(data)
 
 df = pd.DataFrame(data)
 df.sort_values(by='Iteration', inplace=True)
@@ -26,5 +26,5 @@ df['IterationGroup'] = df['Iteration'] // GROUP_SIZE
 avg_profit_per_group = df.groupby('IterationGroup')['Profit'].mean().reset_index()
 avg_profit_per_group['Iteration'] = avg_profit_per_group['IterationGroup'] * GROUP_SIZE
 
-plt.plot(avg_profit_per_group['Iteration'], avg_profit_per_group['Profit'], marker='o', linestyle='-')
+plt.plot(avg_profit_per_group['Iteration'], avg_profit_per_group['Profit'], linestyle='-')
 plt.show()
