@@ -1,4 +1,4 @@
-from agent import RandomWalkAgent
+from RW_agent import RandomWalkAgent
 from RW_utils import Graph
 
 if __name__ == '__main__':
