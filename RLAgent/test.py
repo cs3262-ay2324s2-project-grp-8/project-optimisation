@@ -10,7 +10,7 @@ args = {
     'memory_capacity': 10000,
     'target_type': 'DQN',
     'target_frequency': 100,
-    'maximum_exploration': 1000,
+    'maximum_exploration': 20,
     'batch_size': 32,
     'gamma': 0.95,
     'number_nodes': 256,

@@ -211,12 +211,16 @@ class AgentWorker(Worker):
                     move = np.argmax(utility)
                     if np.max(utility) == -np.inf:
                         return IDLE - 1, 0
+                    
+                return move, 0
             else:
                 while (move not in valid_moves_reward_signal_dict.keys()):
                     utility[move] = -np.inf
                     move = np.argmax(utility)
+                    if np.max(utility) == -np.inf:
+                        return FIRE - 1, 0
                 
-            return move, self.get_rate()
+                return move, self.get_rate()
     
     def observe(self, sample):
         self.memory.remember(sample)

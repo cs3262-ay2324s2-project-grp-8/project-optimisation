@@ -24,7 +24,7 @@ def get_agent_type(agent_index):
 
 if __name__ == "__main__":
     
-    log = False
+    log = True
     log_file = None
     log_filename = 'train.log.txt'
     
