@@ -1,4 +1,4 @@
-from agent import LocalSearchAgent
+from LS_agent import LocalSearchAgent
 from LS_utils import Graph
 
 if __name__ == '__main__':
