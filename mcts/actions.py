@@ -25,17 +25,9 @@ EXTRACT_TIME_LEFT = 6
 TIMESTAMP = 7
 REWARD_EXTRACTED = 8
 
-'''
-Immutable
-Uses actions on each worker 
-AND thus update the reward sites
-Total cost of actions assumed to be within budget
-
-returns new state
-'''
-def step_state(state, actions):
-    next_state = deepcopy(state)
-    raise NotImplementedError
+# SITE Accessors
+IS_SIGHTED = 3
+ACCESSED = 4
 
 '''
 Below are functions which creates a new state without 
@@ -87,4 +79,66 @@ def move_immutable(agent_state: list, graph : Graph,  move : int):
     if (move not in [FIRE, HIRE, IDLE]):
         costs_incurred += 500 if new_state[TYPE] == 3 else 100 * new_state[TYPE]
     return new_state, costs_incurred, reward_extracted
-        
+
+'''
+Immutable
+Uses actions on each worker 
+AND thus update the reward sites
+Total cost of actions assumed to be within budget
+
+returns new state
+'''
+def step_state(state, actions, graph: Graph):
+    REWARD_START_IDX = 12
+    REWARD_EXTRACTED_IDX = 9
+    BUDGET_USED_IDX = 10
+    BUDGET_LEFT_IDX = 11
+    state_ = deepcopy(state)
+    rwd_stites_under_extraction = list()
+    # Move the Workers
+    for i in range(0, 9):
+        state_[i], cost_incurred, reward_extracted = move_immutable(state_[i], graph, move_combi[i])
+        state_[REWARD_EXTRACTED_IDX] += reward_extracted
+        state_[BUDGET_USED_IDX] += cost_incurred
+        state_[BUDGET_LEFT_IDX] -= cost_incurred
+        if (state_[i][IS_EXTRACTING]):
+            rwd_stites_under_extraction.append((state_[i][X], state_[i][Y]))
+    # Update the Reward Sites
+    for j in range(REWARD_START_IDX, REWARD_START_IDX + 9):
+        if (state_[j][ACCESSED]):
+            continue
+        elif (not state_[j][ACCESSED] and (state_[j][X], state_[j][Y]) in rwd_stites_under_extraction):
+            state_[j][ACCESSED] = True
+        else:
+            continue
+    return state_
+    
+   
+
+def check_move_ok(state: list, move_combi, graph: Graph) -> bool:
+    REWARD_START_IDX = 12
+    REWARD_EXTRACTED_IDX = 9
+    BUDGET_USED_IDX = 10
+    BUDGET_LEFT_IDX = 11
+    state_ = deepcopy(state)
+    # check if it doesnt exceed the cost
+    for i in range(0, 9):
+        state_[i], cost_incurred, reward_extracted = move_immutable(state_[i], graph, move_combi[i])
+        state_[REWARD_EXTRACTED_IDX] += reward_extracted
+        state_[BUDGET_USED_IDX] += cost_incurred
+        state_[BUDGET_LEFT_IDX] -= cost_incurred
+        if (state_[BUDGET_LEFT_IDX] < 0):
+            return False
+    # check if > 1 worker is going to extract the site
+    for i in range(REWARD_START_IDX, REWARD_START_IDX + 9):
+        rws_state = state_[i]
+        num_worker_extracting = 0
+        x_, y_, is_sighted, has_been_accessed = rws_state
+        for j in range(0, 9):
+            worker_ = state_[j]
+            w_x, w_y = worker_[X], worker_[Y]
+            if (w_x == x_ and w_y == y_ and worker_[IS_EXTRACTING]):
+                num_worker_extracting += 1
+            if (num_worker_extracting > 1):
+                return False
+    return True

@@ -1,11 +1,12 @@
 from mcts import MonteCarlo
 from node import TreeNode
-from actions import move_immutable, step_state
+from actions import move_immutable, step_state, check_move_ok
 from reward import calculate_reward_and_best_action
 from utils import Graph, Node
 from itertools import product
 import numpy as np
 from copy import deepcopy
+import math
 
 filename : str = "../graphs/graph1.json"
 graph = Graph(filename)
@@ -140,6 +141,8 @@ montecarlo: MonteCarlo = MonteCarlo(current_state)
 def child_finder(node : TreeNode, montecarlo : MonteCarlo):
     state : list = node.state
     moves : list = list()
+    if state[0][TIMESTAMP] == 20 :
+        return
     for worker_idx in range(9):
         w = state[worker_idx]
         if (not w[IS_HIRED]):
@@ -177,15 +180,14 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                         moves.append([movement_actions[0][0], movement_actions[1][0]])
     movement_combinations = list(product(*moves))
     for move_combi in movement_combinations:
-        node.add_child(step_state(state, move_combi))
-                    
-
-    raise NotImplementedError
+        if (check_move_ok(state=state, move_combi=move_combi, graph=graph)):
+            node.add_child(step_state(state, move_combi, graph))
 
 
 # node evaluator
 def node_evaluator(node, montecarlo):
-    pass
+    if (node.state[0][TIMESTAMP] == 20 or node.state[11] <= 0):
+        return math.tanh(node.state[9] - node.state[10])
 
 
 for timestamp in range(1, 21):
