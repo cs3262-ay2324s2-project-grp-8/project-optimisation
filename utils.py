@@ -100,7 +100,7 @@ class Graph:
             else:
                 self.edges[(x2, y2)].append((x1, y1))
             
-        print("Graph Initialised Successfully!")
+        # print("Graph Initialised Successfully!")
 
     def get_edges(self):
         return self.edges
@@ -147,6 +147,9 @@ class Worker:
         self.is_Hired = False
         self.isExtracting = False
         self.waitTime = 0
+
+    def __repr__(self):
+        return f"Worker type {self.type} at {self.location} at ts {self.ts}"
 
     def get_type(self):
         return self.type
