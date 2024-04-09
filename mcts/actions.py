@@ -59,7 +59,7 @@ def move_immutable(agent_state: list, graph : Graph,  move : int):
         new_state[X] -= 1
         new_state[Y] -= 1 
     elif (move == HIRE):
-        new_state[IS_HIRED]
+        new_state[IS_HIRED] = True
     elif (move == FIRE):
         new_state[IS_HIRED] = False
         new_state[IS_FIRED_BEFORE] = True
