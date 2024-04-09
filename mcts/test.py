@@ -3,6 +3,7 @@ from node import TreeNode
 from actions import check_state_ok, step_state, check_move_ok
 from reward import calculate_reward_and_best_action
 from utils import Graph, Node
+from utils import LOG_BASIC, LOG_DETAILED, LOG_TIME_TAKEN
 from itertools import product
 import numpy as np
 from copy import deepcopy
@@ -34,7 +35,6 @@ Actions:
 10 - Don’t Move (Idle for those that are not hired)
 11 - Fire
 '''
-
 # WORKER Accessors:
 X = 0
 Y = 1
@@ -62,33 +62,7 @@ EXTRACT = 9
 IDLE = 10
 FIRE = 11
 
-
 INITIAL_BUDGET = 10000
-
-state = list()
-
-# Fill up the initial state
-for i in range(1, 10):
-    if (1 <= i <= 3):
-        type_worker = 1
-    elif (i in [4, 5]):
-        type_worker = 2
-    else:
-        type_worker = 3
-    state.append([origin.get_x_coordinate(), origin.get_y_coordinate(), type_worker, False, False, False, 0, 1])
-
-state.extend([0, 0, INITIAL_BUDGET])
-
-type_1_sites = graph.retrieve_all_sites_of_type(2)
-type_2_sites = graph.retrieve_all_sites_of_type(3)
-type_3_sites = graph.retrieve_all_sites_of_type(4)
-
-for site in type_1_sites:
-    state.append([site.get_x_coordinate(), site.get_y_coordinate(), 1, False, False])
-for site in type_2_sites:
-    state.append([site.get_x_coordinate(), site.get_y_coordinate(), 2, False, False])
-for site in type_3_sites:
-    state.append([site.get_x_coordinate(), site.get_y_coordinate(), 3, False, False])
 
 def print_state(state):
     for i, worker in enumerate(state):
@@ -102,8 +76,6 @@ def print_state(state):
             print(f"Budget Left : {state[11]}")
         else:
             print(f"Reward Site : {state[i]}")
-
-print_state(state)
 
 def floyd_warshall(graph: Graph) :
         vertices = graph.get_vertices()
@@ -131,18 +103,12 @@ def floyd_warshall(graph: Graph) :
         #         print(f"{i} -> {j} : {ssp[i][j]}")
         return ssp
 
-ssp = floyd_warshall(graph=graph)
-
-current_state = TreeNode(state)
-
-montecarlo: MonteCarlo = MonteCarlo(current_state)
-
-# child finder
 def child_finder(node : TreeNode, montecarlo : MonteCarlo):
     state : list = node.state
     moves : list = list()
     if state[0][TIMESTAMP] == 20 or state[11] <= 0:
         return
+       
     for worker_idx in range(9):
         w = state[worker_idx]
         if (not w[IS_HIRED]):
@@ -163,7 +129,8 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                             rwd_site = site
                             break
                     if (rwd_site[ACCESSED]):
-                        continue
+                        # continue
+                        moves.append([IDLE])
                     else :
                         moves.append([EXTRACT])
                 else :
@@ -171,29 +138,33 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                     adj_nodes: list = graph.get_adjacent_nodes_by_coordinates(w[X], w[Y])
                     movement_actions = []
                     for next_node in adj_nodes:
-                        print("next node: ", next_node)
+                        print("next node: ", next_node) if LOG_DETAILED else None
                         profit, action = calculate_reward_and_best_action(state, (w[X], w[Y]), next_node.get_coordinate(), ssp, w[TYPE])
                         movement_actions.append((action, profit))
                     movement_actions = sorted(movement_actions, reverse=True, key=lambda x : x[1])
-                    print("movement actions : ", movement_actions)
+                    print("movement actions : ", movement_actions) if LOG_DETAILED else None
                     if (len(movement_actions) == 0):
                         moves.append([FIRE])
                     elif (movement_actions[0][1] < 0):
                         moves.append([FIRE])
                     elif (len(movement_actions) == 1):
-                        moves.append([movement_actions[0][0]])
+                        new_action = movement_actions[0][0]
+                        assert(new_action is not None)
+                        moves.append([new_action])
                     else :
-                        moves.append([movement_actions[0][0], movement_actions[1][0]])
+                        new_actions = [movement_actions[0][0], movement_actions[1][0]]
+                        assert(new_actions is not None)
+                        moves.append(new_actions)
+                        
     movement_combinations = list(product(*moves))
-    print(f'Max expansion this round : {len(movement_combinations)} nodes')
+    print(f'Max expansion this round : {len(movement_combinations)} nodes') if LOG_DETAILED else None
     for move_combi in movement_combinations:
-        print(f"Move combin {move_combi}")
+        if len(move_combi) != 9:
+            print(f'Original Moves: {moves}')
+            print(f"Move combin {move_combi}, Length {len(move_combi)}\n")
         assert(len(move_combi) == 9)
-        #if (check_move_ok(state=state, move_combi=move_combi, graph=graph)):
         node.add_child(TreeNode(step_state(state, move_combi, graph)))
 
-
-# node evaluator
 def node_evaluator(node, montecarlo):
     MAX_PROFIT_ESTIMATE = 35000
     MIN_PROFIT_ESTIMATE = -35000
@@ -203,20 +174,56 @@ def node_evaluator(node, montecarlo):
     if (not check_state_ok(node.state)):
         return -1
 
-montecarlo.child_finder = child_finder
-montecarlo.node_evaluator = node_evaluator
+if __name__ == "__main__":
 
-timestamp = 1
-while(True) :
-    print(f"Timestamp {timestamp}")
-    montecarlo.simulate(50)
-    print("Simulation done")
-    new_tree_node : TreeNode = montecarlo.make_choice()
-    montecarlo.root_node = new_tree_node
-    timestamp += 1
-    if (timestamp == 21):
-        break
+    state = list()
 
-print("Finished Running MCTS")
-print_state(montecarlo.root_node.state)
+    for i in range(1, 10):
+        type_worker = 1 if 1 <= i <= 3 else 2 if i in [4, 5] else 3
+        state.append([origin.get_x_coordinate(), origin.get_y_coordinate(), type_worker, False, False, False, 0, 1])
+
+    state.extend([0, 0, INITIAL_BUDGET])
+        
+    """
+    Retrieves the sites of type 1, 2, 3 and appends them to the state
+    """
+    def append_sites_of_type(site_type):
+        for site in graph.retrieve_all_sites_of_type(site_type + 1):
+            state.append([site.get_x_coordinate(), site.get_y_coordinate(), site_type, False, False])
+
+    for site_type in range(1, 4):
+        append_sites_of_type(site_type)
+
+    print_state(state) # sanity check
+
+    ssp = floyd_warshall(graph=graph)
+    print(f'{len(state)}\n{state}') if LOG_DETAILED else None
+    current_state = TreeNode(state)
+    
+    """
+    Initialization for MCTS
+    """
+    montecarlo: MonteCarlo = MonteCarlo(current_state)
+    montecarlo.child_finder = child_finder
+    montecarlo.node_evaluator = node_evaluator
+
+    from time import time
+    overall_start = time()
+
+    for timestamp in range(20):
+        
+        start = time()
+        
+        print('\n===============================')
+        print(f"Timestamp {timestamp+1}") if LOG_BASIC else None
+        montecarlo.simulate(50)
+        print(f"Simulation done for TS {timestamp+1}") if LOG_BASIC else None
+        new_tree_node : TreeNode = montecarlo.make_choice()
+        montecarlo.root_node = new_tree_node
+
+        print(f"Time taken for TS {timestamp+1} : {time() - start}") if LOG_TIME_TAKEN else None
+    
+    print(f"Overall Time taken : {time() - overall_start}") if LOG_TIME_TAKEN else None
+    print("Finished Running MCTS") if LOG_BASIC else None
+    print_state(montecarlo.root_node.state) if LOG_BASIC else None
     

@@ -1,4 +1,5 @@
 import random
+from utils import LOG_BASIC, LOG_DETAILED
 
 class MonteCarlo:
 
@@ -10,7 +11,11 @@ class MonteCarlo:
     def make_choice(self):
         best_children = []
         most_visits = float('-inf')
-
+        
+        if len(self.root_node.children) == 0:
+            return self.root_node
+        
+        print(f'Number of Potential Children: {len(self.root_node.children)}') 
         for child in self.root_node.children:
             if child.visits > most_visits:
                 most_visits = child.visits
@@ -51,7 +56,7 @@ class MonteCarlo:
                 child.update_win_value(child_win_value)
 
             if not child.is_scorable():
-                print("From child is scoreable call")
+                print("From child is scoreable call") if LOG_DETAILED else None
                 self.random_rollout(child)
                 child.children = []
 
@@ -68,5 +73,5 @@ class MonteCarlo:
         if child_win_value != None:
             node.update_win_value(child_win_value)
         else:
-            print("from recursive random rollout")
+            print("from recursive random rollout") if LOG_DETAILED else None
             self.random_rollout(child)
