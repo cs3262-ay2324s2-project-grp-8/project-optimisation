@@ -186,8 +186,12 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
 
 # node evaluator
 def node_evaluator(node, montecarlo):
+    MAX_PROFIT_ESTIMATE = 35000
+    MIN_PROFIT_ESTIMATE = -35000
     if (node.state[0][TIMESTAMP] == 20 or node.state[11] <= 0):
-        return math.tanh(node.state[9] - node.state[10])
+        profit = node.state[9] - node.state[10]
+        return profit/(MAX_PROFIT_ESTIMATE - MIN_PROFIT_ESTIMATE)
+
 
 
 for timestamp in range(1, 21):
