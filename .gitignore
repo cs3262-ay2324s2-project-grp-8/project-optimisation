@@ -6,3 +6,4 @@
 agent_*
 /logs
 *.txt
+*/__pycache__
