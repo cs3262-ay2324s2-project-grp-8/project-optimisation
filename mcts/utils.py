@@ -1,10 +1,8 @@
 import json, re
 
-DEBUG = False
-LOG_FULL = False
-LOG_TIME_TAKEN = False
-LOG_EXTRACTION = False
-LOG_PROFIT = True
+LOG_BASIC = True
+LOG_DETAILED = False
+LOG_TIME_TAKEN = True
 
 BASIC_SITE = 0
 ORIGN      = 1
@@ -283,14 +281,3 @@ class Worker:
         if (zero_out):
             node.zero_reward()
         return reward
-
-
-# if __name__ == "__main__" :
-#     graph = Graph("Test_Graph_Slightly_Off_the_Beaten_Path/Test_Graph_Slightly_Off_the_Beaten_Path.json")
-#     # print(graph.get_vertices())
-#     ORIGIN = 1
-#     print(graph.get_adjacent_nodes_by_coordinates(5,5))
-#     print(graph.get_edges())
-#     print(graph.retrieve_all_sites_of_type(ORIGIN))
-#     print(len(graph.get_vertices()))
-#     print(len(graph.get_edges()))
