@@ -97,7 +97,7 @@ def step_state(state, actions, graph: Graph):
     rwd_stites_under_extraction = list()
     # Move the Workers
     for i in range(0, 9):
-        state_[i], cost_incurred, reward_extracted = move_immutable(state_[i], graph, move_combi[i])
+        state_[i], cost_incurred, reward_extracted = move_immutable(state_[i], graph, actions[i])
         state_[REWARD_EXTRACTED_IDX] += reward_extracted
         state_[BUDGET_USED_IDX] += cost_incurred
         state_[BUDGET_LEFT_IDX] -= cost_incurred
@@ -133,7 +133,7 @@ def check_move_ok(state: list, move_combi, graph: Graph) -> bool:
     for i in range(REWARD_START_IDX, REWARD_START_IDX + 9):
         rws_state = state_[i]
         num_worker_extracting = 0
-        x_, y_, is_sighted, has_been_accessed = rws_state
+        x_, y_, type,  is_sighted, has_been_accessed = rws_state
         for j in range(0, 9):
             worker_ = state_[j]
             w_x, w_y = worker_[X], worker_[Y]

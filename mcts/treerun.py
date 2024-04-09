@@ -169,19 +169,23 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                     adj_nodes: list = graph.get_adjacent_nodes_by_coordinates(w[X], w[Y])
                     movement_actions = []
                     for next_node in adj_nodes:
-                        profit, action = calculate_reward_and_best_action(state, (w[X], w[Y]), (next_node[X], next_node[Y]), ssp, w[TYPE])
+                        print("next node: ", next_node)
+                        profit, action = calculate_reward_and_best_action(state, (w[X], w[Y]), next_node.get_coordinate(), ssp, w[TYPE])
                         movement_actions.append((action, profit))
-                    sorted(movement_actions, reverse=True, key=lambda x : x[1])
+                    movement_actions = sorted(movement_actions, reverse=True, key=lambda x : x[1])
+                    print("movement actions : ", movement_actions)
                     if (len(movement_actions) == 0):
                         moves.append([FIRE])
                     elif (movement_actions[0][1] < 0):
                         moves.append([FIRE])
+                    elif (len(movement_actions) == 1):
+                        moves.append([movement_actions[0][0]])
                     else :
                         moves.append([movement_actions[0][0], movement_actions[1][0]])
     movement_combinations = list(product(*moves))
     for move_combi in movement_combinations:
         if (check_move_ok(state=state, move_combi=move_combi, graph=graph)):
-            node.add_child(step_state(state, move_combi, graph))
+            node.add_child(TreeNode(step_state(state, move_combi, graph)))
 
 
 # node evaluator
@@ -192,7 +196,15 @@ def node_evaluator(node, montecarlo):
         profit = node.state[9] - node.state[10]
         return profit/(MAX_PROFIT_ESTIMATE - MIN_PROFIT_ESTIMATE)
 
-
+montecarlo.child_finder = child_finder
+montecarlo.node_evaluator = node_evaluator
 
 for timestamp in range(1, 21):
-    pass
+    print(f"Timestamp {timestamp}")
+    montecarlo.simulate(50)
+    new_tree_node : TreeNode = montecarlo.make_choice()
+    montecarlo.root_node = new_tree_node
+
+print("Finished Running MCTS")
+print_state(montecarlo.root_node.state)
+    
