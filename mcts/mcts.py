@@ -51,6 +51,7 @@ class MonteCarlo:
                 child.update_win_value(child_win_value)
 
             if not child.is_scorable():
+                print("From child is scoreable call")
                 self.random_rollout(child)
                 child.children = []
 
@@ -67,4 +68,5 @@ class MonteCarlo:
         if child_win_value != None:
             node.update_win_value(child_win_value)
         else:
+            print("from recursive random rollout")
             self.random_rollout(child)

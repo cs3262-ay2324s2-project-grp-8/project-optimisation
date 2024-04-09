@@ -141,7 +141,7 @@ montecarlo: MonteCarlo = MonteCarlo(current_state)
 def child_finder(node : TreeNode, montecarlo : MonteCarlo):
     state : list = node.state
     moves : list = list()
-    if state[0][TIMESTAMP] == 20 :
+    if state[0][TIMESTAMP] == 20 or state[11] <= 0:
         return
     for worker_idx in range(9):
         w = state[worker_idx]
@@ -183,7 +183,9 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                     else :
                         moves.append([movement_actions[0][0], movement_actions[1][0]])
     movement_combinations = list(product(*moves))
+    print(f'Max expansion this round : {len(movement_combinations)} nodes')
     for move_combi in movement_combinations:
+        print(f"Move combin {move_combi}")
         if (check_move_ok(state=state, move_combi=move_combi, graph=graph)):
             node.add_child(TreeNode(step_state(state, move_combi, graph)))
 
@@ -202,6 +204,7 @@ montecarlo.node_evaluator = node_evaluator
 for timestamp in range(1, 21):
     print(f"Timestamp {timestamp}")
     montecarlo.simulate(50)
+    print("Simulation done")
     new_tree_node : TreeNode = montecarlo.make_choice()
     montecarlo.root_node = new_tree_node
 
