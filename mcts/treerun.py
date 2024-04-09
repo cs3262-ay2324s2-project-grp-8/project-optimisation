@@ -1,6 +1,6 @@
 from mcts import MonteCarlo
 from node import TreeNode
-from actions import move_immutable, step_state, check_move_ok
+from actions import check_state_ok, step_state, check_move_ok
 from reward import calculate_reward_and_best_action
 from utils import Graph, Node
 from itertools import product
@@ -150,6 +150,8 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
         else :
             if (w[IS_EXTRACTING] and w[EXTRACT_TIME_LEFT] > 0):
                 moves.append([EXTRACT])
+            elif (w[IS_FIRED_BEFORE]):
+                moves.append([IDLE])
             else:
                 curr_node:Node = graph.get_Node(w[X], w[Y])
                 if (curr_node.get_reward() > 0 and curr_node.get_type() - 1 <= w[TYPE]):
@@ -186,8 +188,9 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
     print(f'Max expansion this round : {len(movement_combinations)} nodes')
     for move_combi in movement_combinations:
         print(f"Move combin {move_combi}")
-        if (check_move_ok(state=state, move_combi=move_combi, graph=graph)):
-            node.add_child(TreeNode(step_state(state, move_combi, graph)))
+        assert(len(move_combi) == 9)
+        #if (check_move_ok(state=state, move_combi=move_combi, graph=graph)):
+        node.add_child(TreeNode(step_state(state, move_combi, graph)))
 
 
 # node evaluator
@@ -197,16 +200,22 @@ def node_evaluator(node, montecarlo):
     if (node.state[0][TIMESTAMP] == 20 or node.state[11] <= 0):
         profit = node.state[9] - node.state[10]
         return profit/(MAX_PROFIT_ESTIMATE - MIN_PROFIT_ESTIMATE)
+    if (not check_state_ok(node.state)):
+        return -1
 
 montecarlo.child_finder = child_finder
 montecarlo.node_evaluator = node_evaluator
 
-for timestamp in range(1, 21):
+timestamp = 1
+while(True) :
     print(f"Timestamp {timestamp}")
     montecarlo.simulate(50)
     print("Simulation done")
     new_tree_node : TreeNode = montecarlo.make_choice()
     montecarlo.root_node = new_tree_node
+    timestamp += 1
+    if (timestamp == 21):
+        break
 
 print("Finished Running MCTS")
 print_state(montecarlo.root_node.state)
