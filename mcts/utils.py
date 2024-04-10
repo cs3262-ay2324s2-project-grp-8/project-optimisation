@@ -1,8 +1,10 @@
 import json, re
 
-LOG_BASIC = True
+LOG_TIMESTAMPS = True
+LOG_STATES = False
 LOG_DETAILED = False
 LOG_TIME_TAKEN = True
+LOG_PROFIT = True
 
 BASIC_SITE = 0
 ORIGN      = 1

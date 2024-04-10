@@ -84,29 +84,30 @@ Total cost of actions assumed to be within budget
 returns new state
 '''
 def step_state(state, actions, graph: Graph):
-    REWARD_START_IDX = 12
     REWARD_EXTRACTED_IDX = 9
     BUDGET_USED_IDX = 10
     BUDGET_LEFT_IDX = 11
+    REWARD_START_IDX = 12
     state_ = deepcopy(state)
     rwd_stites_under_extraction = list()
+        
     # Move the Workers
-    for i in range(0, 9):
-        print(f'step_state {i} {actions}') if len(actions) != 9 else None
+    for i in range(9):
         state_[i], cost_incurred, reward_extracted = move_immutable(state_[i], graph, actions[i])
         state_[REWARD_EXTRACTED_IDX] += reward_extracted
         state_[BUDGET_USED_IDX] += cost_incurred
         state_[BUDGET_LEFT_IDX] -= cost_incurred
+        
         if (state_[i][IS_EXTRACTING]):
             rwd_stites_under_extraction.append((state_[i][X], state_[i][Y]))
+    
     # Update the Reward Sites
     for j in range(REWARD_START_IDX, REWARD_START_IDX + 9):
         if (state_[j][ACCESSED]):
             continue
         elif (not state_[j][ACCESSED] and (state_[j][X], state_[j][Y]) in rwd_stites_under_extraction):
             state_[j][ACCESSED] = True
-        else:
-            continue
+        
     return state_
 
 def check_move_ok(state: list, move_combi, graph: Graph) -> bool:
@@ -139,13 +140,26 @@ def check_move_ok(state: list, move_combi, graph: Graph) -> bool:
                 return False
     return True
 
+def get_extracting_workers_count(state: list) -> int:
+    count = 0
+    for i in range(9):
+        if (state[i][IS_EXTRACTING]):
+            count += 1
+    return count
+
 def check_state_ok(state: list):
-    REWARD_START_IDX = 12
     REWARD_EXTRACTED_IDX = 9
     BUDGET_USED_IDX = 10
     BUDGET_LEFT_IDX = 11
+    REWARD_START_IDX = 12
+    
     if (state[BUDGET_LEFT_IDX] < 0):
+        # print(f'Negative Budget, Left {state[BUDGET_LEFT_IDX]}, Used {state[BUDGET_USED_IDX]}, Extracting Workers {get_extracting_workers_count(state)}')
         return False
+    else:
+        # print(f'Positive Budget, Left {state[BUDGET_LEFT_IDX]}, Used {state[BUDGET_USED_IDX]}, Extracting Workers {get_extracting_workers_count(state)}')
+        pass
+    
     for  i in range(REWARD_START_IDX, REWARD_START_IDX + 9):
         rwd_site = state[i]
         count = 0
