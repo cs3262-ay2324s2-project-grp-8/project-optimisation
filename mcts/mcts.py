@@ -16,7 +16,7 @@ class MonteCarlo:
         if len(self.root_node.children) == 0:
             return self.root_node
         
-        print(f'Number of Potential Children: {len(self.root_node.children)}') 
+        print(f'Number of Potential Children: {len(self.root_node.children)}') if LOG_DETAILED else None
 
         for child in self.root_node.children:
             if child.visits > most_visits:
@@ -39,7 +39,7 @@ class MonteCarlo:
 
             probabilities_already_counted += probability
 
-    def simulate(self, graph_idx, timestamp, expansion_count = 200):
+    def simulate(self, graph_idx, timestamp, expansion_count):
         for simulate_round in range(expansion_count):
             current_node = self.root_node
 
@@ -47,45 +47,18 @@ class MonteCarlo:
                 current_node = current_node.get_preferred_child(self.root_node)
 
             self.expand(current_node)
-            state = current_node.state
+            # state = current_node.state
             # print(f'Graph {graph_idx}, TS {timestamp} - Expansion {simulate_round}, State:\n{state}')
-            
-            """
-            [
-                [1, 9, 1, True, False, False, 0, 2], 
-                [1, 9, 1, True, False, False, 0, 2], 
-                [1, 9, 1, True, False, False, 0, 2], 
-                [1, 9, 2, False, False, False, 0, 2], 
-                [1, 9, 2, False, False, False, 0, 2], 
-                [1, 9, 3, False, False, False, 0, 2], 
-                [1, 9, 3, False, False, False, 0, 2], 
-                [1, 9, 3, True, False, False, 0, 2], 
-                [1, 9, 3, False, False, False, 0, 2], 
-                0, 
-                0, 
-                10000, 
-                [9, 1, 1, False, False], 
-                [8, 6, 1, False, False], 
-                [4, 4, 1, False, False], 
-                [7, 5, 2, False, False], 
-                [2, 6, 2, False, False], 
-                [4, 8, 3, False, False], 
-                [7, 8, 3, False, False], 
-                [7, 3, 3, False, False], 
-                [0, 4, 3, False, False]
-            ]
-            """
 
     def expand(self, node):
         self.child_finder(node, self)
 
         for child in node.children:
-            print(f'positive reward') if child.state[9] > 0 else None
+            # print(f'positive reward') if child.state[9] > 0 else None
             child_win_value = self.node_evaluator(child, self)
-            if child_win_value is not None and child_win_value != -1:
-                print(f'random_rollout {child_win_value}') 
                 
             if child_win_value != None:
+                # print(child_win_value)
                 child.update_win_value(child_win_value)
 
             if not child.is_scorable():
@@ -102,8 +75,6 @@ class MonteCarlo:
         node.children = []
         node.add_child(child)
         child_win_value = self.node_evaluator(child, self)
-        if child_win_value is not None and child_win_value != -1:
-            print(f'random_rollout {child_win_value}') 
 
         if child_win_value != None:
             node.update_win_value(child_win_value)

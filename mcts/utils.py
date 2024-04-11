@@ -1,10 +1,11 @@
 import json, re
 
-LOG_TIMESTAMPS = True
+LOG_TIMESTAMPS = False
 LOG_STATES = False
 LOG_DETAILED = False
-LOG_TIME_TAKEN = True
+LOG_TIME_TAKEN = False
 LOG_PROFIT = True
+LOG_ACTIONS = False
 
 BASIC_SITE = 0
 ORIGN      = 1
@@ -177,7 +178,7 @@ class Graph:
             else:
                 self.edges[(x2, y2)].append((x1, y1))
             
-        print("Graph Initialised Successfully!")
+        print("Graph Initialised Successfully!") if LOG_TIMESTAMPS else None
 
     def get_edges(self):
         return self.edges

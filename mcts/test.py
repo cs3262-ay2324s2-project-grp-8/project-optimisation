@@ -1,14 +1,15 @@
 from mcts import MonteCarlo
 from node import TreeNode
-from actions import check_state_ok, step_state, check_move_ok
+from actions import check_state_ok, step_state
 from reward import calculate_reward_and_best_action
 from utils import Graph, Node
-from utils import LOG_STATES, LOG_DETAILED, LOG_TIME_TAKEN, LOG_PROFIT, LOG_TIMESTAMPS
+from utils import LOG_STATES, LOG_DETAILED, LOG_TIME_TAKEN, LOG_PROFIT, LOG_TIMESTAMPS, LOG_ACTIONS
 from itertools import product
 import numpy as np
 from copy import deepcopy
 import math
 import sys
+import random
 
 '''
 State Representation:
@@ -78,11 +79,11 @@ def print_state(state):
         else:
             print(f"Reward Site : {state[i]}")
             
-def get_test_output(graph_idx, state):
+def get_test_output(graph_idx, timestamp, state, time_taken):
     graph_number = graph_idx + 1
     profit = state[9] - state[10]
     
-    output = f'Graph {graph_number} - Profit: {profit}'
+    output = f'Graph {graph_number}, TS {timestamp+1} - Profit: {profit} [Time: {time_taken}]'
     
     return output
 
@@ -130,16 +131,20 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
         if (not w[IS_HIRED]):
             # moves.append([HIRE, IDLE])
             moves.append([HIRE, IDLE])
+            print(f'Worker {worker_idx} - Best Actions: HIRE, IDLE') if LOG_ACTIONS else None
+            
         else :
             curr_node:Node = graph.get_Node(w[X], w[Y])
             
             # Worker is extracting, continue extracting
             if (w[IS_EXTRACTING] and w[EXTRACT_TIME_LEFT] > 0):
                 moves.append([EXTRACT])
+                print(f'Worker {worker_idx} - Best Actions: Continue Extracting') if LOG_ACTIONS else None
                 
             # Worker has been fired before, IDLE it
             elif (w[IS_FIRED_BEFORE]):
                 moves.append([IDLE])
+                print(f'Worker {worker_idx} - Best Actions: IDLE') if LOG_ACTIONS else None
                 
             else:
                 # Current node is a reward node, either extract or move on if already accessed
@@ -165,31 +170,23 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                             movement_actions.append((action, profit))
                         movement_actions = sorted(movement_actions, reverse=True, key=lambda x : x[1])
                         print("movement actions : ", movement_actions) if LOG_DETAILED else None
+                        print(f'Worker {worker_idx} at ({w[X]}, {w[Y]}) - Best Actions: {movement_actions[:5]}') if LOG_ACTIONS else None
 
                         # No valid positive movement actions, FIRE
-                        if (len(movement_actions) == 0 or movement_actions[0][1] < 0):
+                        if (len(movement_actions) == 0 or movement_actions[0][1] <= 0):
                             moves.append([FIRE])
                         
-                        # appends best action
+                        # appends two best action
                         else:
-                            new_action = movement_actions[0][0]
-                            assert(new_action is not None)
-                            moves.append([new_action])
-                            
-                        # elif (len(movement_actions) == 1):
-                        #     new_action = movement_actions[0][0]
-                        #     assert(new_action is not None)
-                        #     moves.append([new_action])
-                            
-                        # # multiple possible actions, add all
-                        # else :
-                        #     new_actions = [movement_actions[0][0], movement_actions[1][0]]
-                        #     assert(new_actions is not None)
-                        #     moves.append(new_actions)
+                            curr_moves = []
+                            for action in movement_actions:
+                                if action[1] > 0:
+                                    curr_moves.append(action[0])
+                            moves.append(curr_moves[:2])
                     
                     # reward_site is not being accessed, extract
                     else :
-                        # print(f'Worker {worker_idx} - Extractable, Reward {curr_node.get_reward()}')
+                        print(f'Worker {worker_idx} - Best Actions: Extract {curr_node.get_reward()}') if LOG_ACTIONS else None
                         moves.append([EXTRACT])
                 
                 # Current node is NOT a reward node, add movement actions
@@ -204,45 +201,31 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                         movement_actions.append((action, profit))
                     movement_actions = sorted(movement_actions, reverse=True, key=lambda x : x[1])
                     print("movement actions : ", movement_actions) if LOG_DETAILED else None
+                    print(f'Worker {worker_idx} at ({w[X]}, {w[Y]}) - Best Actions: {movement_actions[:5]}') if LOG_ACTIONS else None
 
-                    # No valid movement actions, FIRE
-                    if (len(movement_actions) == 0):
+                    # No valid positive movement actions, FIRE
+                    if (len(movement_actions) == 0 or movement_actions[0][1] <= 0):
                         moves.append([FIRE])
                         
-                    # best action returns negative profit, FIRE
-                    elif (movement_actions[0][1] < 0):
-                        moves.append([FIRE])
-                        
-                    # appends best action
+                    # appends two best action
                     else:
-                        new_action = movement_actions[0][0]
-                        assert(new_action is not None)
-                        moves.append([new_action])
-                        
-                    # # best action returns positive profit but only ONE possible action, handle seperately, 
-                    # elif (len(movement_actions) == 1):
-                    #     new_action = movement_actions[0][0]
-                    #     assert(new_action is not None)
-                    #     moves.append([new_action])
-                        
-                    # # multiple possible actions, add all
-                    # else :
-                    #     new_actions = [movement_actions[0][0], movement_actions[1][0]]
-                    #     assert(new_actions is not None)
-                    #     moves.append(new_actions)
-        print(f'Worker {worker_idx} - Best Actions')                
+                        curr_moves = []
+                        for action in movement_actions:
+                            if action[1] > 0:
+                                curr_moves.append(action[0])
+                        moves.append(curr_moves[:2])
                         
     movement_combinations = list(product(*moves))
-    # print(f'Number of Possible Moves: {len(movement_combinations)}')
     print(f'Max expansion this round : {len(movement_combinations)} nodes') if LOG_DETAILED else None
     for move_combi in movement_combinations:
         if len(move_combi) != 9:
             print(f'Original Moves: {moves}')
             print(f"Move combin {move_combi}, Length {len(move_combi)}\n")
         assert(len(move_combi) == 9)
+
         new_state = step_state(state, move_combi, graph)
         node.add_child(TreeNode(new_state))
-
+    
 def node_evaluator(node, montecarlo):
     # MAX_PROFIT_ESTIMATE = 35000
     # MIN_PROFIT_ESTIMATE = -35000
@@ -258,18 +241,18 @@ def node_evaluator(node, montecarlo):
     
     MAX_PROFIT_ESTIMATE = 20000
     MIN_PROFIT_ESTIMATE = -20000
-    if (node.state[0][TIMESTAMP] == 20 or node.state[11] <= 0):
+    if (node.state[0][TIMESTAMP] == 20 or node.state[11] <= 0 or len(node.children) == 0):
         profit = node.state[9] - node.state[10]
         normalized_profit = profit/(MAX_PROFIT_ESTIMATE - MIN_PROFIT_ESTIMATE)
         
         return normalized_profit if normalized_profit >= 0 else -1
-        
+    
     if (not check_state_ok(node.state)):
         return -1
 
 if __name__ == "__main__":
 
-    TEST_GRAPH_COUNT = 50
+    TEST_GRAPH_COUNT = 10
     WRITE_TO_LOG = False
     
     if WRITE_TO_LOG:
@@ -317,29 +300,29 @@ if __name__ == "__main__":
         overall_start = time()
 
         
+        print(' ')
         for timestamp in range(20):
             
             start = time()
-            
             print('\n===============================') if LOG_TIMESTAMPS else None
             print(f"Timestamp {timestamp+1}") if LOG_TIMESTAMPS else None
-            montecarlo.simulate(graph_idx, timestamp, 500)
+            montecarlo.simulate(graph_idx, timestamp, 1200)
             print(f"Simulation done for TS {timestamp+1}") if LOG_STATES else None
             new_tree_node : TreeNode = montecarlo.make_choice()
             montecarlo.root_node = new_tree_node
             
-            test_output = get_test_output(timestamp, montecarlo.root_node.state)
+            test_output = get_test_output(graph_idx, timestamp, montecarlo.root_node.state, f'{time() - start}')
             print(test_output)
-
-            print(f"Time taken for TS {timestamp+1} : {time() - start}") if LOG_TIME_TAKEN else None
         
         print(f"Overall Time taken : {time() - overall_start}") if LOG_TIME_TAKEN else None
         print("Finished Running MCTS") if LOG_STATES else None
         print_state(montecarlo.root_node.state) if LOG_STATES else None
         
         if LOG_PROFIT:
-            test_output = get_test_output(-100, montecarlo.root_node.state)
+            print('==============================================================')
+            test_output = get_test_output(graph_idx, -1, montecarlo.root_node.state, time() - overall_start)
             print(test_output)
+            print('==============================================================')
     
     if WRITE_TO_LOG:
         log_file.close()
