@@ -1,5 +1,5 @@
 import random
-from utils import LOG_BASIC, LOG_DETAILED
+from utils import LOG_STATES, LOG_DETAILED
 
 class MonteCarlo:
 
@@ -10,12 +10,14 @@ class MonteCarlo:
 
     def make_choice(self):
         best_children = []
+        best_score = float('-inf')
         most_visits = float('-inf')
         
         if len(self.root_node.children) == 0:
             return self.root_node
         
-        print(f'Number of Potential Children: {len(self.root_node.children)}') 
+        print(f'Number of Potential Children: {len(self.root_node.children)}') if LOG_DETAILED else None
+
         for child in self.root_node.children:
             if child.visits > most_visits:
                 most_visits = child.visits
@@ -37,22 +39,26 @@ class MonteCarlo:
 
             probabilities_already_counted += probability
 
-    def simulate(self, expansion_count = 1):
-        for i in range(expansion_count):
+    def simulate(self, graph_idx, timestamp, expansion_count):
+        for simulate_round in range(expansion_count):
             current_node = self.root_node
 
             while current_node.expanded:
                 current_node = current_node.get_preferred_child(self.root_node)
 
             self.expand(current_node)
+            # state = current_node.state
+            # print(f'Graph {graph_idx}, TS {timestamp} - Expansion {simulate_round}, State:\n{state}')
 
     def expand(self, node):
         self.child_finder(node, self)
 
         for child in node.children:
+            # print(f'positive reward') if child.state[9] > 0 else None
             child_win_value = self.node_evaluator(child, self)
-
+                
             if child_win_value != None:
+                # print(child_win_value)
                 child.update_win_value(child_win_value)
 
             if not child.is_scorable():
