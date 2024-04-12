@@ -7,3 +7,5 @@ agent_*
 /logs
 *.txt
 */__pycache__
+!/mamcts/test.log.txt
+!/mamcts/test.results.txt
