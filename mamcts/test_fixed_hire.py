@@ -34,6 +34,7 @@ IS_EXTRACTING = 5
 EXTRACT_TIME_LEFT = 6
 TIMESTAMP = 7
 REWARD_EXTRACTED = 8
+VISITED = 8
 
 REWARD = 9
 BUDGET_USED = 10
@@ -62,7 +63,7 @@ if __name__ == "__main__":
 
     for i in range(1, 10):
         type_worker = 1 if 1 <= i <= 3 else 2 if i in [4, 5] else 3
-        state.append([origin.get_x_coordinate(), origin.get_y_coordinate(), type_worker, False, False, False, 0, 1])
+        state.append([origin.get_x_coordinate(), origin.get_y_coordinate(), type_worker, False, False, False, 0, 1, [origin.get_coordinate()]])
 
     state.extend([0, 0, INITIAL_BUDGET])
         
@@ -79,6 +80,8 @@ if __name__ == "__main__":
     Initialise fixed workers to be hired
     '''
     state[0][IS_HIRED] = True
+    state[1][IS_HIRED] = True
+    state[3][IS_HIRED] = True
     print_state(state) # sanity check
     
     """

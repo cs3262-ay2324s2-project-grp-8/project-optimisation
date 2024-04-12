@@ -28,6 +28,7 @@ IS_FIRED_BEFORE = 4
 IS_EXTRACTING = 5
 EXTRACT_TIME_LEFT = 6
 TIMESTAMP = 7
+VISITED = 8
 REWARD_EXTRACTED = 8
 
 REWARD = 9
@@ -79,11 +80,16 @@ class MultiAgentController:
         return ssp
 
     
-    def ucb(self, n : AgentNode, C=1.4):
+    def ucb(self, n : AgentNode, C=1.41):
+        if n.N == 0:
+            return np.inf
+        else :
+            print("utility per visit : ", n.U / n.N) if DEBUG else None
+            print("exploration : ", np.sqrt(np.log(n.parent.N) / n.N)) if DEBUG else None
         ucb = np.inf if n.N == 0 else n.U / n.N + C * np.sqrt(np.log(n.parent.N) / n.N)
         return ucb
     
-    def search(self, root : AgentNode, nSimulations=150, nWorkers=9):
+    def search(self, root : AgentNode, nSimulations=500, nWorkers=9):
         if (self.is_terminal(root)):
             return None
         for i in range(nSimulations):
@@ -154,7 +160,7 @@ class MultiAgentController:
         return self.select_node(n)
     
     def backpropagate(self, n : AgentNode, reward):
-        n.U += reward
+        n.U += reward if reward >= 0 else 0
         n.N += 1
         if n.parent:
             self.backpropagate(n.parent, reward)
@@ -195,6 +201,8 @@ class MultiAgentController:
         for next_node in adj_nodes:
             new_x , new_y = next_node.get_coordinate()
             new_coords = (new_x, new_y)
+            if (new_coords in w[VISITED]): # if inside already, dont consider going back
+                continue
             for rwd_idx in range(12, 12 + 9):
                 rwd_coords = (state[rwd_idx][X], state[rwd_idx][Y])
                 if state[rwd_idx][ACCESSED]: # someone chope liao
@@ -233,6 +241,7 @@ class MultiAgentController:
             dx, dy = moves_dict[action]
             new_state[worker_idx][X] += dx
             new_state[worker_idx][Y] += dy
+            new_state[worker_idx][VISITED].append((new_state[worker_idx][X], new_state[worker_idx][Y]))
         elif action == IDLE:
             pass
         elif action == HIRE:
@@ -243,7 +252,7 @@ class MultiAgentController:
         elif action == EXTRACT:
             if (new_state[worker_idx][IS_EXTRACTING]):
                 new_state[worker_idx][EXTRACT_TIME_LEFT] -= 1
-                if (new_state[worker_idx][EXTRACT_TIME_LEFT] == 0):
+                if (new_state[worker_idx][EXTRACT_TIME_LEFT] <= 0):
                     new_state[worker_idx][IS_EXTRACTING] = False
                     node : Node = self.graph.get_Node(new_state[worker_idx][X], new_state[worker_idx][Y])
                     assert(node.get_reward() in [1000, 2000, 5000])
@@ -251,7 +260,7 @@ class MultiAgentController:
             else:
                 new_state[worker_idx][IS_EXTRACTING] = True
                 node : Node = self.graph.get_Node(new_state[worker_idx][X], new_state[worker_idx][Y])
-                new_state[worker_idx][EXTRACT_TIME_LEFT] = node.get_type() - 1 
+                new_state[worker_idx][EXTRACT_TIME_LEFT] = node.get_type() - 1
             nx, ny = new_state[worker_idx][X], new_state[worker_idx][Y]
             for i in range(12, 12 + 9):
                 if (new_state[i][X] == nx and new_state[i][Y] == ny):
