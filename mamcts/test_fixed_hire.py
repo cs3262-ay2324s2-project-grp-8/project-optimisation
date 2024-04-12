@@ -4,8 +4,10 @@ from copy import deepcopy
 import math
 from mamcts_agent_fixed_hire import MultiAgentController
 from node import AgentNode
+import sys
+import time
 
-filename : str = "../graphs/graph37.json"
+filename : str = "../graphs/test_graphs/graph1.json"
 graph = Graph(filename)
 timestamp : int = 0
 origin = graph.get_Origin()
@@ -58,49 +60,83 @@ def print_state(state):
             print(f"Reward Site : {state[i]}")
 
 if __name__ == "__main__":
-
-    state = list()
-
-    for i in range(1, 10):
-        type_worker = 1 if 1 <= i <= 3 else 2 if i in [4, 5] else 3
-        state.append([origin.get_x_coordinate(), origin.get_y_coordinate(), type_worker, False, False, False, 0, 1, [origin.get_coordinate()]])
-
-    state.extend([0, 0, INITIAL_BUDGET])
-        
-    """
-    Retrieves the sites of type 1, 2, 3 and appends them to the state
-    """
-    def append_sites_of_type(site_type):
-        for site in graph.retrieve_all_sites_of_type(site_type + 1):
-            state.append([site.get_x_coordinate(), site.get_y_coordinate(), site_type, False, False])
-
-    for site_type in range(1, 4):
-        append_sites_of_type(site_type)
-    '''
-    Initialise fixed workers to be hired
-    '''
-    #state[0][IS_HIRED] = True
-    #state[1][IS_HIRED] = True
-    state[8][IS_HIRED] = True
-    print_state(state) # sanity check
     
-    """
-    Initialization for MCTS
-    """
-    controller : MultiAgentController = MultiAgentController(graph=graph)
-    root : AgentNode = AgentNode(parent=None, state=state, idx=-1)
+    log = True
+    log_file = None
+    log_filename = 'log_1.txt'
+    
+    if log:
+        log_file = open(log_filename, "w")
+        sys.stdout = log_file
+    
+    o = [[]]
+    for i in range(0, 9):
+        tl = list()
+        for w in o:
+            t0 = deepcopy(w)
+            t0.append(0)
+            tl.append(t0)
+            
+            t1 = deepcopy(w)
+            t1.append(1)
+            tl.append(t1)
+        o.extend(tl)
+        
+    o = list(filter(lambda x: len(x) == 9, o))
 
-    for i in range(9 * 20):
-        next_node: AgentNode = controller.search(root)
-        if next_node is None:
-            print(f"Final State : {root.state}")
-            break
-        print(f"NEXT STATE : {next_node.state}")
-        root = next_node
+    for s in o:
+        st = time.time()
+        state = list()
 
-    print(f"Final State: {root.state}")
-    print(f"Root type : {root.idx}")
-    print(f"Profit : {root.state[9] - root.state[10]}")
+        for i in range(1, 10):
+            type_worker = 1 if 1 <= i <= 3 else 2 if i in [4, 5] else 3
+            state.append([origin.get_x_coordinate(), origin.get_y_coordinate(), type_worker, False, False, False, 0, 1, [origin.get_coordinate()]])
+
+        state.extend([0, 0, INITIAL_BUDGET])
+            
+        """
+        Retrieves the sites of type 1, 2, 3 and appends them to the state
+        """
+        def append_sites_of_type(site_type):
+            for site in graph.retrieve_all_sites_of_type(site_type + 1):
+                state.append([site.get_x_coordinate(), site.get_y_coordinate(), site_type, False, False])
+
+        for site_type in range(1, 4):
+            append_sites_of_type(site_type)
+        '''
+        Initialise fixed workers to be hired
+        '''
+        for i in range(9):
+            state[i][IS_HIRED] = s[i]
+        
+        #state[0][IS_HIRED] = True
+        #state[1][IS_HIRED] = True
+        # state[8][IS_HIRED] = True
+        # print_state(state) # sanity check
+        
+        """
+        Initialization for MCTS
+        """
+        controller : MultiAgentController = MultiAgentController(graph=graph)
+        root : AgentNode = AgentNode(parent=None, state=state, idx=-1)
+
+        for i in range(9 * 20):
+            next_node: AgentNode = controller.search(root)
+            if next_node is None:
+                print(f"Final State : {root.state}")
+                break
+            print(f"NEXT STATE : {next_node.state}")
+            root = next_node
+
+        et = time.time()
+        print(f"Time Taken: {et-st} seconds")
+        print(f"Final State: {root.state}")
+        print(f"Root type : {root.idx}")
+        print(f"Profit : {root.state[9] - root.state[10]}")
+        
+    if log:
+        log_file.close()
+        sys.stdout = sys.__stdout__
 
     # from time import time
     # overall_start = time()

@@ -162,13 +162,28 @@ class MultiAgentController:
     def is_terminal(self, node : AgentNode):
         if node.state[8][TIMESTAMP] >= 20 or node.state[BUDGET_LEFT] < 100:
             return True
+        
+        isNotHired = True
+        for i in range(9):
+            if node.state[i][IS_HIRED] == True:
+                isNotHired = False
+        
+        if isNotHired:
+            return True
         return False
 
     def is_terminal_state(self, state:list):
         if state[8][TIMESTAMP] >= 20 or state[BUDGET_LEFT] < 100:
             return True
-        else:
-            return False
+        
+        isNotHired = True
+        for i in range(9):
+            if state[i][IS_HIRED] == True:
+                isNotHired = False
+        
+        if isNotHired:
+            return True
+        return False
 
     def get_possible_moves(self, state:list, next_idx:int):
         possible_move : list = list()
