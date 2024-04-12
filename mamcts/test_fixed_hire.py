@@ -63,7 +63,7 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    log = False
+    log = True
     graph_idx = args.graph_idx
     log_file = None
     log_filename = f'test_{graph_idx}.log.txt'
@@ -92,7 +92,7 @@ if __name__ == "__main__":
         
     o = list(filter(lambda x: len(x) == 9, o))
 
-    for s in o:
+    for setup_idx, s in enumerate(o):
         st = time.time()
         state = list()
 
@@ -132,7 +132,7 @@ if __name__ == "__main__":
             root = next_node
 
         et = time.time()
-        print(f'Workers Config: {s}, Time: {et-st:.2f} seconds, Profit: {root.state[9] - root.state[10]:.0f}')
+        print(f'Workers Config {setup_idx+1}: {s}, Time: {et-st:.2f} seconds, Profit: {root.state[9] - root.state[10]:.0f}')
         # print(f"Final State: {root.state}")
         # print(f"Root type : {root.idx}")
         
