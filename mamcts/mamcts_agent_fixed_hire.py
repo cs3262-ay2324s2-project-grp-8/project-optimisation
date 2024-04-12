@@ -89,7 +89,7 @@ class MultiAgentController:
         ucb = np.inf if n.N == 0 else n.U / n.N + C * np.sqrt(np.log(n.parent.N) / n.N)
         return ucb
     
-    def search(self, root : AgentNode, nSimulations=500, nWorkers=9):
+    def search(self, root : AgentNode, nSimulations=50, nWorkers=9):
         if (self.is_terminal(root)):
             return None
         for i in range(nSimulations):
@@ -195,7 +195,7 @@ class MultiAgentController:
                 if (site[X] == w[X] and site[Y] == w[Y]):
                     rwd_site = site
                     break
-            if not rwd_site[ACCESSED]:
+            if not rwd_site[ACCESSED] and not rwd_site[IS_SIGHTED]:
                 return [EXTRACT]
         adj_nodes : list = self.graph.get_adjacent_nodes_by_coordinates(w[X], w[Y])
         for next_node in adj_nodes:
@@ -205,12 +205,14 @@ class MultiAgentController:
                 continue
             for rwd_idx in range(12, 12 + 9):
                 rwd_coords = (state[rwd_idx][X], state[rwd_idx][Y])
-                if state[rwd_idx][ACCESSED]: # someone chope liao
+                if state[rwd_idx][ACCESSED] or state[rwd_idx][IS_SIGHTED]: # someone chope liao
                     continue
                 if state[rwd_idx][TYPE] > w[TYPE]: # worker too noob liao
                     break
                 reward_signal:int = (5000 if state[rwd_idx][TYPE] == 3 else 1000 * state[rwd_idx][TYPE])
-                cost_signal : int = (500 if w[TYPE] == 3 else 100 * w[TYPE]) * (state[rwd_idx][TYPE] - 2 + self.ssp[new_coords][rwd_coords])
+                cost_signal : int = (500 if w[TYPE] == 3 else 100 * w[TYPE]) * (state[rwd_idx][TYPE] + self.ssp[new_coords][rwd_coords])
+                if (cost_signal > state[BUDGET_LEFT] or state[rwd_idx][TYPE] + self.ssp[new_coords][rwd_coords] > 20 - w[TIMESTAMP]):
+                    continue
                 profit_signal: int = reward_signal - cost_signal
                 print(f"profit : {profit_signal}") if DEBUG else None
                 if (profit_signal > 0):

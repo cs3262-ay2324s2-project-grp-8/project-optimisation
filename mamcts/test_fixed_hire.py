@@ -5,7 +5,7 @@ import math
 from mamcts_agent_fixed_hire import MultiAgentController
 from node import AgentNode
 
-filename : str = "../graphs/graph1.json"
+filename : str = "../graphs/graph37.json"
 graph = Graph(filename)
 timestamp : int = 0
 origin = graph.get_Origin()
@@ -79,9 +79,9 @@ if __name__ == "__main__":
     '''
     Initialise fixed workers to be hired
     '''
-    state[0][IS_HIRED] = True
-    state[1][IS_HIRED] = True
-    state[3][IS_HIRED] = True
+    #state[0][IS_HIRED] = True
+    #state[1][IS_HIRED] = True
+    state[8][IS_HIRED] = True
     print_state(state) # sanity check
     
     """
