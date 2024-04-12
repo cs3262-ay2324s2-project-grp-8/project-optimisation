@@ -7,6 +7,7 @@ from node import AgentNode
 import sys
 import time
 import argparse
+from itertools import product
 
 INITIAL_BUDGET = 10000
 
@@ -77,20 +78,21 @@ if __name__ == "__main__":
         log_file = open(log_filename, "w")
         sys.stdout = log_file
     
-    o = [[]]
-    for i in range(0, 9):
-        tl = list()
-        for w in o:
-            t0 = deepcopy(w)
-            t0.append(0)
-            tl.append(t0)
-            
-            t1 = deepcopy(w)
-            t1.append(1)
-            tl.append(t1)
-        o.extend(tl)
-        
-    o = list(filter(lambda x: len(x) == 9, o))
+    o = []
+    a = [0, 1, 2, 3]
+    b = [0, 1, 2]
+    c = [0, 1, 2, 3, 4]
+    tgt = list(product(a, b, c))
+    
+    for conf in tgt:
+        d = []
+        d.extend([1] * conf[0])
+        d.extend([0] * (3 - conf[0]))
+        d.extend([1] * conf[1])
+        d.extend([0] * (2 - conf[1]))
+        d.extend([1] * conf[2])
+        d.extend([0] * (4 - conf[2]))
+        o.append(deepcopy(d))
 
     for setup_idx, s in enumerate(o):
         st = time.time()
@@ -135,7 +137,7 @@ if __name__ == "__main__":
         print(f'Workers Config {setup_idx+1}: {s}, Time: {et-st:.2f} seconds, Profit: {root.state[9] - root.state[10]:.0f}')
         # print(f"Final State: {root.state}")
         # print(f"Root type : {root.idx}")
-        
+        sys.stdout.flush()
     if log:
         log_file.close()
         sys.stdout = sys.__stdout__
