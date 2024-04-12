@@ -6,11 +6,8 @@ from mamcts_agent_fixed_hire import MultiAgentController
 from node import AgentNode
 import sys
 import time
+import argparse
 
-filename : str = "../graphs/test_graphs/graph1.json"
-graph = Graph(filename)
-timestamp : int = 0
-origin = graph.get_Origin()
 INITIAL_BUDGET = 10000
 
 MOVE_NORTH = 0
@@ -61,9 +58,20 @@ def print_state(state):
 
 if __name__ == "__main__":
     
-    log = True
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--graph_idx', type=int, default=0, help='Graph index')
+    
+    args = parser.parse_args()
+
+    log = False
+    graph_idx = args.graph_idx
     log_file = None
-    log_filename = 'log_1.txt'
+    log_filename = f'test_{graph_idx}.log.txt'
+    
+    filename : str = f"../graphs/graph{graph_idx}.json"
+    graph = Graph(filename)
+    timestamp : int = 0
+    origin = graph.get_Origin()
     
     if log:
         log_file = open(log_filename, "w")
@@ -109,11 +117,6 @@ if __name__ == "__main__":
         for i in range(9):
             state[i][IS_HIRED] = s[i]
         
-        #state[0][IS_HIRED] = True
-        #state[1][IS_HIRED] = True
-        # state[8][IS_HIRED] = True
-        # print_state(state) # sanity check
-        
         """
         Initialization for MCTS
         """
@@ -123,16 +126,15 @@ if __name__ == "__main__":
         for i in range(9 * 20):
             next_node: AgentNode = controller.search(root)
             if next_node is None:
-                print(f"Final State : {root.state}")
+                # print(f"Final State : {root.state}")
                 break
-            print(f"NEXT STATE : {next_node.state}")
+            # print(f"NEXT STATE : {next_node.state}")
             root = next_node
 
         et = time.time()
-        print(f"Time Taken: {et-st} seconds")
-        print(f"Final State: {root.state}")
-        print(f"Root type : {root.idx}")
-        print(f"Profit : {root.state[9] - root.state[10]}")
+        print(f'Workers Config: {s}, Time: {et-st:.2f} seconds, Profit: {root.state[9] - root.state[10]:.0f}')
+        # print(f"Final State: {root.state}")
+        # print(f"Root type : {root.idx}")
         
     if log:
         log_file.close()
