@@ -167,22 +167,21 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                         for next_node in adj_nodes:
                             print("next node: ", next_node) if LOG_DETAILED else None
                             profit, action = calculate_reward_and_best_action(state, (w[X], w[Y]), next_node.get_coordinate(), ssp, w[TYPE])
-                            movement_actions.append((action, profit))
+                            movement_actions.append((action, profit))  if (action is not None) else None
                         movement_actions = sorted(movement_actions, reverse=True, key=lambda x : x[1])
                         print("movement actions : ", movement_actions) if LOG_DETAILED else None
                         print(f'Worker {worker_idx} at ({w[X]}, {w[Y]}) - Best Actions: {movement_actions[:5]}') if LOG_ACTIONS else None
 
                         # No valid positive movement actions, FIRE
-                        if (len(movement_actions) == 0 or movement_actions[0][1] <= 0):
+                        if (len(movement_actions) == 0 or movement_actions[0][1] < 0):
                             moves.append([FIRE])
                         
                         # appends two best action
                         else:
-                            curr_moves = []
-                            for action in movement_actions:
-                                if action[1] > 0:
-                                    curr_moves.append(action[0])
-                            moves.append(curr_moves[:2])
+                            if len(movement_actions) > 1 and movement_actions[1][0] > 0:
+                                moves.append([movement_actions[0][0], movement_actions[1][0]])
+                            else:
+                                moves.append([movement_actions[0][0]])
                     
                     # reward_site is not being accessed, extract
                     else :
@@ -198,7 +197,7 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                     for next_node in adj_nodes:
                         print("next node: ", next_node) if LOG_DETAILED else None
                         profit, action = calculate_reward_and_best_action(state, (w[X], w[Y]), next_node.get_coordinate(), ssp, w[TYPE])
-                        movement_actions.append((action, profit))
+                        movement_actions.append((action, profit)) if (action is not None) else None
                     movement_actions = sorted(movement_actions, reverse=True, key=lambda x : x[1])
                     print("movement actions : ", movement_actions) if LOG_DETAILED else None
                     print(f'Worker {worker_idx} at ({w[X]}, {w[Y]}) - Best Actions: {movement_actions[:5]}') if LOG_ACTIONS else None
@@ -209,11 +208,10 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
                         
                     # appends two best action
                     else:
-                        curr_moves = []
-                        for action in movement_actions:
-                            if action[1] > 0:
-                                curr_moves.append(action[0])
-                        moves.append(curr_moves[:2])
+                        if len(movement_actions) > 1 and movement_actions[1][0] > 0:
+                            moves.append([movement_actions[0][0], movement_actions[1][0]])
+                        else:
+                            moves.append([movement_actions[0][0]])
                         
     movement_combinations = list(product(*moves))
     print(f'Max expansion this round : {len(movement_combinations)} nodes') if LOG_DETAILED else None
@@ -226,33 +224,25 @@ def child_finder(node : TreeNode, montecarlo : MonteCarlo):
         new_state = step_state(state, move_combi, graph)
         node.add_child(TreeNode(new_state))
     
-def node_evaluator(node, montecarlo):
-    # MAX_PROFIT_ESTIMATE = 35000
-    # MIN_PROFIT_ESTIMATE = -35000
+def node_evaluator(node, montecarlo, terminal_node = False):
+    MAX_PROFIT_ESTIMATE = 10000
+    MIN_PROFIT_ESTIMATE = -10000
     
-    # if (not check_state_ok(node.state)):
-    #     # print(f'state not ok, {node.state}')
-    #     return -1
-
-    # # print(f'state ok, {node.state}')
-    # if (node.state[0][TIMESTAMP] == 20 or node.state[11] <= 0):
-    #     profit = node.state[9] - node.state[10]
-    #     return profit/(10000) if profit >= 0 else -1
-    
-    MAX_PROFIT_ESTIMATE = 20000
-    MIN_PROFIT_ESTIMATE = -20000
-    if (node.state[0][TIMESTAMP] == 20 or node.state[11] <= 0 or len(node.children) == 0):
+    if (node.state[0][TIMESTAMP] == 20 or terminal_node):
         profit = node.state[9] - node.state[10]
         normalized_profit = profit/(MAX_PROFIT_ESTIMATE - MIN_PROFIT_ESTIMATE)
         
-        return normalized_profit if normalized_profit >= 0 else -1
+        return normalized_profit 
+        
+        # profit = node.state[9] - node.state[10]
+        # return profit
     
     if (not check_state_ok(node.state)):
         return -1
 
 if __name__ == "__main__":
 
-    TEST_GRAPH_COUNT = 10
+    TEST_GRAPH_COUNT = 1
     WRITE_TO_LOG = False
     
     if WRITE_TO_LOG:
@@ -306,22 +296,24 @@ if __name__ == "__main__":
             start = time()
             print('\n===============================') if LOG_TIMESTAMPS else None
             print(f"Timestamp {timestamp+1}") if LOG_TIMESTAMPS else None
-            montecarlo.simulate(graph_idx, timestamp, 1200)
+            montecarlo.simulate(graph_idx, timestamp+1, 10)
             print(f"Simulation done for TS {timestamp+1}") if LOG_STATES else None
             new_tree_node : TreeNode = montecarlo.make_choice()
             montecarlo.root_node = new_tree_node
             
             test_output = get_test_output(graph_idx, timestamp, montecarlo.root_node.state, f'{time() - start}')
-            print(test_output)
+            print(f'[END OF TIMESTAMP {timestamp+1}] {test_output}')
         
         print(f"Overall Time taken : {time() - overall_start}") if LOG_TIME_TAKEN else None
         print("Finished Running MCTS") if LOG_STATES else None
         print_state(montecarlo.root_node.state) if LOG_STATES else None
         
         if LOG_PROFIT:
+            print('\n==============================================================')
             print('==============================================================')
             test_output = get_test_output(graph_idx, -1, montecarlo.root_node.state, time() - overall_start)
-            print(test_output)
+            print(f'[FINAL PROFIT FOR GRAPH {graph_idx+1}] {test_output}')
+            print('==============================================================')
             print('==============================================================')
     
     if WRITE_TO_LOG:

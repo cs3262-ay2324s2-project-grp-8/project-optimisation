@@ -1,5 +1,19 @@
 import random
+import time
 from utils import LOG_STATES, LOG_DETAILED
+
+def print_state(state):
+    for i, worker in enumerate(state):
+        if (i < 9):
+            print(f"Worker {i + 1}'s state : {worker}")
+        elif (i == 9):
+            print(f"Rewards Extracted So Far : {state[9]}")
+        elif (i == 10):
+            print(f"Budget Used : {state[10]}")
+        elif (i == 11):
+            print(f"Budget Left : {state[11]}")
+        else:
+            print(f"Reward Site : {state[i]}")
 
 class MonteCarlo:
 
@@ -27,20 +41,19 @@ class MonteCarlo:
 
         return random.choice(best_children)
 
-    def make_exploratory_choice(self):
-        children_visits = map(lambda child: child.visits, self.root_node.children)
-        children_visit_probabilities = [visit / self.root_node.visits for visit in children_visits]
-        random_probability = random.uniform(0, 1)
-        probabilities_already_counted = 0.
-
-        for i, probability in enumerate(children_visit_probabilities):
-            if probabilities_already_counted + probability >= random_probability:
-                return self.root_node.children[i]
-
-            probabilities_already_counted += probability
-
     def simulate(self, graph_idx, timestamp, expansion_count):
+        
+        overall_start_time = time.time()
+        
+        print(' ')
+        print(f'[BEFORE] Graph {graph_idx}, TS {timestamp} - Simulation {0}')
+        print_state(self.root_node.state)
+        print(' ')
+        
         for simulate_round in range(expansion_count):
+            
+            start_time = time.time()
+            
             current_node = self.root_node
 
             while current_node.expanded:
@@ -48,15 +61,23 @@ class MonteCarlo:
 
             self.expand(current_node)
             # state = current_node.state
-            # print(f'Graph {graph_idx}, TS {timestamp} - Expansion {simulate_round}, State:\n{state}')
+            # print(f'Graph {graph_idx}, TS {timestamp} - Simulation {simulate_round+1}, Time Taken: {time.time() - start_time}')
+            # print_state(current_node.state)
+            # print(' ')
+        print(f'[AFTER] Graph {graph_idx}, TS {timestamp} - Time Taken: {time.time() - overall_start_time}')
+        print_state(current_node.state)
+        print(' ')
 
     def expand(self, node):
         self.child_finder(node, self)
-
+        
+        if len(node.children) == 0:
+            child_win_value = self.node_evaluator(node, self, True)
+            node.update_win_value(child_win_value)
+        
         for child in node.children:
             # print(f'positive reward') if child.state[9] > 0 else None
             child_win_value = self.node_evaluator(child, self)
-                
             if child_win_value != None:
                 # print(child_win_value)
                 child.update_win_value(child_win_value)
@@ -71,10 +92,14 @@ class MonteCarlo:
 
     def random_rollout(self, node):
         self.child_finder(node, self)
-        child = random.choice(node.children)
-        node.children = []
-        node.add_child(child)
-        child_win_value = self.node_evaluator(child, self)
+        
+        if len(node.children) != 0:
+            child = random.choice(node.children)
+            node.children = []
+            node.add_child(child)
+            child_win_value = self.node_evaluator(child, self)
+        else:
+            child_win_value = self.node_evaluator(node, self, True)
 
         if child_win_value != None:
             node.update_win_value(child_win_value)
