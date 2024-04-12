@@ -170,9 +170,9 @@ def node_evaluator(node, montecarlo):
     MIN_PROFIT_ESTIMATE = -35000
     if (node.state[0][TIMESTAMP] == 20 or node.state[11] <= 0):
         profit = node.state[9] - node.state[10]
-        return profit/(MAX_PROFIT_ESTIMATE - MIN_PROFIT_ESTIMATE)
+        return -1 * profit/(MAX_PROFIT_ESTIMATE - MIN_PROFIT_ESTIMATE)
     if (not check_state_ok(node.state)):
-        return -1
+        return 1
 
 if __name__ == "__main__":
 

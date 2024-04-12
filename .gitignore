@@ -7,3 +7,5 @@ agent_*
 /logs
 *.txt
 */__pycache__
+../.idea/
+../.vscode/

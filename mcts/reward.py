@@ -48,7 +48,7 @@ def calculate_reward_and_best_action(state, curr_loc, next_loc, ssp, agent_type)
         if (rwd_site[TYPE] > agent_type):
             break
         reward_signal = (5000 if rwd_site[TYPE] == 3 else 1000 * rwd_site[TYPE])
-        cost_signal = (500 if agent_type == 3 else 100 * agent_type) * (rwd_site[TYPE] + ssp[next_loc][(rwd_site[X], rwd_site[Y])])
+        cost_signal = (500 if agent_type == 3 else 100 * agent_type) * (rwd_site[TYPE] - 1 + ssp[next_loc][(rwd_site[X], rwd_site[Y])])
         profit_signal = reward_signal - cost_signal
         if (profit_signal >= state[11]):
             continue # profit signal exceed current budget
