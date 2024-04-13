@@ -4,9 +4,9 @@
 /venv
 /RLAgent/__pycache__
 agent_*
-/logs
+/.logs
 *.txt
 */__pycache__
-!/mamcts/test-logs.txt
-!/mamcts/test-results.txt
-!/mamcts/logs/*.txt
+!/MultiAgentMCTS/test-logs.txt
+!/MultiAgentMCTS/test-results.txt
+!/MultiAgentMCTS/logs/*.txt
