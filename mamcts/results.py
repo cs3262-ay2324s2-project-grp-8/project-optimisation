@@ -53,8 +53,8 @@ def main():
     
     parsed_test_cases = {}
     
-    INPUT_LOG_FILE = "test.log.txt"
-    OUTPUT_LOG_FILE = "test.results.txt"
+    INPUT_LOG_FILE = "test-logs.txt"
+    OUTPUT_LOG_FILE = "test-results.txt"
     
     test_cases = parse_log_file(INPUT_LOG_FILE)
     for idx, test_case in enumerate(test_cases):
@@ -69,6 +69,7 @@ def main():
                 _, data = config
                 workers, profit = f'{data['workers']}]', data['profit']
                 f.write(f"Graph {test_case} -  {workers} , {profit}\n")
+                break # only write the first best config, modify if necessary
 
 if __name__ == "__main__":
     main()
