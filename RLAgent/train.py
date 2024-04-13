@@ -6,12 +6,12 @@ import sys
 
 args = {
     'agent_count': 9,
-    'learning_rate': 0.001,
+    'learning_rate': 0.1,
     'memory_model': 'UER',
     'memory_capacity': 10000,
     'target_type': 'DQN',
     'target_frequency': 100,
-    'maximum_exploration': 1000,
+    'maximum_exploration': 20,
     'batch_size': 32,
     'gamma': 0.95,
     'number_nodes': 256,
@@ -41,20 +41,22 @@ if __name__ == "__main__":
     """
     state_size = 39
     action_size = 12
+    playoff_iterations = 500
+    number_of_graphs = 50
     
     for idx, agent in enumerate(range(args['agent_count'])):
         
         agent_type = get_agent_type(idx)
         agent_name = f'agent_{idx}_type_{agent_type}'
-        agent_learning_rate = 0.00005
+        agent_learning_rate = 0.1
         timestamp = 0
         
         new_agent = AgentWorker(args, type=agent_type, start=None, rate=agent_learning_rate, timestamp=timestamp, agent_index=idx, state_size=state_size, action_size=action_size, agent_name=agent_name)
         
         agents.append(new_agent)
         
-    environment = Environment(agents, isTrain=True)
-    environment.train(number_of_graphs=30)
+    environment = Environment(agents, isTrain=True, playoff_iterations=playoff_iterations)
+    environment.train(number_of_graphs=number_of_graphs)
     
     if log:
         log_file.close()

@@ -7,7 +7,7 @@ from utils import DEBUG, LOG_FULL
 from uniform_experience_replay import Memory as UER
 from brain import Brain
 
-MAX_EPSILON, MIN_EPSILON = 1.0, 0.01
+MAX_EPSILON, MIN_EPSILON = 1.0, 0.1
 MAX_BETA, MIN_BETA = 0.4, 1.0
 
 MOVE_NORTH = 1
@@ -54,6 +54,8 @@ class AgentWorker(Worker):
         self.test = arguments['test']
         if self.test:
             self.epsilon = MIN_EPSILON
+        else:
+            self.epsilon = MAX_EPSILON
 
     def reset_worker_without_model(self, origin: Node):
         self.isExtracting = False
@@ -109,21 +111,19 @@ class AgentWorker(Worker):
             if type_of_worker == WORKER_TYPE_1:
                 return 9.0 / 55
             return 10.0 / 55 if type_of_worker == WORKER_TYPE_2 else 36.0 / 55
+        
         # Returns MOVES by zero-index
         if DEBUG:
             print("======================================================================")
             print(f'Agent {idx} MOVEMENT state: {"HIRED" if self.is_Hired else "UNEMPLOYED"}')
+            
         if (self.isFiredBefore()):
             return IDLE - 1, 0
+        
         if (self.is_extracting()):
             return EXTRACT - 1, self.get_rate()
         #print("Agent is Hired Already")
-        if (not self.is_Hired):
-            if (np.random.rand() <= active_hiring_probability(self.type)):
-                if (current_budget_left_this_round >= 2000):
-                    return HIRE - 1, 0
-            else:
-                return IDLE - 1, 0
+            
         # If current state is a reward state, then extract it. subsequent agents after this function call will not take it already
         rng = np.random.rand()
         curr_location = self.get_location()
@@ -136,8 +136,10 @@ class AgentWorker(Worker):
         if (curr_node.get_reward() > 0 and curr_node.get_type() - 1 <= self.type and curr_node.can_extract() and not curr_node.someone_eyeing_node()):
             curr_node.sight() # this agent chope the node already, other agents on this node cant extract anymore
             return EXTRACT - 1 , self.get_rate()
+      
         valid_moves_reward_signal_dict = dict() # store moves in 0-index also
         adj_nodes = graph.get_edges()[curr_location]
+        
         for mv in range(1, 12):
             if ((mv == HIRE or mv == IDLE) and self.is_Hired):
                 continue
@@ -153,14 +155,23 @@ class AgentWorker(Worker):
                 valid_moves_reward_signal_dict[mv - 1] = 0 # back to 0 index
         assert(len(valid_moves_reward_signal_dict.keys()) > 0)
         print(f"Agent {idx} filtered all Invalid Moves, and there exists at least 1!") if DEBUG else None
+        
         if rng <= self.epsilon:
             print("Random Predicting This Round") if DEBUG else None
-            move = random.randrange(self.action_size)
-            while (move not in valid_moves_reward_signal_dict.keys()):
+            while True:
                 move = random.randrange(self.action_size)
-            #print("===================================")
-            return move, self.get_rate()
-        elif self.epsilon < rng <= 2 * self.epsilon:
+                if not self.isHired() and move == HIRE - 1:
+                    if np.random.rand() <= active_hiring_probability(self.type):
+                        return HIRE - 1, 0
+                    return IDLE - 1, 0
+                elif not self.isHired() and move == IDLE - 1:
+                    return IDLE - 1, 0
+                elif self.isHired() and move in valid_moves_reward_signal_dict.keys():
+                    if move == IDLE - 1:
+                        continue
+                    return move, self.get_rate()
+        
+        elif self.epsilon < rng and rng <= 2 * self.epsilon:
             print("Greedy Predicting This Round") if DEBUG else None
             # greedy approach
             # iterate through all valid moves and estimate reward
@@ -170,29 +181,46 @@ class AgentWorker(Worker):
                 new_location = (curr_location[0] + selected_move[0], curr_location[1] + selected_move[1])
                 print(f"{curr_location} -> {new_location}") if DEBUG else None
                 valid_moves_reward_signal_dict[vm], _ = reward_fn(graph, curr_location, new_location, ssp, self.type, state[CURRENT_BUDGET])
-                if (valid_moves_reward_signal_dict[vm] >= highest_reward):
+                if (valid_moves_reward_signal_dict[vm] > highest_reward):
                     highest_reward = valid_moves_reward_signal_dict[vm]
                     best_move = vm
-            if best_move is None:
-                print("No best move found, so FIRE") 
-                return FIRE - 1, 0
-            #print("===================================")
-            return best_move,  self.get_rate()
+            if self.isHired():
+                if best_move is None:
+                    # print("No best move found, so FIRE") 
+                    return FIRE - 1, 0
+                return best_move,  self.get_rate()
+            else:
+                if best_move is None:
+                    if np.random.rand() <= active_hiring_probability(self.type):
+                        return HIRE - 1, 0
+                    return IDLE - 1, 0
+                else:
+                    return IDLE - 1,  0
+        
         else:
-            probabilities = self.brain.predict_one_sample(state)
-            #print("Probabilities from Agent's brain: ",probabilities)
-            move = np.argmax(probabilities)
+            utility = self.brain.predict_one_sample(state)
+
+            move = np.argmax(utility)
             print("Brain Predicting This Round") if DEBUG else None
             # check if move is within the valid moves, 
             # if invalid, then 0 the prob, then get the next highest
-            while (int(move) not in valid_moves_reward_signal_dict.keys()):
-                probabilities[move] = -np.inf
-                move = np.argmax(probabilities)
-                #print("Probabilities from Agent's brain: ",probabilities)
-            #print("===================================")
-            # if probabilities[move] < 0:
-            #     return FIRE - 1, 0
-            return move, self.get_rate()
+            
+            if not self.isHired():
+                while (move != HIRE - 1 or move != IDLE - 1):
+                    utility[move] = -np.inf
+                    move = np.argmax(utility)
+                    if np.max(utility) == -np.inf:
+                        return IDLE - 1, 0
+                    
+                return move, 0
+            else:
+                while (move not in valid_moves_reward_signal_dict.keys()):
+                    utility[move] = -np.inf
+                    move = np.argmax(utility)
+                    if np.max(utility) == -np.inf:
+                        return FIRE - 1, 0
+                
+                return move, self.get_rate()
     
     def observe(self, sample):
         self.memory.remember(sample)

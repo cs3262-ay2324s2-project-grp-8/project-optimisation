@@ -75,13 +75,7 @@ class SubBrain(nn.Module):
             else:
                 print('Error: No such file')
         
-        # Choose optimizer for the primary model only
-        if self.optimizer_model == 'Adam':
-            self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
-        elif self.optimizer_model == 'RMSProp':
-            self.optimizer = optim.RMSprop(self.model.parameters(), lr=self.learning_rate)
-        else:
-            print('Invalid optimizer!')
+        self.optimizer = optim.Adam(self.model.parameters(), lr=self.learning_rate)
 
     def _build_model(self):
         # Defines the network structure
@@ -122,6 +116,10 @@ class SubBrain(nn.Module):
             
             if verbose:
                 print(f"Epoch {epoch}, Loss: {weighted_loss.item()}")
+                
+        # print("Trained")
+        # print(self.state_dict())
+        # print("----")
 
     def predict(self, state):
         with torch.no_grad():  # Ensure no gradients are computed

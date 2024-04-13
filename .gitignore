@@ -5,4 +5,8 @@
 /RLAgent/__pycache__
 agent_*
 /logs
-*.log.txt
+*.txt
+*/__pycache__
+!/mamcts/test-logs.txt
+!/mamcts/test-results.txt
+!/mamcts/logs/*.txt
