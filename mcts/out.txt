@@ -1,0 +1,1028 @@
+Graph Initialised Successfully!
+ 
+
+===============================
+Timestamp 1
+ 
+[BEFORE] Graph 0, TS 1 - Simulation 0
+Worker 1's state : [1, 9, 1, False, False, False, 0, 1]
+Worker 2's state : [1, 9, 1, False, False, False, 0, 1]
+Worker 3's state : [1, 9, 1, False, False, False, 0, 1]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 1]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 1]
+Worker 6's state : [1, 9, 3, False, False, False, 0, 1]
+Worker 7's state : [1, 9, 3, False, False, False, 0, 1]
+Worker 8's state : [1, 9, 3, False, False, False, 0, 1]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 1]
+Rewards Extracted So Far : 0
+Budget Used : 0
+Budget Left : 10000
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 1 - Time Taken: 10.633598327636719
+Worker 1's state : [1, 9, 1, False, False, False, 0, 1]
+Worker 2's state : [1, 9, 1, False, False, False, 0, 1]
+Worker 3's state : [1, 9, 1, False, False, False, 0, 1]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 1]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 1]
+Worker 6's state : [1, 9, 3, False, False, False, 0, 1]
+Worker 7's state : [1, 9, 3, False, False, False, 0, 1]
+Worker 8's state : [1, 9, 3, False, False, False, 0, 1]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 1]
+Rewards Extracted So Far : 0
+Budget Used : 0
+Budget Left : 10000
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 1] Graph 1, TS 1 - Profit: 0 [Time: 10.633661031723022]
+
+===============================
+Timestamp 2
+ 
+[BEFORE] Graph 0, TS 2 - Simulation 0
+Worker 1's state : [1, 9, 1, True, False, False, 0, 2]
+Worker 2's state : [1, 9, 1, False, False, False, 0, 2]
+Worker 3's state : [1, 9, 1, False, False, False, 0, 2]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 2]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 2]
+Worker 6's state : [1, 9, 3, True, False, False, 0, 2]
+Worker 7's state : [1, 9, 3, False, False, False, 0, 2]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 2]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 2]
+Rewards Extracted So Far : 0
+Budget Used : 0
+Budget Left : 10000
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 2 - Time Taken: 0.8712420463562012
+Worker 1's state : [1, 9, 1, True, False, False, 0, 2]
+Worker 2's state : [1, 9, 1, False, False, False, 0, 2]
+Worker 3's state : [1, 9, 1, False, False, False, 0, 2]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 2]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 2]
+Worker 6's state : [1, 9, 3, True, False, False, 0, 2]
+Worker 7's state : [1, 9, 3, False, False, False, 0, 2]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 2]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 2]
+Rewards Extracted So Far : 0
+Budget Used : 0
+Budget Left : 10000
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 2] Graph 1, TS 2 - Profit: -1100 [Time: 0.8712809085845947]
+
+===============================
+Timestamp 3
+ 
+[BEFORE] Graph 0, TS 3 - Simulation 0
+Worker 1's state : [0, 8, 1, True, False, False, 0, 3]
+Worker 2's state : [1, 9, 1, True, False, False, 0, 3]
+Worker 3's state : [1, 9, 1, False, False, False, 0, 3]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 3]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 3]
+Worker 6's state : [0, 8, 3, True, False, False, 0, 3]
+Worker 7's state : [1, 9, 3, True, False, False, 0, 3]
+Worker 8's state : [0, 8, 3, True, False, False, 0, 3]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 3]
+Rewards Extracted So Far : 0
+Budget Used : 1100
+Budget Left : 8900
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 3 - Time Taken: 1.202207088470459
+Worker 1's state : [0, 8, 1, True, False, False, 0, 3]
+Worker 2's state : [1, 9, 1, True, False, False, 0, 3]
+Worker 3's state : [1, 9, 1, False, False, False, 0, 3]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 3]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 3]
+Worker 6's state : [0, 8, 3, True, False, False, 0, 3]
+Worker 7's state : [1, 9, 3, True, False, False, 0, 3]
+Worker 8's state : [0, 8, 3, True, False, False, 0, 3]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 3]
+Rewards Extracted So Far : 0
+Budget Used : 1100
+Budget Left : 8900
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 3] Graph 1, TS 3 - Profit: -2800 [Time: 1.2022500038146973]
+
+===============================
+Timestamp 4
+ 
+[BEFORE] Graph 0, TS 4 - Simulation 0
+Worker 1's state : [1, 9, 1, True, False, False, 0, 4]
+Worker 2's state : [0, 8, 1, True, False, False, 0, 4]
+Worker 3's state : [1, 9, 1, False, False, False, 0, 4]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 4]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 4]
+Worker 6's state : [0, 7, 3, True, False, False, 0, 4]
+Worker 7's state : [0, 8, 3, True, False, False, 0, 4]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 4]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 4]
+Rewards Extracted So Far : 0
+Budget Used : 2800
+Budget Left : 7200
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 4 - Time Taken: 0.4930531978607178
+Worker 1's state : [1, 9, 1, True, False, False, 0, 4]
+Worker 2's state : [0, 8, 1, True, False, False, 0, 4]
+Worker 3's state : [1, 9, 1, False, False, False, 0, 4]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 4]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 4]
+Worker 6's state : [0, 7, 3, True, False, False, 0, 4]
+Worker 7's state : [0, 8, 3, True, False, False, 0, 4]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 4]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 4]
+Rewards Extracted So Far : 0
+Budget Used : 2800
+Budget Left : 7200
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 4] Graph 1, TS 4 - Profit: -4500 [Time: 0.49309277534484863]
+
+===============================
+Timestamp 5
+ 
+[BEFORE] Graph 0, TS 5 - Simulation 0
+Worker 1's state : [0, 8, 1, True, False, False, 0, 5]
+Worker 2's state : [0, 7, 1, True, False, False, 0, 5]
+Worker 3's state : [1, 9, 1, True, False, False, 0, 5]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 5]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 5]
+Worker 6's state : [1, 6, 3, True, False, False, 0, 5]
+Worker 7's state : [0, 7, 3, True, False, False, 0, 5]
+Worker 8's state : [0, 8, 3, True, False, False, 0, 5]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 5]
+Rewards Extracted So Far : 0
+Budget Used : 4500
+Budget Left : 5500
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 5 - Time Taken: 0.42572593688964844
+Worker 1's state : [0, 8, 1, True, False, False, 0, 5]
+Worker 2's state : [0, 7, 1, True, False, False, 0, 5]
+Worker 3's state : [1, 9, 1, True, False, False, 0, 5]
+Worker 4's state : [1, 9, 2, False, False, False, 0, 5]
+Worker 5's state : [1, 9, 2, False, False, False, 0, 5]
+Worker 6's state : [1, 6, 3, True, False, False, 0, 5]
+Worker 7's state : [0, 7, 3, True, False, False, 0, 5]
+Worker 8's state : [0, 8, 3, True, False, False, 0, 5]
+Worker 9's state : [1, 9, 3, False, False, False, 0, 5]
+Rewards Extracted So Far : 0
+Budget Used : 4500
+Budget Left : 5500
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 5] Graph 1, TS 5 - Profit: -6300 [Time: 0.42584800720214844]
+
+===============================
+Timestamp 6
+ 
+[BEFORE] Graph 0, TS 6 - Simulation 0
+Worker 1's state : [0, 7, 1, True, False, False, 0, 6]
+Worker 2's state : [1, 6, 1, True, False, False, 0, 6]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 6]
+Worker 4's state : [1, 9, 2, True, False, False, 0, 6]
+Worker 5's state : [1, 9, 2, True, False, False, 0, 6]
+Worker 6's state : [2, 6, 3, True, False, False, 0, 6]
+Worker 7's state : [1, 6, 3, True, False, False, 0, 6]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 6]
+Worker 9's state : [1, 9, 3, True, False, False, 0, 6]
+Rewards Extracted So Far : 0
+Budget Used : 6300
+Budget Left : 3700
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 6 - Time Taken: 0.013924121856689453
+Worker 1's state : [0, 7, 1, True, False, False, 0, 6]
+Worker 2's state : [1, 6, 1, True, False, False, 0, 6]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 6]
+Worker 4's state : [1, 9, 2, True, False, False, 0, 6]
+Worker 5's state : [1, 9, 2, True, False, False, 0, 6]
+Worker 6's state : [2, 6, 3, True, False, False, 0, 6]
+Worker 7's state : [1, 6, 3, True, False, False, 0, 6]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 6]
+Worker 9's state : [1, 9, 3, True, False, False, 0, 6]
+Rewards Extracted So Far : 0
+Budget Used : 6300
+Budget Left : 3700
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, False]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 6] Graph 1, TS 6 - Profit: -9000 [Time: 0.013949155807495117]
+
+===============================
+Timestamp 7
+ 
+[BEFORE] Graph 0, TS 7 - Simulation 0
+Worker 1's state : [1, 6, 1, True, False, False, 0, 7]
+Worker 2's state : [2, 7, 1, True, False, False, 0, 7]
+Worker 3's state : [1, 9, 1, True, False, False, 0, 7]
+Worker 4's state : [0, 8, 2, True, False, False, 0, 7]
+Worker 5's state : [0, 8, 2, True, False, False, 0, 7]
+Worker 6's state : [2, 6, 3, True, False, True, 2, 7]
+Worker 7's state : [2, 6, 3, True, False, False, 0, 7]
+Worker 8's state : [0, 8, 3, True, False, False, 0, 7]
+Worker 9's state : [0, 8, 3, True, False, False, 0, 7]
+Rewards Extracted So Far : 0
+Budget Used : 9000
+Budget Left : 1000
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 7 - Time Taken: 0.0016291141510009766
+Worker 1's state : [1, 6, 1, True, False, False, 0, 7]
+Worker 2's state : [2, 7, 1, True, False, False, 0, 7]
+Worker 3's state : [1, 9, 1, True, False, False, 0, 7]
+Worker 4's state : [0, 8, 2, True, False, False, 0, 7]
+Worker 5's state : [0, 8, 2, True, False, False, 0, 7]
+Worker 6's state : [2, 6, 3, True, False, True, 2, 7]
+Worker 7's state : [2, 6, 3, True, False, False, 0, 7]
+Worker 8's state : [0, 8, 3, True, False, False, 0, 7]
+Worker 9's state : [0, 8, 3, True, False, False, 0, 7]
+Rewards Extracted So Far : 0
+Budget Used : 9000
+Budget Left : 1000
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 7] Graph 1, TS 7 - Profit: -11300 [Time: 0.0016469955444335938]
+
+===============================
+Timestamp 8
+ 
+[BEFORE] Graph 0, TS 8 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 8 - Time Taken: 1.3828277587890625e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 8] Graph 1, TS 8 - Profit: -11300 [Time: 3.1948089599609375e-05]
+
+===============================
+Timestamp 9
+ 
+[BEFORE] Graph 0, TS 9 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 9 - Time Taken: 6.318092346191406e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 9] Graph 1, TS 9 - Profit: -11300 [Time: 7.891654968261719e-05]
+
+===============================
+Timestamp 10
+ 
+[BEFORE] Graph 0, TS 10 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 10 - Time Taken: 1.4066696166992188e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 10] Graph 1, TS 10 - Profit: -11300 [Time: 2.7179718017578125e-05]
+
+===============================
+Timestamp 11
+ 
+[BEFORE] Graph 0, TS 11 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 11 - Time Taken: 1.3113021850585938e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 11] Graph 1, TS 11 - Profit: -11300 [Time: 2.5987625122070312e-05]
+
+===============================
+Timestamp 12
+ 
+[BEFORE] Graph 0, TS 12 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 12 - Time Taken: 1.3113021850585938e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 12] Graph 1, TS 12 - Profit: -11300 [Time: 2.574920654296875e-05]
+
+===============================
+Timestamp 13
+ 
+[BEFORE] Graph 0, TS 13 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 13 - Time Taken: 3.0994415283203125e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 13] Graph 1, TS 13 - Profit: -11300 [Time: 4.506111145019531e-05]
+
+===============================
+Timestamp 14
+ 
+[BEFORE] Graph 0, TS 14 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 14 - Time Taken: 1.3113021850585938e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 14] Graph 1, TS 14 - Profit: -11300 [Time: 2.6941299438476562e-05]
+
+===============================
+Timestamp 15
+ 
+[BEFORE] Graph 0, TS 15 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 15 - Time Taken: 1.2159347534179688e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 15] Graph 1, TS 15 - Profit: -11300 [Time: 2.5987625122070312e-05]
+
+===============================
+Timestamp 16
+ 
+[BEFORE] Graph 0, TS 16 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 16 - Time Taken: 1.2874603271484375e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 16] Graph 1, TS 16 - Profit: -11300 [Time: 2.574920654296875e-05]
+
+===============================
+Timestamp 17
+ 
+[BEFORE] Graph 0, TS 17 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 17 - Time Taken: 2.7894973754882812e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 17] Graph 1, TS 17 - Profit: -11300 [Time: 4.100799560546875e-05]
+
+===============================
+Timestamp 18
+ 
+[BEFORE] Graph 0, TS 18 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 18 - Time Taken: 1.2159347534179688e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 18] Graph 1, TS 18 - Profit: -11300 [Time: 2.6226043701171875e-05]
+
+===============================
+Timestamp 19
+ 
+[BEFORE] Graph 0, TS 19 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 19 - Time Taken: 1.3113021850585938e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 19] Graph 1, TS 19 - Profit: -11300 [Time: 2.6226043701171875e-05]
+
+===============================
+Timestamp 20
+ 
+[BEFORE] Graph 0, TS 20 - Simulation 0
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[AFTER] Graph 0, TS 20 - Time Taken: 1.2159347534179688e-05
+Worker 1's state : [2, 6, 1, True, False, False, 0, 8]
+Worker 2's state : [3, 6, 1, True, False, False, 0, 8]
+Worker 3's state : [0, 8, 1, True, False, False, 0, 8]
+Worker 4's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 5's state : [0, 8, 2, False, True, False, 0, 8]
+Worker 6's state : [2, 6, 3, True, False, True, 1, 8]
+Worker 7's state : [2, 7, 3, True, False, False, 0, 8]
+Worker 8's state : [1, 9, 3, True, False, False, 0, 8]
+Worker 9's state : [0, 7, 3, True, False, False, 0, 8]
+Rewards Extracted So Far : 0
+Budget Used : 11300
+Budget Left : -1300
+Reward Site : [9, 1, 1, False, False]
+Reward Site : [8, 6, 1, False, False]
+Reward Site : [4, 4, 1, False, False]
+Reward Site : [7, 5, 2, False, False]
+Reward Site : [2, 6, 2, False, True]
+Reward Site : [4, 8, 3, False, False]
+Reward Site : [7, 8, 3, False, False]
+Reward Site : [7, 3, 3, False, False]
+Reward Site : [0, 4, 3, False, False]
+ 
+[END OF TIMESTAMP 20] Graph 1, TS 20 - Profit: -11300 [Time: 2.574920654296875e-05]
+
+==============================================================
+==============================================================
+[FINAL PROFIT FOR GRAPH 1] Graph 1, TS 0 - Profit: -11300 [Time: 13.642224311828613]
+==============================================================
+==============================================================

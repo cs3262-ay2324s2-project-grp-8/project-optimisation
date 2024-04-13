@@ -1,0 +1,115 @@
+kill $(ps aux | grep "python3 test_fixed_hire.py" | awk '{print $2}')
+pkill -f "python"
+
+python3 test_fixed_hire.py --graph_idx 1 &
+python3 test_fixed_hire.py --graph_idx 2 &
+python3 test_fixed_hire.py --graph_idx 3 &
+python3 test_fixed_hire.py --graph_idx 4 &
+python3 test_fixed_hire.py --graph_idx 5 &
+python3 test_fixed_hire.py --graph_idx 6 &
+python3 test_fixed_hire.py --graph_idx 7 &
+python3 test_fixed_hire.py --graph_idx 8 &
+python3 test_fixed_hire.py --graph_idx 9 &
+python3 test_fixed_hire.py --graph_idx 10 &
+python3 test_fixed_hire.py --graph_idx 11 &
+python3 test_fixed_hire.py --graph_idx 12 &
+python3 test_fixed_hire.py --graph_idx 13 &
+python3 test_fixed_hire.py --graph_idx 14 &
+python3 test_fixed_hire.py --graph_idx 15 &
+python3 test_fixed_hire.py --graph_idx 16 &
+python3 test_fixed_hire.py --graph_idx 17 &
+python3 test_fixed_hire.py --graph_idx 18 &
+python3 test_fixed_hire.py --graph_idx 19 &
+python3 test_fixed_hire.py --graph_idx 20 &
+
+
+python3 test_fixed_hire.py --graph_idx 21 &
+python3 test_fixed_hire.py --graph_idx 22 &
+python3 test_fixed_hire.py --graph_idx 23 &
+python3 test_fixed_hire.py --graph_idx 24 &
+python3 test_fixed_hire.py --graph_idx 25 &
+python3 test_fixed_hire.py --graph_idx 26 &
+python3 test_fixed_hire.py --graph_idx 27 &
+python3 test_fixed_hire.py --graph_idx 28 &
+python3 test_fixed_hire.py --graph_idx 29 &.
+python3 test_fixed_hire.py --graph_idx 30 &
+python3 test_fixed_hire.py --graph_idx 31 &
+python3 test_fixed_hire.py --graph_idx 32 &
+python3 test_fixed_hire.py --graph_idx 33 &
+python3 test_fixed_hire.py --graph_idx 34 &
+python3 test_fixed_hire.py --graph_idx 35 &
+python3 test_fixed_hire.py --graph_idx 36 &
+python3 test_fixed_hire.py --graph_idx 37 &
+python3 test_fixed_hire.py --graph_idx 38 &
+python3 test_fixed_hire.py --graph_idx 39 &
+python3 test_fixed_hire.py --graph_idx 40 &
+
+
+python3 test_fixed_hire.py --graph_idx 41 &
+python3 test_fixed_hire.py --graph_idx 42 &
+python3 test_fixed_hire.py --graph_idx 43 &
+python3 test_fixed_hire.py --graph_idx 44 &
+python3 test_fixed_hire.py --graph_idx 45 &
+python3 test_fixed_hire.py --graph_idx 46 &
+python3 test_fixed_hire.py --graph_idx 47 &
+python3 test_fixed_hire.py --graph_idx 48 &
+python3 test_fixed_hire.py --graph_idx 49 &
+python3 test_fixed_hire.py --graph_idx 50 &
+python3 test_fixed_hire.py --graph_idx 51 &
+python3 test_fixed_hire.py --graph_idx 52 &
+python3 test_fixed_hire.py --graph_idx 53 &
+python3 test_fixed_hire.py --graph_idx 54 &
+python3 test_fixed_hire.py --graph_idx 55 &
+python3 test_fixed_hire.py --graph_idx 56 &
+python3 test_fixed_hire.py --graph_idx 57 &
+python3 test_fixed_hire.py --graph_idx 58 &
+python3 test_fixed_hire.py --graph_idx 59 &
+python3 test_fixed_hire.py --graph_idx 60 &
+
+
+python3 test_fixed_hire.py --graph_idx 61 &
+python3 test_fixed_hire.py --graph_idx 62 &
+python3 test_fixed_hire.py --graph_idx 63 &
+python3 test_fixed_hire.py --graph_idx 64 &
+python3 test_fixed_hire.py --graph_idx 65 &
+python3 test_fixed_hire.py --graph_idx 66 &
+python3 test_fixed_hire.py --graph_idx 67 &
+python3 test_fixed_hire.py --graph_idx 68 &
+python3 test_fixed_hire.py --graph_idx 69 &
+python3 test_fixed_hire.py --graph_idx 70 &
+
+============================================
+python3 test_fixed_hire.py --graph_idx 71 &
+python3 test_fixed_hire.py --graph_idx 72 &
+python3 test_fixed_hire.py --graph_idx 73 &
+python3 test_fixed_hire.py --graph_idx 74 &
+python3 test_fixed_hire.py --graph_idx 75 &
+
+python3 test_fixed_hire.py --graph_idx 76 &
+python3 test_fixed_hire.py --graph_idx 77 &
+python3 test_fixed_hire.py --graph_idx 78 &
+python3 test_fixed_hire.py --graph_idx 79 &
+python3 test_fixed_hire.py --graph_idx 80 &
+============================================
+
+
+python3 test_fixed_hire.py --graph_idx 81 &
+python3 test_fixed_hire.py --graph_idx 82 &
+python3 test_fixed_hire.py --graph_idx 83 &
+python3 test_fixed_hire.py --graph_idx 84 &
+python3 test_fixed_hire.py --graph_idx 85 &
+python3 test_fixed_hire.py --graph_idx 86 &
+python3 test_fixed_hire.py --graph_idx 87 &
+python3 test_fixed_hire.py --graph_idx 88 &
+python3 test_fixed_hire.py --graph_idx 89 &
+python3 test_fixed_hire.py --graph_idx 90 &
+python3 test_fixed_hire.py --graph_idx 91 &
+python3 test_fixed_hire.py --graph_idx 92 &
+python3 test_fixed_hire.py --graph_idx 93 &
+python3 test_fixed_hire.py --graph_idx 94 &
+python3 test_fixed_hire.py --graph_idx 95 &
+python3 test_fixed_hire.py --graph_idx 96 &
+python3 test_fixed_hire.py --graph_idx 97 &
+python3 test_fixed_hire.py --graph_idx 98 &
+python3 test_fixed_hire.py --graph_idx 99 &
+python3 test_fixed_hire.py --graph_idx 100 &
